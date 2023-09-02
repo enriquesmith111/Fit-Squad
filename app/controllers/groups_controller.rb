@@ -3,6 +3,7 @@ def index
     @groups = Group.all
     end
     def show
+    @user = User.find(params[:id])
     @group = Group.find(params[:id])
     end
     def new
