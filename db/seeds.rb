@@ -31,14 +31,14 @@ name: "swimming"
 puts "creating users"
 
 
-Kevin = User.create!(
+kevin = User.create!(
 email: "user1@gmail.com",
 password: "123456",
 name: "Kevin",
 avatar: "kevin_avatar.jpg"
 )
 
-Linda = User.create!(
+linda = User.create!(
 email: "user2@gmail.com",
 password: "123456",
 name: "Linda",
@@ -48,19 +48,19 @@ avatar: "linda_avatar.jpg",
 
 puts "creating groups"
 
-Kevin_Basketbasll = Group.create!(
+kevin_basketball = Group.create!(
 name: "Kevin's Basketball Squad",
 description: "first group test",
 city: "London",
-user_id: Kevin.id,
+user_id: kevin.id,
 group_image: "kevin_basketball.jpg"
 )
 
-Linda_Pilates = Group.create!(
+linda_pilates = Group.create!(
 name: "Linda Pilates",
 description: "second group test",
 city: "London",
-user_id: Linda.id,
+user_id: linda.id,
 group_image: "linda_pilates.jpg"
 )
 
@@ -74,7 +74,7 @@ date: Date.new,
 time: Time.now,
 address: "London, Waterloo",
 activity_id: activity1.id,
-group_id: Kevin_Basketball.id
+group_id: kevin_basketball.id
 )
 
 event2 = Event.create!(
@@ -84,5 +84,5 @@ date: Date.new,
 time: Time.now,
 address: "London, Westminster",
 activity_id: activity2.id,
-group_id: Linda_Pilates.id
+group_id: linda_pilates.id
 )
