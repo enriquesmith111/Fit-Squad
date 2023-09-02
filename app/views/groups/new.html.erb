@@ -1,0 +1,6 @@
+<%= simple_form_for [@group] do |f| %>
+  <%= f.input :name, label: 'Name of your new group. e.g. Hackney Basketball'%>
+  <%= f.input :description %>
+  <%= f.input :city %>
+  <%= f.button :submit %>
+<% end %>
