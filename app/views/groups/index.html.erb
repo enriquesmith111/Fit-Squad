@@ -8,7 +8,8 @@
   <%else%>
     <%= image_tag eval(group.group_image)["url"], width: 300, height: 200 %>
     <%#= image_path group.group_image, width: 300, height: 200 %>
-    <p>Image showing</p>
+    <p> </p>
   <% end %>
+<a href="<%= group_path(group) %>">View Details</a>
 
 <% end %>
