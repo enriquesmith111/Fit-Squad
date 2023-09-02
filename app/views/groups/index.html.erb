@@ -3,4 +3,10 @@
 <p> <%= group.description  %></p>
 <p> <%= group.city  %></p>
 <p> <%= group.user_id  %></p>
+  <% if group.group_image.present? %>
+    <%= image_tag eval(group.group_image)["url"], width: 300, height: 200 %>
+    <%#= image_path group.group_image, width: 300, height: 200 %>
+    <p>Image showing</p>
+  <% end %>
+
 <% end %>
