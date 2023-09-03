@@ -34,13 +34,15 @@ puts "creating users"
 kevin = User.create!(
 email: "user1@gmail.com",
 password: "123456",
-name: "Kevin"
+name: "Kevin",
+avatar: "kevin_avatar.jpg"
 )
 
 linda = User.create!(
 email: "user2@gmail.com",
 password: "123456",
-name: "Linda"
+name: "Linda",
+avatar: "linda_avatar.jpg",
 )
 
 
@@ -50,14 +52,16 @@ kevin_basketball = Group.create!(
 name: "Kevin's Basketball Squad",
 description: "first group test",
 city: "London",
-user_id: kevin.id
+user_id: kevin.id,
+group_image: "kevin_basketball.jpg"
 )
 
 linda_pilates = Group.create!(
 name: "Linda Pilates",
 description: "second group test",
 city: "London",
-user_id: linda.id
+user_id: linda.id,
+group_image: "linda_pilates.jpg"
 )
 
 
