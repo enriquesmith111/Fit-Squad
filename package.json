@@ -1,6 +1,17 @@
 {
+  "name": "app",
+  "private": "true",
   "dependencies": {
+    "@hotwired/turbo-rails": "github:hotwired/turbo-rails",
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.1"
+    "bootstrap": "^5.3.1",
+    "stimulus": "^3.2.2",
+    "webpack": "^5.88.2"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
   }
 }

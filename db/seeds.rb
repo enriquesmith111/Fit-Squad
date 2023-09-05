@@ -68,21 +68,23 @@ group_image: "linda_pilates.jpg"
 puts "creating events"
 
 event1 = Event.create!(
-name: "test",
+name: "Basketball in Waterloo!",
 description: "first event test",
-date: Date.new,
+date: Date.today + 2,
 time: Time.now,
-address: "London, Waterloo",
+address: "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom",
 activity_id: activity1.id,
-group_id: kevin_basketball.id
+group_id: kevin_basketball.id,
+event_image: "kevin_basketball_event.jpg"
 )
 
 event2 = Event.create!(
-name: "test 2",
+name: "Pilate day with Linda",
 description: "second event test",
-date: Date.new,
+date: Date.today + 3,
 time: Time.now,
-address: "London, Westminster",
+address: "Westminster Abbey, 20 Dean's Yard, London, England SW1A 0AA, United Kingdom",
 activity_id: activity2.id,
-group_id: linda_pilates.id
+group_id: linda_pilates.id,
+event_image: "linda_pilates_event.jpg"
 )

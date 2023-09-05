@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :groups do
     resources :events
   end
+  resources :events, only: [:index]
 end
