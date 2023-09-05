@@ -1,0 +1,7 @@
+<% @group_participants.each do |participant| %>
+  <p>User ID: <%= participant.user.id %></p>
+  <p>Email: <%= participant.user.email %></p>
+  <p>Name: <%= participant.user.name %></p>
+  <p>Avatar: <%= participant.user.avatar %></p>
+  <hr>
+<% end %>

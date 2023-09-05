@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
 <h1><%= @group.name %></h1>
 <p> <%= @group.description  %></p>
 <p> <%= @group.city  %></p>
@@ -7,3 +11,16 @@
 <%else%>
 <%= image_tag eval(@group.group_image)["url"], width: 300, height: 200 %>
 <%end%>
+<%= @group_participant_count %> Participants
+
+</div>
+
+    <div class="col">
+
+<%= render partial: 'group_participants/display', locals: { group: @group } %>
+
+<%= render partial: 'group_participants/form', locals: { group: @group } %>
+</div>
+
+</div>
+</div>

@@ -2,9 +2,13 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     end
-  
+
   def show
     @group = Group.find(params[:id])
+    @group_participant = GroupParticipant.new
+    @group_participants = GroupParticipant.where(group_id: @group.id)
+    @existing_participant = @group_participants.find_by(user_id: current_user.id)
+    @group_participant_count = @group_participants.count
   end
 
   def new
@@ -23,6 +27,20 @@ class GroupsController < ApplicationController
       render :new
     end
   end
+  def destroy
+    @group = Group.find(params[:id])
+  if @group.user_id == current_user.id
+      if @group.destroy
+        redirect_to groups_path, notice: "You have deleted the group."
+      else
+        redirect_to groups_path, alert: "Failed to delete the group."
+      end
+    else
+      redirect_to groups_path, alert: "You are not authorized to delete this group."
+    end
+  end
+
+
 
   private
 
