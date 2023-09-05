@@ -1,0 +1,78 @@
+
+<body>
+<h1>Events index</h1>
+
+
+<div id='map' style='width: 400px; height: 300px;', data-controller="map">
+
+</div>
+<hr>
+<form action="/events" method="get">
+  <input type="date" name="date">
+  <input type="submit" value="Filter">
+  <%= link_to "Reset Filter", events_path %>
+</form>
+
+
+<% if @events.empty? %>
+<h1><%= "No events found for this date :(" %></h1>
+<% else %>
+<% @events.each do |event| %>
+<h1><%= event.name %></h1>
+<p> <%= event.description  %></p>
+<p> <%= event.date  %></p>
+<p> <%= event.time  %></p>
+<p> <%= event.address  %></p>
+  <% if event.event_image.end_with?("jpg") %>
+  <%=image_tag event.event_image, width: 300, height: 200 %> <hr>
+  <%else%>
+    <%= image_tag eval(event.event_image)["url"], width: 300, height: 200 %> 
+    <hr>
+  <% end %>
+<% end %>
+<% end %>
+</div>
+
+
+
+
+</body>
+
+<%console%>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+const events = '<%=@events%>';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2lkZCIsImEiOiJjbGxpMXdyeTkwaDU3M2RsaWV2N2liZmFhIn0.TxoP-F1jLzpdqzgqJ-iF_A';
+    const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v12',
+    // style URL
+    }); 
+    
+    events.forEach(event => {
+    // Get the latitude and longitude of the event
+    const latitude = event.latitude;
+    const longitude = event.longitude;
+
+    // Create a marker
+    let marker = new MapboxMarker({
+      lat: latitude,
+      lng: longitude,
+      title: event.name,
+    });
+
+    // Add the marker to the map
+    map.addMarker(marker);
+  });
+</script>

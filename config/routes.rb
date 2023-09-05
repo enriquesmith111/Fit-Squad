@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :group_participants
     resources :events
   end
+  resources :events, only: [:index]
 end

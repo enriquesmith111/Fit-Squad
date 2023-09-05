@@ -48,6 +48,9 @@ gem "sassc-rails"
 # Use Cloudinary to upload images
 gem "cloudinary"
 
+# mapbox API
+gem "geocoder"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -81,3 +84,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "hotwire-rails", "~> 0.1.3"
