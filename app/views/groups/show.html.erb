@@ -6,21 +6,25 @@
 <p> <%= @group.description  %></p>
 <p> <%= @group.city  %></p>
 <p> <%= @group.user_id  %></p>
-<% if @group.group_image.nil? %>
-<%="image not showing"%>
-<%else%>
-<%= image_tag eval(@group.group_image)["url"], width: 300, height: 200 %>
-<%end%>
+<% if @group.group_image.end_with?("jpg") %>
+  <%=image_tag @group.group_image, width: 300, height: 200 %>
+  <%else%>
+    <%= image_tag eval(@group.group_image)["url"], width: 300, height: 200 %>
+    <%#= image_path group.group_image, width: 300, height: 200 %>
+    <p> </p>
+  <% end %>
 <%= @group_participant_count %> Participants
 
 </div>
 
     <div class="col">
 
+<div style="margin: 1vw; border-radius: 5px ; width: 41vw; /* background-color: rgb(246 248 250 / 60%); */ overflow: auto; white-space: inherit; height: 221px; border-style: solid; border-color: #c9c5c5;" >
 <%= render partial: 'group_participants/display', locals: { group: @group } %>
-
+</div>
 <%= render partial: 'group_participants/form', locals: { group: @group } %>
+<br>
+<%= render partial: 'events/display', locals: { group: @group } %></div>
 </div>
 
-</div>
 </div>
