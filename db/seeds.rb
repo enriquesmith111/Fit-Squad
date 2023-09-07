@@ -74,6 +74,7 @@ rowing = Activity.create!(
 )
 p "Created #{rowing.name}"
 
+
 weelchair_basketball = Activity.create!(
     name: "Wheelchair basketball" 
 )
