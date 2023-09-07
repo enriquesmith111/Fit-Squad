@@ -6,85 +6,90 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Activity.all.destroy_all
-Event.all.destroy_all
-Group.all.destroy_all
-User.all.destroy_all
+puts "Destroying seeds..."
 
-puts "destroying seeds"
+# Destroy events first to avoid foreign key violations
+Event.destroy_all
 
+# Destroy activities
+Activity.destroy_all
 
-puts "creating acitivites"
+# Destroy groups
+Group.destroy_all
+
+# Destroy users
+User.destroy_all
+
+puts "Creating activities..."
 
 activity1 = Activity.create!(
-name: "basketball"
+    name: "basketball"
 )
 
 activity2 = Activity.create!(
-name: "football"
+    name: "football"
 )
 
 activity3 = Activity.create!(
-name: "swimming"
+    name: "swimming"
 )
 
-puts "creating users"
-
+puts "Creating users..."
 
 kevin = User.create!(
-email: "user1@gmail.com",
-password: "123456",
-name: "Kevin",
-avatar: "kevin_avatar.jpg"
-)
-
+    email: "user1@gmail.com",
+    password: "123456",
+    name: "Kevin",
+    avatar: "kevin_avatar.jpg"
+    )
 linda = User.create!(
-email: "user2@gmail.com",
-password: "123456",
-name: "Linda",
-avatar: "linda_avatar.jpg",
-)
+    email: "user2@gmail.com",
+    password: "123456",
+    name: "Linda",
+    avatar: "linda_avatar.jpg",
+    )
 
-
-puts "creating groups"
+puts "Creating groups..."
 
 kevin_basketball = Group.create!(
-name: "Kevin's Basketball Squad",
-description: "first group test",
-city: "London",
-user_id: kevin.id,
-group_image: "kevin_basketball.jpg"
-)
-
+    name: "Kevin's Basketball Squad",
+    description: "first group test",
+    city: "London",
+    user_id: kevin.id,
+    group_image: "kevin_basketball.jpg"
+    )
+    
 linda_pilates = Group.create!(
-name: "Linda Pilates",
-description: "second group test",
-city: "London",
-user_id: linda.id,
-group_image: "linda_pilates.jpg"
-)
+    name: "Linda Pilates",
+    description: "second group test",
+    city: "London",
+    user_id: linda.id,
+    group_image: "linda_pilates.jpg"
+    )
 
-
-puts "creating events"
+puts "Creating events..."
 
 event1 = Event.create!(
-name: "Basketball in Waterloo!",
-description: "first event test",
-date: Date.today + 2,
-time: Time.now,
-address: "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom",
-activity_id: activity1.id,
-group_id: kevin_basketball.id,
-event_image: "kevin_basketball_event.jpg"
-)
-
+    name: "Basketball in Waterloo!",
+    description: "first event test",
+    date: Date.today + 2,
+    time: Time.now,
+    address: "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom",
+    activity_id: activity1.id,
+    group_id: kevin_basketball.id,
+    event_image: "kevin_basketball_event.jpg"
+    )
+    
 event2 = Event.create!(
-name: "Pilate day with Linda",
-description: "second event test",
-date: Date.today + 3,
-time: Time.now,
-address: "Westminster Abbey, 20 Dean's Yard, London, England SW1A 0AA, United Kingdom",
-activity_id: activity2.id,
-group_id: linda_pilates.id,
-event_image: "linda_pilates_event.jpg"
-)
+    name: "Pilate day with Linda",
+    description: "second event test",
+    date: Date.today + 3,
+    time: Time.now,
+    address: "Westminster Abbey, 20 Dean's Yard, London, England SW1A 0AA, United Kingdom",
+    activity_id: activity2.id,
+    group_id: linda_pilates.id,
+    event_image: "linda_pilates_event.jpg"
+    )
+
+# (Your event creation code...)
+
