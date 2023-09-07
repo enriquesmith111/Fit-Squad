@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :events
   end
   resources :events, only: [:index]
-  
+
 end
