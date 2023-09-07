@@ -51,6 +51,12 @@ gem "cloudinary"
 # mapbox API
 gem "geocoder"
 
+# faker file for seeding
+gem 'faker'
+
+# images for groups and events
+gem 'unsplash'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
