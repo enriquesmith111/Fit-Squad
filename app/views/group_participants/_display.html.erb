@@ -2,6 +2,7 @@
   <p>User ID: <%= participant.user.id %></p>
   <p>Email: <%= participant.user.email %></p>
   <p>Name: <%= participant.user.name %></p>
-  <p>Avatar: <%= participant.user.avatar %></p>
+  <p>Avatar: <%= image_tag participant.user.avatar, style: "width:200px;  height:100px;"%>
+  </p>
   <hr>
 <% end %>
