@@ -1,0 +1,4 @@
+  <%= link_to 'new workout ', new_user_workout_preference_path(current_user) %>%
+<% if defined?(new_user_workout_preference_path) %>
+  <%= render 'workout_preferences/show' %>
+<% end %>
