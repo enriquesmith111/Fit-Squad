@@ -8,6 +8,7 @@
 </div>
 <hr>
 <div style="display: flex; ">
+<div id= "image+squad-info">
 <% if @event.event_image.end_with?("jpg") %>
   <%=image_tag @event.event_image, width: 500, height: 350 %>
   <%else%>
@@ -15,7 +16,15 @@
     <%#= image_path group.group_image, width: 300, height: 200 %>
     <hr>
   <% end %>
+      <h2 style="margin-">The Squad</h2>
+      </div>
+
 <div style="display: flex; flex-direction: column; margin-left: 15px">
+<div style="width: 900px; height: 350px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 <h1><%= @event.name %></h1>
 <p> <%= @event.description  %></p>
 <p> <%= @event.address  %></p>
@@ -23,8 +32,6 @@
 <p> <%= @event.time  %></p>
 </div>
 </div>
-
-<h2 style="margin-">The Squad</h2>
 
 </div>
 

@@ -130,7 +130,35 @@ end
         minute = time.min
         second = time.sec
         time_string = " at #{hour}:#{minute}:#{second}"
-        locations = ["Victoria Tower Gardens, Millbank, London, England SW1P 3JH, United Kingdom", "Battersea Power Station, 188 Kirtling St, London, England SW11 8BZ, United Kingdom", "Westminster Bridge, Westminster Bridge Rd., London, England SW1A 2LW, United Kingdom", "Battersea Park, Albert Bridge Rd, London, England SW11 4NJ, United Kingdom", "Clapham Common, Windmill Dr, London, England SW4 9AU, United Kingdom", "Richmond Park, Sawyer's Hill, Richmond, England TW10 5HZ, United Kingdom", "Primrose Hill, NW3 3AU, Camden, London, Greater London, England, United Kingdom", "O2 Blueroom, The O2, London, England SE10 0DY, United Kingdom", "Hoxton, N1 6TJ, Hackney, London, Greater London, England, United Kingdom", "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom", "Kensington Gardens, Kensington Rd, London, England W2 3XA, United Kingdom", "Hammersmith, W6 9YA, Hammersmith and Fulham, London, Greater London, England, United Kingdom", "Westfield, Ariel Way, London, England W12 7FL, United Kingdom", "Hampstead, NW3 1TR, Camden, London, Greater London, England, United Kingdom", "Stratford, E15 4PG, Newham, London, Greater London, England, United Kingdom", "Hackney Central Space, 220 Graham Rd, London, England E8 1HT, United Kingdom", "West Croydon Bus Station, Croydon, England CR0 2GW, United Kingdom", "Peckham Lodge London, 110 Peckham Road, London, England SE15 5EU, United Kingdom", "Brixton Market, Brixton Station Rd, London, England SW9 8JS, United Kingdom", "Rotherhithe Business Estate, London, England SE16 3EH, United Kingdom", "Shoreditch House, Ebor Street, London, England E1 6AW, United Kingdom", "Paddington Street Gardens, Paddington St, London, England W1U 4EG, United Kingdom", "Wimbledon Lawn Tennis Museum, The All England Lawn Tennis Club, London, England SW19 5AG, United Kingdom", "Putney Hill, Putney Hill, London, England SW15 6RU, United Kingdom", "Chelsea Harbour, Chelsea Harbour, London, England SW10 0XB, United Kingdom", "Greenwich Meridian, Blackheath Ave, London, England SE10 8XJ, United Kingdom", "Camden Town, NW1 9PJ, Camden, London, Greater London, England, United Kingdom", "Chiswick House & Gardens, Burlington Ln, London, England W4 2RP, United Kingdom", "Kingston University (Kingston Hill Campus), Kingston Hill, Kingston upon Thames, England KT2 7HJ, United Kingdom"]
+        locations = ["Victoria Memorial, The Mall, London, England SW1A 1AA, United Kingdom",
+             "Battersea Power Station, 188 Kirtling St, London, England SW11 8BZ, United Kingdom",
+              "Westminster Bridge, Westminster Bridge Rd., London, England SW1A 2LW, United Kingdom",
+               "Battersea Park, Albert Bridge Rd, London, England SW11 4NJ, United Kingdom",
+                "Clapham Common West Side, London, England SW4 9BB, United Kingdom",
+                 "Richmond Park, Sawyer's Hill, Richmond, England TW10 5HZ, United Kingdom",
+                  "Primrose Hill, NW3 3AU, Camden, London, Greater London, England, United Kingdom",
+                   "Greenwich Meridian, Blackheath Ave, London, England SE10 8XJ, United Kingdom",
+                    "Hoxton, N1 6TJ, Hackney, London, Greater London, England, United Kingdom",
+                     "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom",
+                      "Kensington Gardens, Kensington Rd, London, England W2 3XA, United Kingdom",
+                       "Hammersmith, W6 9YA, Hammersmith and Fulham, London, Greater London, England, United Kingdom",
+                        "Westfield, Ariel Way, London, England W12 7FL, United Kingdom",
+                         "Hampstead, NW3 1TR, Camden, London, Greater London, England, United Kingdom",
+                          "Stratford, E15 4PG, Newham, London, Greater London, England, United Kingdom",
+                           "Kilburn And Strode, 84 Theobalds Road, London, England WC1V 6AL, United Kingdom",
+                            "West Croydon Bus Station, Croydon, England CR0 2GW, United Kingdom",
+                             "Wapping Old Stairs, London, England E1W 2PN, United Kingdom",
+                              "Brixton, SW2 1SS, Lambeth, London, Greater London, England, United Kingdom",
+                               "Canary Wharf College, London, England E14 3BA, United Kingdom",
+                                "Shoreditch House, Ebor Street, London, England E1 6AW, United Kingdom",
+                                 "Paddington St, London, England W1U 4EG, United Kingdom",
+                                 "Wimbledon, SW19 7NL, Merton, London, Greater London, England, United Kingdom",
+                                   "Putney Hill, Putney Hill, London, England SW15 6RU, United Kingdom",
+                                    "Chelsea Harbour, Chelsea Harbour, London, England SW10 0XB, United Kingdom",
+                                     "Lewisham Town Hall, Catford Rd, London, England SE6 9SF, United Kingdom",
+                                      "Camden Town, NW1 9PJ, Camden, London, Greater London, England, United Kingdom",
+                                       "Chiswick Mall, London, England W4 2PR, United Kingdom",
+                                        "Kingston upon Thames, Greater London, England, United Kingdom"]
         location = locations[rand(0..28)]
         name = "#{activity.name} in #{location.to_s.gsub(",", "").split(" ")[0]}!"
         p "created #{name}"
