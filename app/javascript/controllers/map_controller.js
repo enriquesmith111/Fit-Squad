@@ -16,13 +16,18 @@ export default class extends Controller {
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-
   }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
     this.map.fitBounds(bounds, { padding: 55, maxZoom: 15, duration: 3 })
+
+    // Add this line
+    this.map.addControl(new mapboxgl.FullscreenControl({
+      width: '100vh',
+      height: '100vw'
+    }));
   }
 
 
@@ -35,4 +40,5 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
+
 }

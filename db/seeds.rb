@@ -130,14 +130,14 @@ end
         minute = time.min
         second = time.sec
         time_string = " at #{hour}:#{minute}:#{second}"
-        locations = ["Victoria Memorial, The Mall, London, England SW1A 1AA, United Kingdom",
+        locations = ["Belgrave Square, Belgrave Sq, London, England SW1X 8PZ, United Kingdom",
              "Battersea Power Station, 188 Kirtling St, London, England SW11 8BZ, United Kingdom",
               "Westminster Bridge, Westminster Bridge Rd., London, England SW1A 2LW, United Kingdom",
                "Battersea Park, Albert Bridge Rd, London, England SW11 4NJ, United Kingdom",
                 "Clapham Common West Side, London, England SW4 9BB, United Kingdom",
                  "Richmond Park, Sawyer's Hill, Richmond, England TW10 5HZ, United Kingdom",
                   "Primrose Hill, NW3 3AU, Camden, London, Greater London, England, United Kingdom",
-                   "Greenwich Meridian, Blackheath Ave, London, England SE10 8XJ, United Kingdom",
+                   "Greenwich Park, Maze Hill, London, England SE10 8EJ, United Kingdom",
                     "Hoxton, N1 6TJ, Hackney, London, Greater London, England, United Kingdom",
                      "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom",
                       "Kensington Gardens, Kensington Rd, London, England W2 3XA, United Kingdom",
@@ -145,8 +145,8 @@ end
                         "Westfield, Ariel Way, London, England W12 7FL, United Kingdom",
                          "Hampstead, NW3 1TR, Camden, London, Greater London, England, United Kingdom",
                           "Stratford, E15 4PG, Newham, London, Greater London, England, United Kingdom",
-                           "Kilburn And Strode, 84 Theobalds Road, London, England WC1V 6AL, United Kingdom",
-                            "West Croydon Bus Station, Croydon, England CR0 2GW, United Kingdom",
+                           "Pimlico Academy, Lupus St., London, England SW1V 3AP, United Kingdom",
+                            "Croydon Rd, Beckenham, England BR3 3FD, United Kingdom",
                              "Wapping Old Stairs, London, England E1W 2PN, United Kingdom",
                               "Brixton, SW2 1SS, Lambeth, London, Greater London, England, United Kingdom",
                                "Canary Wharf College, London, England E14 3BA, United Kingdom",
