@@ -69,7 +69,8 @@ $transition-time: 2.3s;
 			transition: ease all 1.3s;
 			background: rgba(0,0,0,.4);
 		}
-		h1{
+
+		.event-card-title{
 			font-weight: 600;
 			position: absolute;
 			bottom: 55px;
@@ -81,23 +82,26 @@ $transition-time: 2.3s;
 			font-size: 3em;
 			transform: translateZ(0px);
 		}
-		.event-card-title{
-			padding: 20px;
-		}
 		.card-address{
-			background-color: white;
-			color: black;
-			font-size: 30px;
+			font-weight: 600;
+			position: absolute;
+			bottom: 10.64em;
+			left: 0.84em;
+			color: rgb(0, 0, 0);
+			transform-style: preserve-3d;
+		transition: ease all $transition-time;
+			z-index:3;
+			transform: translateZ(0px);
 			padding: 5px;
-			display: flex;
-			justify-content: left;
+			font-size: 30px;
+			background-color: rgba(151, 150, 150,.5);
 		}
-		.price{
+		.card-time-date{
 			font-weight: 200;
 			position: absolute;
-			top: 55px;
-			right: 50px;
-			color: white;
+			bottom: 0.5em;
+			left: 1.6em;
+			color: rgba(255,255,255,.5);
 			transform-style: preserve-3d;
 		transition: ease all $transition-time;
 			z-index:4;
@@ -109,14 +113,14 @@ $transition-time: 2.3s;
 		position: absolute;
 		height: 100%;
 		width: 100%;
-		background: #0b0f08;
+		background: #ffffff;
 		transform-style: preserve-3d;
 	transition: ease all $transition-time;
 		transform: translateZ(-1px);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		a{
+		.card-join-button{
 			transform-style: preserve-3d;
 			transition: ease transform $transition-time, ease background .5s;
 			transform: translateZ(-1px) rotatey(-180deg);
@@ -133,11 +137,21 @@ $transition-time: 2.3s;
 				color: #0b0f08;
 			}
 		}
-	}
-}
+		.event-card-detail {
+			// make sure to fix the writing as it inverts when theres no hover
+			transform: translateZ(-1px) rotatey(-180deg);
+			transition: ease transform $transition-time, ease background .5s;
 
-.card{
-	&test {
-		background-color: red;
+		}
+		.card-host {
+			transform: translateZ(-60px) rotatey(-180deg);		
+		}
+		.event-card-title-back {
+			color: #0b0f08;
+			transform: translateZ(-60px) rotatey(-180deg);		
+		}
+		.more-detials {
+			transform: translateZ(-60px) rotatey(-180deg);		
+		}
 	}
 }

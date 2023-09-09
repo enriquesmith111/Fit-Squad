@@ -24,7 +24,9 @@ class EventsController < ApplicationController
     
     def show
         @event = Event.find(params[:id])
+        @admin = User.where(@event)
     end
+
     
     def new
         @event = Event.new
