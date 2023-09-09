@@ -2,12 +2,11 @@
   <p>User ID: <%= participant.user.id %></p>
   <p>Email: <%= participant.user.email %></p>
   <p>Name: <%= participant.user.name %></p>
-<!--   <%if participant.user.avatar.nil?%> -->
-<!-- <p>Avatar<%= image_tag "blank_avatar.jpg", class: "avatar"%>  </p> -->
-<!-- <%else%> -->
-<!--     <p>Avatar: <%= image_tag participant.user.avatar, class: "avatar" %></p> -->
-#   <%end%>
-  <p>Avatar: <%= image_tag participant.user.avatar, class: "avatar" %>
+  <%if participant.user.avatar.nil?%>
+<p>Avatar<%= image_tag "blank_avatar.jpg", class: "avatar"%>  </p> 
+    <%else%>
+    <p>Avatar: <%= image_tag participant.user.avatar, class: "avatar" %></p> 
   </p>
   <hr>
+<% end %>
 <% end %>
