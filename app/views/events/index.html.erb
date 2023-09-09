@@ -1,6 +1,10 @@
 
 <h1>Events index</h1>
-
+<form action="/events" method="get">
+  <input type="date" name="date">
+  <input type="submit" value="Filter" data-toggle="datetimepicker" data-show-on="always">
+  <%= link_to "Reset Filter", events_path %>
+</form>
 <div style="width: 600px; height: 400px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -8,11 +12,7 @@
 
 </div>
 <hr>
-<form action="/events" method="get">
-  <input type="date" name="date">
-  <input type="submit" value="Filter">
-  <%= link_to "Reset Filter", events_path %>
-</form>
+
 
 <h2>Top Events</h2>
 <% if @events.empty? %>
