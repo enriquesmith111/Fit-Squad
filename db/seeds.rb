@@ -289,4 +289,3 @@ end
 # group_id: linda_pilates.id,
 # event_image: "linda_pilates_event.jpg"
 # )
-
