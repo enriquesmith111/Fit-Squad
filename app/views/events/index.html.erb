@@ -1,30 +1,31 @@
 
 <h1>Events index</h1>
-
-<div style="width: 400px; height: 300px;"
+<form action="/events" method="get">
+  <input type="date" name="date">
+  <input type="submit" value="Filter" data-toggle="datetimepicker" data-show-on="always">
+  <%= link_to "Reset Filter", events_path %>
+</form>
+<div style="width: 600px; height: 400px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 </div>
 <hr>
-<form action="/events" method="get">
-  <input type="date" name="date">
-  <input type="submit" value="Filter">
-  <%= link_to "Reset Filter", events_path %>
-</form>
+
 
 <h2>Top Events</h2>
 <% if @events.empty? %>
 <h1><%= "No events found for this date :(" %></h1>
 <% else %>
-<% @events_random = @events.order('RANDOM()').limit(25)%>
+<% @events_random = @events.order('RANDOM()').limit(@events.count)%>
 <% @events_random.each do |event| %>
 <h1><%= event.name %></h1>
 <p> <%= event.description  %></p>
 <p> <%= event.date  %></p>
 <p> <%= event.time  %></p>
 <p> <%= event.address  %></p>
+<%= link_to 'More Details', group_event_url(event.group_id, event.id) %>
   <% if event.event_image.end_with?("jpg") %>
   <%=image_tag event.event_image, width: 300, height: 200 %> <hr>
   <%else%>

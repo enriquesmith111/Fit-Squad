@@ -17,14 +17,27 @@ class EventsController < ApplicationController
         @markers = @events.geocoded.map do |event|
     {
         lat: event.latitude,
-        lng: event.longitude
-    }
-        end
+        lng: event.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {event: event})
+        }
     end
+end
     
-    def show
-        @event = Event.find(params[:id])
-    end
+def show
+    @event = Event.find(params[:id])
+    @event_participant = EventParticipant.new
+    @event_participants = EventParticipant.where(event_id: @event.id)
+    @existing_participant = @event_participants.find_by(user_id: current_user.id)
+    @event_participant_count = @event_participants.count
+    @markers = [
+        {
+        lat: @event.latitude,
+        lng: @event.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { event: @event })
+        # marker_html: render_to_string(partial: "marker")
+        }
+    ]
+end
     
     def new
         @event = Event.new
