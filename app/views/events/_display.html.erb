@@ -17,7 +17,6 @@
   <% end %>
 
 
-
 <% @events.each do |event| %>
   <div class="card">
     <%# front of the card %>
@@ -43,16 +42,9 @@
         <p class="card-host">Hosted by <strong> <%=@group.user.name%> </strong></p>
         <p class="card-host">Hosted by <strong> <%= image_tag @group.user.avatar, class: "avatar"%> </strong></p>
         <h3 class="event-card-title-back"><%= event.name %></h3>
-        <p class="more-detials"><a href=#>More details...</a></p>
+        <p class="more-detials"><%= link_to 'More Details', group_event_path(@group.id) %></p>
         <a class="card-join-button" href="#">Join</a>
       </div>
     </div>
   </div>
 <% end %>
-
-<%console%>
-
-
-
-
-<%# style="background-image: url('<%= image_tag event.event_image %>
