@@ -3,10 +3,11 @@
     <%= link_to "#", class: "navbar-brand" do %>
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
-    <div class="navbar-search">
+    <div class="navbar-search d-flex align-items-end">
         <input class="search-bar" type="text" id="searchInput" placeholder="Search for an activity">
         <button class="search-button" role="button"><span class="text">Search</span></button>
     </div>
+
 <div style="font-size:10px"><%= link_to 'ALL GROUPS', groups_path %></div>
 <div style="font-size:10px"><%= link_to 'NEW GROUP', new_group_path %></div>
 
