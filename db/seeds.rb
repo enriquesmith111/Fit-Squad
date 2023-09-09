@@ -20,63 +20,63 @@ puts "-----------------------------------------------"
 puts "-----------------------------------------------"
 puts "Creating Acitivites"
 football = Activity.create!(
-    name: "Football" 
-) 
+    name: "Football"
+)
 p "Created #{football.name}"
 
 running = Activity.create!(
-    name: "Running" 
-) 
+    name: "Running"
+)
 p "Created #{running.name}"
 
 swimming = Activity.create!(
-    name: "Swimming" 
-) 
+    name: "Swimming"
+)
 p "Created #{swimming.name}"
 
 athletics = Activity.create!(
-    name: "Athletics" 
-) 
+    name: "Athletics"
+)
 p "Created #{athletics.name}"
 
 powerlifting = Activity.create!(
-    name: "Powerlifting" 
-) 
+    name: "Powerlifting"
+)
 p "Created #{powerlifting.name}"
 
 rugby = Activity.create!(
-    name: "Rugby" 
-) 
+    name: "Rugby"
+)
 p "Created #{rugby.name}"
 
 tennis = Activity.create!(
-    name: "Tennis" 
-) 
+    name: "Tennis"
+)
 p "Created #{tennis.name}"
 
 volleyball = Activity.create!(
-    name: "Volleyball" 
-) 
+    name: "Volleyball"
+)
 p "Created #{volleyball.name}"
 
 cycling = Activity.create!(
-    name: "Cycling" 
-) 
+    name: "Cycling"
+)
 p "Created #{cycling.name}"
 
 handball = Activity.create!(
-    name: "Handball" 
-) 
+    name: "Handball"
+)
 p "Created #{handball.name}"
 
 rowing = Activity.create!(
-    name: "Rowing" 
-) 
+    name: "Rowing"
+)
 p "Created #{rowing.name}"
 
 weelchair_basketball = Activity.create!(
-    name: "Wheelchair basketball" 
-) 
+    name: "Wheelchair basketball"
+)
 p "Created #{weelchair_basketball.name}"
 puts "-----------------------------------------------"
 
@@ -96,7 +96,7 @@ puts "Creating Users"
         password: "123456",
         avatar: Faker::Avatar.image(size: "50x50")
     )
-    p "#{i} Created User #{user_name}"
+    p "#{i + 1} Created User #{user_name}"
 end
 puts "-----------------------------------------------"
 
@@ -108,7 +108,7 @@ puts "-----------------------------------------------"
 (1..13).each do |i|
     puts "Creating Group with Events"
     @group_id = i
-    @num = (rand(5..10)) 
+    @num = (rand(5..10))
     user = User.find(i)
     user_id = User.find(i).id
     @activity = Activity.find(rand(1..12))
@@ -119,14 +119,14 @@ puts "-----------------------------------------------"
         city: "London",
         group_image: "#{@activity.name}_group.jpg",
     )
-    
+
     (rand(6..12)).times do |g|
         @participant = GroupParticipant.create!(
             group_id: @group_id,
             user_id: rand(1..100)
         )
         puts "#{i + 1} Created G Participant with id #{@participant.user_id} for Group #{i + 1} "
-    end         
+    end
 
 
 
@@ -155,11 +155,10 @@ puts "-----------------------------------------------"
                 event_image: "#{@activity.name}_event.jpg",
                 description: "Join us for a day of fun and excitement at the #{name}! This event is for all ages and skill levels, so whether you're a seasoned athlete or just starting out, we're sure you'll have a great time. We'll have a variety of activities to choose from. There will also be food, drinks, and music, so you can relax and refuel after a day of fun. The event will take place on #{date} at #{time_string} at #{location}. Registration is required, so please sign up today! We hope to see you there!"
             )
-
             (rand(4..8)).times do |e|
                 e + 1
                 @participant = EventParticipant.create!(
-                    event_id: @event_id,
+                    event_id: @event.id,
                     user_id: rand(1..100)
                 )
                 p " Event number #{@event_id} Created E Participant with id #{@participant.user_id} for Event #{i + 1}"
@@ -186,7 +185,7 @@ end
 #             user_id: rand(1..100)
 #         )
 #         puts "#{i + 1} Created G Participant with id #{@participant.user_id} for Group #{i + 1} "
-#     end         
+#     end
 #         p "Group #{i + 1} creating event participant"
 #         (rand(4..8)).times do |e|
 #         e + 1
