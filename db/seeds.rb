@@ -6,83 +6,87 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
-puts "destroying seeds"
+puts "-----------------------------------------------"
+puts "Destroying Seeds"
 Activity.all.destroy_all
 Event.all.destroy_all
 Group.all.destroy_all
 GroupParticipant.all.destroy_all
 User.all.destroy_all
+puts "-----------------------------------------------"
 
 
 
-puts "creating acitivites"
-
-
+puts "-----------------------------------------------"
+puts "Creating Acitivites"
 football = Activity.create!(
     name: "Football" 
-)
+) 
 p "Created #{football.name}"
 
 running = Activity.create!(
     name: "Running" 
-)
+) 
 p "Created #{running.name}"
 
 swimming = Activity.create!(
     name: "Swimming" 
-)
+) 
 p "Created #{swimming.name}"
 
 athletics = Activity.create!(
     name: "Athletics" 
-)
+) 
 p "Created #{athletics.name}"
 
 powerlifting = Activity.create!(
     name: "Powerlifting" 
-)
+) 
 p "Created #{powerlifting.name}"
 
 rugby = Activity.create!(
     name: "Rugby" 
-)
+) 
 p "Created #{rugby.name}"
 
 tennis = Activity.create!(
     name: "Tennis" 
-)
+) 
 p "Created #{tennis.name}"
 
 volleyball = Activity.create!(
     name: "Volleyball" 
-)
+) 
 p "Created #{volleyball.name}"
 
 cycling = Activity.create!(
     name: "Cycling" 
-)
+) 
 p "Created #{cycling.name}"
 
 handball = Activity.create!(
     name: "Handball" 
-)
+) 
 p "Created #{handball.name}"
 
 rowing = Activity.create!(
     name: "Rowing" 
-)
+) 
 p "Created #{rowing.name}"
-
 
 weelchair_basketball = Activity.create!(
     name: "Wheelchair basketball" 
-)
+) 
 p "Created #{weelchair_basketball.name}"
+puts "-----------------------------------------------"
 
-puts "creating users"
 
-(1..100).each do |i|
+
+
+
+puts "-----------------------------------------------"
+puts "Creating Users"
+101.times do |i|
     user_name = Faker::Name.first_name
     user_email = "#{user_name + i.to_s}@gmail.com"
     user = "user" + (i).to_s
@@ -92,62 +96,108 @@ puts "creating users"
         password: "123456",
         avatar: Faker::Avatar.image(size: "50x50")
     )
-    p "Created user #{user_name}"
+    p "#{i} Created User #{user_name}"
 end
+puts "-----------------------------------------------"
 
 
-puts "creating groups"
 
-(1..15).each do |i|
-    group_id = i
-    num = (rand(5..10)) 
+
+
+puts "-----------------------------------------------"
+(1..13).each do |i|
+    puts "Creating Group with Events"
+    @group_id = i
+    @num = (rand(5..10)) 
     user = User.find(i)
     user_id = User.find(i).id
-    activity = Activity.find(rand(1..12))
-    Group.create!(
+    @activity = Activity.find(rand(1..12))
+    @group = Group.create!(
         user_id: user_id,
-        name: "#{user.name}'s" + " " +  "#{activity.name} Group",
-        description: "Hi Everyone and welcome to my #{activity.name} Group",
+        name: "#{user.name}'s" + " " +  "#{@activity.name} Group",
+        description: "Hi Everyone and welcome to my #{@activity.name} Group",
         city: "London",
-        group_image: "#{activity.name}_group.jpg",
-    )   
-    p "creating Group participants"
-    (1..rand(6..15)).each do |i|
-    id = i
-    GroupParticipant.create!(
-        group_id: group_id,
-        user_id: rand(1..100)
+        group_image: "#{@activity.name}_group.jpg",
     )
-    p "created participant"
-end
-        puts "-----------------------------------------------"
-        puts "created group"
-        puts "creating events for the group now"
-        (1..num).each do |i|
-        date = Date.today + rand(1..30)
-        time = Time.now
-        hour = time.hour
-        minute = time.min
-        second = time.sec
-        time_string = " at #{hour}:#{minute}:#{second}"
-        locations = ["Victoria Tower Gardens, Millbank, London, England SW1P 3JH, United Kingdom", "Battersea Power Station, 188 Kirtling St, London, England SW11 8BZ, United Kingdom", "Westminster Bridge, Westminster Bridge Rd., London, England SW1A 2LW, United Kingdom", "Battersea Park, Albert Bridge Rd, London, England SW11 4NJ, United Kingdom", "Clapham Common, Windmill Dr, London, England SW4 9AU, United Kingdom", "Richmond Park, Sawyer's Hill, Richmond, England TW10 5HZ, United Kingdom", "Primrose Hill, NW3 3AU, Camden, London, Greater London, England, United Kingdom", "O2 Blueroom, The O2, London, England SE10 0DY, United Kingdom", "Hoxton, N1 6TJ, Hackney, London, Greater London, England, United Kingdom", "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom", "Kensington Gardens, Kensington Rd, London, England W2 3XA, United Kingdom", "Hammersmith, W6 9YA, Hammersmith and Fulham, London, Greater London, England, United Kingdom", "Westfield, Ariel Way, London, England W12 7FL, United Kingdom", "Hampstead, NW3 1TR, Camden, London, Greater London, England, United Kingdom", "Stratford, E15 4PG, Newham, London, Greater London, England, United Kingdom", "Hackney Central Space, 220 Graham Rd, London, England E8 1HT, United Kingdom", "West Croydon Bus Station, Croydon, England CR0 2GW, United Kingdom", "Peckham Lodge London, 110 Peckham Road, London, England SE15 5EU, United Kingdom", "Brixton Market, Brixton Station Rd, London, England SW9 8JS, United Kingdom", "Rotherhithe Business Estate, London, England SE16 3EH, United Kingdom", "Shoreditch House, Ebor Street, London, England E1 6AW, United Kingdom", "Paddington Street Gardens, Paddington St, London, England W1U 4EG, United Kingdom", "Wimbledon Lawn Tennis Museum, The All England Lawn Tennis Club, London, England SW19 5AG, United Kingdom", "Putney Hill, Putney Hill, London, England SW15 6RU, United Kingdom", "Chelsea Harbour, Chelsea Harbour, London, England SW10 0XB, United Kingdom", "Greenwich Meridian, Blackheath Ave, London, England SE10 8XJ, United Kingdom", "Camden Town, NW1 9PJ, Camden, London, Greater London, England, United Kingdom", "Chiswick House & Gardens, Burlington Ln, London, England W4 2RP, United Kingdom", "Kingston University (Kingston Hill Campus), Kingston Hill, Kingston upon Thames, England KT2 7HJ, United Kingdom"]
-        location = locations[rand(0..28)]
-        name = "#{activity.name} in #{location.to_s.gsub(",", "").split(" ")[0]}!"
-        p "created #{name}"
-        event = "event" + (i).to_s
-        @event = Event.new
-        Event.create!(
-            group_id: group_id,
-            address: location,
-            name: name,
-            date: date,
-            time: Time.now,
-            activity_id: activity.id,
-            event_image: "#{activity.name}_event.jpg",
-            description: "Join us for a day of fun and excitement at the #{name}! This event is for all ages and skill levels, so whether you're a seasoned athlete or just starting out, we're sure you'll have a great time. We'll have a variety of activities to choose from. There will also be food, drinks, and music, so you can relax and refuel after a day of fun. The event will take place on #{date} at #{time_string} at #{location}. Registration is required, so please sign up today! We hope to see you there!"
+    
+    (rand(6..12)).times do |g|
+        @participant = GroupParticipant.create!(
+            group_id: @group_id,
+            user_id: rand(1..100)
         )
+        puts "#{i + 1} Created G Participant with id #{@participant.user_id} for Group #{i + 1} "
+    end         
+
+
+
+
+    puts "Creating Events for the Group now"
+        (1..@num).each do |i|
+            @event_id = i
+            date = Date.today + rand(1..30)
+            time = Time.now
+            hour = time.hour
+            minute = time.min
+            second = time.sec
+            time_string = " at #{hour}:#{minute}:#{second}"
+            locations = ["Belgrave Square, Belgrave Sq, London, England SW1X 8PZ, United Kingdom", "Battersea Power Station, 188 Kirtling St, London, England SW11 8BZ, United Kingdom", "Westminster Bridge, Westminster Bridge Rd., London, England SW1A 2LW, United Kingdom", "Battersea Park, Albert Bridge Rd, London, England SW11 4NJ, United Kingdom", "Clapham Common West Side, London, England SW4 9BB, United Kingdom", "Richmond Park, Sawyer's Hill, Richmond, England TW10 5HZ, United Kingdom", "Primrose Hill, NW3 3AU, Camden, London, Greater London, England, United Kingdom", "Greenwich Park, Maze Hill, London, England SE10 8EJ, United Kingdom", "Hoxton, N1 6TJ, Hackney, London, Greater London, England, United Kingdom", "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom", "Kensington Gardens, Kensington Rd, London, England W2 3XA, United Kingdom", "Hammersmith, W6 9YA, Hammersmith and Fulham, London, Greater London, England, United Kingdom", "Westfield, Ariel Way, London, England W12 7FL, United Kingdom", "Hampstead, NW3 1TR, Camden, London, Greater London, England, United Kingdom", "Stratford, E15 4PG, Newham, London, Greater London, England, United Kingdom", "Pimlico Academy, Lupus St., London, England SW1V 3AP, United Kingdom", "Croydon Rd, Beckenham, England BR3 3FD, United Kingdom", "Wapping Old Stairs, London, England E1W 2PN, United Kingdom", "Brixton, SW2 1SS, Lambeth, London, Greater London, England, United Kingdom", "Canary Wharf College, London, England E14 3BA, United Kingdom", "Shoreditch House, Ebor Street, London, England E1 6AW, United Kingdom", "Paddington St, London, England W1U 4EG, United Kingdom", "Wimbledon, SW19 7NL, Merton, London, Greater London, England, United Kingdom", "Putney Hill, Putney Hill, London, England SW15 6RU, United Kingdom", "Chelsea Harbour, Chelsea Harbour, London, England SW10 0XB, United Kingdom", "Lewisham Town Hall, Catford Rd, London, England SE6 9SF, United Kingdom", "Camden Town, NW1 9PJ, Camden, London, Greater London, England, United Kingdom", "Chiswick Mall, London, England W4 2PR, United Kingdom", "Kingston upon Thames, Greater London, England, United Kingdom"]
+            location = locations[rand(0..28)]
+            name = "#{@activity.name} in #{location.to_s.gsub(",", "").split(" ")[0]}!"
+            event = "event" + (i).to_s
+            @event =
+            @event = Event.create!(
+                group_id: @group_id,
+                address: location,
+                name: name,
+                date: date,
+                time: Time.now,
+                activity_id: @activity.id,
+                event_image: "#{@activity.name}_event.jpg",
+                description: "Join us for a day of fun and excitement at the #{name}! This event is for all ages and skill levels, so whether you're a seasoned athlete or just starting out, we're sure you'll have a great time. We'll have a variety of activities to choose from. There will also be food, drinks, and music, so you can relax and refuel after a day of fun. The event will take place on #{date} at #{time_string} at #{location}. Registration is required, so please sign up today! We hope to see you there!"
+            )
+
+            (rand(4..8)).times do |e|
+                e + 1
+                @participant = EventParticipant.create!(
+                    event_id: @event_id,
+                    user_id: rand(1..100)
+                )
+                p " Event number #{@event_id} Created E Participant with id #{@participant.user_id} for Event #{i + 1}"
+            end
+        puts "#{@event.id} finished Creating Event #{@event_id} #{@event.name} for Group #{@group.id} id"
     end
+    puts "#{@group.id} finished Creating Group #{@group.name} and Events"
+    puts "-----------------------------------------------"
+    puts "-----------------------------------------------"
+
 end
+
+
+
+
+
+
+
+#     13.times do |i|
+#         i + 1
+#         (rand(6..12)).times do |g|
+#         @participant = GroupParticipant.create!(
+#             group_id: i + 1,
+#             user_id: rand(1..100)
+#         )
+#         puts "#{i + 1} Created G Participant with id #{@participant.user_id} for Group #{i + 1} "
+#     end         
+#         p "Group #{i + 1} creating event participant"
+#         (rand(4..8)).times do |e|
+#         e + 1
+#         EventParticipant.create!(
+#             event_id: @event.id,
+#             user_id: GroupParticipant.where(group_id: i + 1)[rand(0..6)].id
+#         )
+#         p "number #{@event.id} Created E Participant with id #{@participant.user_id} for Event #{i + 1}"
+#         puts "-----------------------------------------------"
+#     end
+# end
 
 
 
