@@ -25,6 +25,7 @@ end
     
 def show
     @event = Event.find(params[:id])
+    @admin = User.where(@event)
     @markers = [
         {
         lat: @event.latitude,
