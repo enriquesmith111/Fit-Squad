@@ -1,2 +1,45 @@
 <h1>WorkoutPreferences#edit</h1>
 <p>Find me in app/views/workout_preferences/edit.html.erb</p>
+<%= simple_form_for [@user, @workout_preference] do |form| %>
+
+  <% if @workout_preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workout_preference.errors.count, "error") %> prohibited this workout preference from being saved:</h2>
+
+      <ul>
+        <% @workout_preference.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fitness_goal %>
+    <%= form.select :fitness_goal, ['Lose Weight', 'Build Muscle', 'Stay Fit', 'Other'], prompt: 'Select Fitness Goal' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :days_per_week %>
+    <%= form.number_field :days_per_week %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_per_session %>
+    <%= form.number_field :time_per_session, placeholder: 'Enter time in minutes' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fitness_level %>
+    <%= form.select :fitness_level, ['Beginner', 'Intermediate', 'Advanced'], prompt: 'Select Fitness Level' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :additional_comments %>
+    <%= form.text_area :additional_comments %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Generate Workout Plan" %>
+  </div>
+<% end %>

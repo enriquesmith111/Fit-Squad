@@ -5,6 +5,11 @@ class WorkoutPreferencesController < ApplicationController
   before_action :find_user
   before_action :find_workout_preference, only: [:edit, :update, :destroy]
 
+  def index
+    @user = current_user # Assuming you have a current_user method
+    @workout_preference = WorkoutPreference.find_by(user_id: current_user.id)
+  end
+
   def new
     @workout_preference = WorkoutPreference.new
   end
@@ -39,6 +44,8 @@ class WorkoutPreferencesController < ApplicationController
     end
   end
 
+  def edit
+  end
 
 
   # ... Other actions ...
@@ -46,7 +53,10 @@ class WorkoutPreferencesController < ApplicationController
   private
 
   def generate_prompt(workout_preference)
-    prompt = "Fitness Goal: #{workout_preference.fitness_goal}\n"
+    prompt = "Generate a weekly workout plan tailored to my fitness preferences and goals."
+
+    prompt += "A home workout"
+    prompt += "Fitness Goal: #{workout_preference.fitness_goal}\n"
     prompt += "Days per Week: #{workout_preference.days_per_week}\n"
     prompt += "Time per Session: #{workout_preference.time_per_session} minutes\n"
     prompt += "Fitness Level: #{workout_preference.fitness_level}\n"
@@ -55,7 +65,6 @@ class WorkoutPreferencesController < ApplicationController
     prompt += "Our expert trainers have carefully designed this plan to help you achieve your fitness goals. Get ready to transform yourself and make every workout count!\n\n"
     prompt += "Let's get started!\n"
 
-    prompt
   end
 
   def generate_workout_plan(prompt)
@@ -83,6 +92,7 @@ class WorkoutPreferencesController < ApplicationController
   end
 
   def find_workout_preference
-    @workout_preference = @user.workout_preferences.find(params[:id])
+    @workout_preference = WorkoutPreference.find_by(user_id: current_user.id)
   end
+
 end
