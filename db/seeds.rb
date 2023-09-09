@@ -96,7 +96,7 @@ puts "Creating Users"
         password: "123456",
         avatar: Faker::Avatar.image(size: "50x50")
     )
-    p "#{i} Created User #{user_name}"
+    p "#{i + 1} Created User #{user_name}"
 end
 puts "-----------------------------------------------"
 
@@ -155,11 +155,10 @@ puts "-----------------------------------------------"
                 event_image: "#{@activity.name}_event.jpg",
                 description: "Join us for a day of fun and excitement at the #{name}! This event is for all ages and skill levels, so whether you're a seasoned athlete or just starting out, we're sure you'll have a great time. We'll have a variety of activities to choose from. There will also be food, drinks, and music, so you can relax and refuel after a day of fun. The event will take place on #{date} at #{time_string} at #{location}. Registration is required, so please sign up today! We hope to see you there!"
             )
-
             (rand(4..8)).times do |e|
                 e + 1
                 @participant = EventParticipant.create!(
-                    event_id: @event_id,
+                    event_id: @event.id,
                     user_id: rand(1..100)
                 )
                 p " Event number #{@event_id} Created E Participant with id #{@participant.user_id} for Event #{i + 1}"

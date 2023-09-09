@@ -25,6 +25,10 @@ end
     
 def show
     @event = Event.find(params[:id])
+    @event_participant = EventParticipant.new
+    @event_participants = EventParticipant.where(event_id: @event.id)
+    @existing_participant = @event_participants.find_by(user_id: current_user.id)
+    @event_participant_count = @event_participants.count
     @markers = [
         {
         lat: @event.latitude,
