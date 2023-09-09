@@ -29,6 +29,7 @@ def show
     @event_participants = EventParticipant.where(event_id: @event.id)
     @existing_participant = @event_participants.find_by(user_id: current_user.id)
     @event_participant_count = @event_participants.count
+    @admin = User.where(@event)
     @markers = [
         {
         lat: @event.latitude,
