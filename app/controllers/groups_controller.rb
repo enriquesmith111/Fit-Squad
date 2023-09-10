@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @events = @group.events
+    @admin = User.where(@event)
     @group_participant = GroupParticipant.new
     @group_participants = GroupParticipant.where(group_id: @group.id)
     @existing_participant = @group_participants.find_by(user_id: current_user.id)
