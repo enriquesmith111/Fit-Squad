@@ -3,13 +3,7 @@
     <%= link_to "#", class: "navbar-brand" do %>
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
-    <div class="navbar-search d-flex align-items-end">
-        <input class="search-bar" type="text" id="searchInput" placeholder="Search for an activity">
-        <button class="search-button" role="button"><span class="text">Search</span></button>
-    </div>
-
-<div style="font-size:10px"><%= link_to 'ALL GROUPS', groups_path %></div>
-<div style="font-size:10px"><%= link_to 'NEW GROUP', new_group_path %></div>
+<%= link_to 'CREATE NEW GROUP', new_group_path %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,21 +13,14 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Squads", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Chatroom", "#", class: "nav-link" %>
+            <%= link_to "Home", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Notifications", "#", class: "nav-link" %>
+            <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-          <%# <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> %>
-            <%# <%if current_user.avatar.nil?%>
-            <%# <%= image_tag "blank_avatar.jpg", class: "avatar", alt: "dropdown menu" %>
-            <%# <%else%>
-            <%# <%= image_tag current_user.avatar, class: "avatar", alt: "dropdown menu" %>
-            <%# <%end%>
+          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag @user.avatar, class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
