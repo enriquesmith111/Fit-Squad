@@ -42,6 +42,29 @@
   </div>
 </div>
 
+<hr>
+
+<h2>Top Events</h2>
+<% if @events.empty? %>
+<h1><%= "No events found for this date :(" %></h1>
+<% else %>
+<% @events_random = @events.order('RANDOM()').limit(@events.count)%>
+<% @events_random.each do |event| %>
+<h1><%= event.name %></h1>
+<p> <%= event.description  %></p>
+<p> <%= event.date  %></p>
+<p> <%= event.time  %></p>
+<p> <%= event.address  %></p>
+<%= link_to 'More Details', group_event_url(event.group_id, event.id) %>
+  <% if event.event_image.end_with?("jpg") %>
+  <%=image_tag event.event_image, width: 300, height: 200 %> <hr>
+  <%else%>
+    <%= image_tag eval(event.event_image)["url"], width: 300, height: 200 %> 
+    <hr>
+  <% end %>
+<% end %>
+<% end %>
+</div>
 
 
 
