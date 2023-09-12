@@ -1,18 +1,48 @@
 
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
 <h1>Events index</h1>
-<form action="/events" method="get">
-  <input type="date" name="date">
-  <input type="submit" value="Filter" data-toggle="datetimepicker" data-show-on="always">
-  <%= link_to "Reset Filter", events_path %>
-</form>
-<div style="width: 600px; height: 400px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
+<div class="container m-1">
+  <div class="events-calendar">
+    <form action="/events" method="get">
+      <input type="date" name="date">
+      <input type="submit" value="Filter">
+      <%= link_to "Reset Filter", events_path %>
+    </form>
+  </div>
+
+
+  <div class="row"style="background-color:blue">
+      <div class="col-6 p-2 position-absolute start-0">
+        <div class="events-map" style="width: 50vw; height: 80vh;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+
+      <div class="col-6 mx-1 position-absolute end-0">
+        <% if @events.empty? %>
+          <h1><%= "No events found for this date :(" %></h1>
+        <% else %>
+            <%# CARD LIMITED TO 10 FOR FUNCTIONALITY %>
+            <% @events_random = @events.order('RANDOM()').limit(10)%>
+            <div class="row p-0 m-1">
+              <% @events_random.each do |event| %>
+                <div class="col-6">
+                  <%= render partial: 'events/display', locals: { event: event } %>
+                </div>
+              <% end %>
+            </div>
+        <% end %>
+    </div>
+  </div>
 </div>
-<hr>
 
+<hr>
 
 <h2>Top Events</h2>
 <% if @events.empty? %>
@@ -35,6 +65,7 @@
 <% end %>
 <% end %>
 </div>
+
 
 
 

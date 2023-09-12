@@ -25,6 +25,7 @@ end
     
 def show
     @event = Event.find(params[:id])
+    # @admin = User.where(@event)
     @event_participant = EventParticipant.new
     @event_participants = EventParticipant.where(event_id: @event.id)
     @existing_participant = @event_participants.find_by(user_id: current_user.id)

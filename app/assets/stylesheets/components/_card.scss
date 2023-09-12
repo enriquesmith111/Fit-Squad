@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&display=swap');
 
 $transition-time: 1.3s;
 
 
 
-.card{
+.event-card{
 	position: relative;
-	height: 400px;
-	width: 100%;
+    width: 23vw;
+    height: 37vh;
 	margin: 10px 0;
 	transition: ease all $transition-time;
 	perspective: 1200px;
@@ -20,18 +19,18 @@ $transition-time: 1.3s;
 			&:after{
 				background-color: black;
 			}
-			h1{
-				transform: translateZ(100px);
-			}
-			.price{
-				transform: translateZ(60px);
-			}
-			a{
-				transform: translateZ(-60px) rotatey(-180deg);
-			}
-			p{
-				transform: translateZ(-60px) rotatey(-180deg);
-			}
+			// h1{
+			// 	transform: translateZ(100px);
+			// }
+			// .price{
+			// 	transform: translateZ(60px);
+			// }
+			// a{
+			// 	transform: translateZ(-60px) rotatey(-180deg);
+			// }
+			// p{
+			// 	transform: translateZ(-60px) rotatey(-180deg);
+			// }
 		}
 	}
 	
@@ -44,10 +43,11 @@ $transition-time: 1.3s;
 		background-size: cover;
 		background-position: center center;
 		background-repeat: no-repeat;
+
 		&:before{
 			content: '';
 			position: absolute;
-			border: 5px solid rgba(255,255,255,.5);
+			border: 5px solid rgba(255, 255, 255, 1);
 			box-shadow: 0 0 12px rgba(0,0,0,.3); 
 			top:20px;
 			left:20px;
@@ -67,47 +67,64 @@ $transition-time: 1.3s;
 			bottom:0px;
 			z-index: 2;
 			transition: ease all 1.3s;
-			background: rgba(0,0,0,.4);
+			// background: rgba(0,0,0,.1);
 		}
 
 		.event-card-title{
 			font-weight: 600;
 			position: absolute;
-			bottom: 55px;
-			left: 50px;
+			bottom: 17%;
+			left: 11%;
 			color: white;
 			transform-style: preserve-3d;
 		transition: ease all $transition-time;
 			z-index:3;
-			font-size: 3em;
+			font-size: 2em;
 			transform: translateZ(0px);
-		}
-		.card-address{
-			font-weight: 600;
-			position: absolute;
-			bottom: 10.64em;
-			left: 0.84em;
-			color: rgb(0, 0, 0);
-			transform-style: preserve-3d;
-		transition: ease all $transition-time;
-			z-index:3;
-			transform: translateZ(0px);
-			padding: 5px;
-			font-size: 30px;
-			background-color: rgba(151, 150, 150,.5);
 		}
 		.card-time-date{
 			font-weight: 200;
 			position: absolute;
-			bottom: 0.5em;
-			left: 1.6em;
+			bottom: 6%;
+			left: 12%;
 			color: rgba(255,255,255,.5);
 			transform-style: preserve-3d;
 		transition: ease all $transition-time;
 			z-index:4;
-			font-size: 2em;
+			font-size: 1.5em;
 			transform: translateZ(0px);
 		}
+
+		.card-address{
+			position: fixed;
+			background-color: rgba(255,255,255,1);
+			bottom: 78%;
+			left: 7%;
+			transform-style: preserve-3d;
+		transition: ease all $transition-time;
+			font-weight: 600;
+			font-size: 1.4rem;
+			color: rgb(0, 0, 0);
+			transform: translateZ(0px);
+			padding: 1.8% 7% 2% 2%;
+			&:before{
+				content: '';
+				position: fixed;
+				z-index: 2;
+				transition: ease all $transition-time;
+				transform-style: preserve-3d;
+				transform: translateZ(0px);
+			}
+			&:after{
+				content: '';
+				position: fixed;
+				z-index: 2;
+				transition: ease all 1.3s;
+				// background: rgba(0,0,0,.4);
+			}
+		}
+
+
 	}
 	.card-back{
 		position: absolute;
@@ -121,9 +138,11 @@ $transition-time: 1.3s;
 		align-items: center;
 		justify-content: center;
 		.card-join-button{
+			position: fixed;
+			top: 70%;
 			transform-style: preserve-3d;
 			transition: ease transform $transition-time, ease background .5s;
-			transform: translateZ(-1px) rotatey(-180deg);
+			transform: translateZ(-1px) rotateY(-180deg);
 			background: transparent;
 			border: 1px solid white;
 			font-weight: 200;
@@ -137,20 +156,37 @@ $transition-time: 1.3s;
 				color: #0b0f08;
 			}
 		}
-		.event-card-detail {
-			// make sure to fix the writing as it inverts when theres no hover
-			transform: translateZ(-1px) rotatey(-180deg);
-			transition: ease transform $transition-time, ease background .5s;
 
-		}
-		.card-host {
-			transform: translateZ(-60px) rotatey(-180deg);		
+		.event-card-host {
+			transform: translateZ(-60px) rotateY(-180deg);
+			position: absolute;
+    		bottom: 75%;
+    		left: 40%;
+
 		}
 		.event-card-title-back {
 			color: #0b0f08;
-			transform: translateZ(-60px) rotatey(-180deg);		
+			transform: translateZ(-60px) rotateY(-180deg);
+			position: absolute;
+			bottom: 65%;
+			left: 35%;
+			font-size: 1.2em;
+			font-weight: 550;		
 		}
-		.more-detials {
+		.event-card-description-box{
+			width: 80%;
+			height: 90px;
+			background-color: aqua;
+		}
+		.event-card-description {
+			transform: translateZ(-60px) rotateY(-180deg);
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}		
+
+		
+		.event-more-detials {
 			transform: translateZ(-60px) rotatey(-180deg);		
 		}
 	}
