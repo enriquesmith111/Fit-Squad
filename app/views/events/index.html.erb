@@ -1,35 +1,46 @@
 
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
 <h1>Events index</h1>
 
-<div class="container">
-
-  <div style="width: 600px; height: 400px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
+<div class="container m-1">
+  <div class="events-calendar">
+    <form action="/events" method="get">
+      <input type="date" name="date">
+      <input type="submit" value="Filter">
+      <%= link_to "Reset Filter", events_path %>
+    </form>
   </div>
-  <hr>
-  <form action="/events" method="get">
-    <input type="date" name="date">
-    <input type="submit" value="Filter">
-    <%= link_to "Reset Filter", events_path %>
-  </form>
 
-  <h2>Top Events</h2>
-  <% if @events.empty? %>
-  <h1><%= "No events found for this date :(" %></h1>
-  <% else %>
-  <% @events_random = @events.order('RANDOM()').limit(@events.count)%>
-  <% @events_random.each do |event| %>
-    <div style="margin: 1vw; border-radius: 5px ; width: 41vw; /* background-color: rgb(246 248 250 / 60%); */ overflow: auto; white-space: inherit; height: 300px; border-style: solid; border-color: #c9c5c5;" >
-      <%= render partial: 'events/display', locals: { event: event } %></div>
+
+  <div class="row"style="background-color:blue">
+      <div class="col-6 p-2 position-absolute start-0">
+        <div class="events-map" style="width: 50vw; height: 80vh;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+
+      <div class="col-6 mx-1 position-absolute end-0">
+        <% if @events.empty? %>
+          <h1><%= "No events found for this date :(" %></h1>
+        <% else %>
+            <%# CARD LIMITED TO 10 FOR FUNCTIONALITY %>
+            <% @events_random = @events.order('RANDOM()').limit(10)%>
+            <div class="row p-0 m-1">
+              <% @events_random.each do |event| %>
+                <div class="col-6">
+                  <%= render partial: 'events/display', locals: { event: event } %>
+                </div>
+              <% end %>
+            </div>
+        <% end %>
     </div>
-    <% end %>
-  <% end %>
   </div>
 </div>
-<%console%>
 
 
 
