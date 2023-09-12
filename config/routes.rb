@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :events
   end
   resources :events, only: [:index]
-
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
   resources :users, only: [] do
     resources :workout_preferences
     post 'generate_workout_plan', to: 'workout_preferences#generate_workout_plan'
