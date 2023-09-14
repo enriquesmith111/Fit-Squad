@@ -1,44 +1,43 @@
 class EventParticipantsController < ApplicationController
-  before_action :set_event
-  before_action :set_event_participant, only: [:destroy]
-
-  def new
-    @group = Group.find(params[:group_id])
-    @event = @group.events.find(params[:event_id])
-    @event_participant = @event.event_participants.build
-  end
-
   def index
-    @participants = @event.participants
+    @event_participant = EventParticpant.all
   end
 
-  def create
-    @event = Event.find(params[:event_id])
-    @participant = EventParticipant.new(participant_params) # Create a new participant for the event
-
-    if @participant.save
-      redirect_to event_participants_path(@event), notice: 'Participant was successfully added.'
+  def show
+    @event_participant = EventParticipant.find(params[:id])
+    if @event_participant.user_id == current_user.id
+      @group_participant.destroy
+      redirect_to groups_path, notice: "You have left the group."
     else
-      # Handle validation errors or other failure scenarios
-      render :new
+      redirect_to groups_path, alert: "You are not authorized to leave this group."
     end
   end
 
-
-
-  def destroy
-    @participant.destroy
-    redirect_to event_participants_path(@event), notice: 'Participant was successfully removed.'
+  def new
+    @event_participant = EventParticipant.new
   end
 
-  private
+  def create
+    event_id = params[:event_participant][:event_id] # Adjust this based on your form field name
 
-  def set_event
+    @event = Event.find(event_id)
+    @event_participant = eventParticipant.new(user_id: current_user.id, event_id:)
+
+    if @event_participant.save
+      redirect_to event_path(@event), notice: "Successfully joined the event!"
+    else
+      redirect_to event_path(@event)
+    end
+  end
+
+  def update
     @event = Event.find(params[:event_id])
-  end
+    @event_participant = EventParticipant.find(params[:id])
 
-  def set_event_participant
-    @participant = @event.participants.find(params[:id])
+    if @event_participant.update(event_participant_params)
+      redirect_to event_path(@event)
+    else
+      render 'events/show' # Render the show page with errors if the update fails
+    end
   end
-
 end
