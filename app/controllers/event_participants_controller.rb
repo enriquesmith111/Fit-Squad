@@ -8,14 +8,13 @@ class EventParticipantsController < ApplicationController
     @event_participant = @event.event_participants.build
   end
 
-
   def index
     @participants = @event.participants
   end
 
   def create
-    @event = Event.find(params[:event_id]) # Find the event
-    @participant = @event.event_participants.new(participant_params) # Create a new participant for the event
+    @event = Event.find(params[:event_id])
+    @participant = EventParticipant.new(participant_params) # Create a new participant for the event
 
     if @participant.save
       redirect_to event_participants_path(@event), notice: 'Participant was successfully added.'
@@ -24,6 +23,8 @@ class EventParticipantsController < ApplicationController
       render :new
     end
   end
+
+
 
   def destroy
     @participant.destroy
@@ -40,7 +41,4 @@ class EventParticipantsController < ApplicationController
     @participant = @event.participants.find(params[:id])
   end
 
-  def participant_params
-    params.require(:participant).permit(:name, :email) # Adjust these attributes based on your needs
-  end
 end

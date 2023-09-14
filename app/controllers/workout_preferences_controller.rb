@@ -3,7 +3,7 @@
 class WorkoutPreferencesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_user
-  before_action :find_workout_preference, only: [:edit, :update, :destroy]
+  before_action :find_workout_preference, only: %i[edit update destroy]
 
   def index
     @user = current_user # Assuming you have a current_user method
@@ -17,11 +17,11 @@ class WorkoutPreferencesController < ApplicationController
   def show
     # Find the workout preference for the current user
     @workout_preference = WorkoutPreference.find_by(user_id: current_user.id)
-      prompt = generate_prompt(@workout_preference)
-      @workout_plan = generate_workout_plan(prompt)
-   end
+    prompt = generate_prompt(@workout_preference)
+    @workout_plan = generate_workout_plan(prompt)
+  end
 
-   def create
+  def create
     @workout_preference = WorkoutPreference.new(workout_preference_params)
     @workout_preference.user = current_user
 
@@ -47,7 +47,6 @@ class WorkoutPreferencesController < ApplicationController
   def edit
   end
 
-
   # ... Other actions ...
 
   private
@@ -64,7 +63,6 @@ class WorkoutPreferencesController < ApplicationController
 
     prompt += "Our expert trainers have carefully designed this plan to help you achieve your fitness goals. Get ready to transform yourself and make every workout count!\n\n"
     prompt += "Let's get started!\n"
-
   end
 
   def generate_workout_plan(prompt)
@@ -84,7 +82,8 @@ class WorkoutPreferencesController < ApplicationController
   end
 
   def workout_preference_params
-    params.require(:workout_preference).permit(:fitness_goal, :days_per_week, :time_per_session, :fitness_level, :additional_comments)
+    params.require(:workout_preference).permit(:fitness_goal, :days_per_week, :time_per_session, :fitness_level,
+                                               :additional_comments)
   end
 
   def find_user
@@ -94,5 +93,4 @@ class WorkoutPreferencesController < ApplicationController
   def find_workout_preference
     @workout_preference = WorkoutPreference.find_by(user_id: current_user.id)
   end
-
 end

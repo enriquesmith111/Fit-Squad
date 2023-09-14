@@ -1,13 +1,13 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.all
-    end
+  end
 
   def show
     @group = Group.find(params[:id])
     @events = @group.events
-#    @admin = User.where(@event)
-#    @admin = Group.find(params[:id]).user
+    #    @admin = User.where(@event)
+    #    @admin = Group.find(params[:id]).user
     @group_participant = GroupParticipant.new
     @group_participants = GroupParticipant.where(group_id: @group.id)
     @existing_participant = @group_participants.find_by(user_id: current_user.id)
@@ -30,9 +30,10 @@ class GroupsController < ApplicationController
       render :new
     end
   end
+
   def destroy
     @group = Group.find(params[:id])
-  if @group.user_id == current_user.id
+    if @group.user_id == current_user.id
       if @group.destroy
         redirect_to groups_path, notice: "You have deleted the group."
       else
@@ -42,8 +43,6 @@ class GroupsController < ApplicationController
       redirect_to groups_path, alert: "You are not authorized to delete this group."
     end
   end
-
-
 
   private
 
