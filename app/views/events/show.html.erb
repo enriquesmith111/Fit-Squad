@@ -1,5 +1,4 @@
 
-
 <div style="margin: 25px">
 
 <div style="display: flex;">
@@ -16,18 +15,18 @@
     <%#= image_path group.group_image, width: 300, height: 200 %>
     <hr>
   <% end %>
-    
+
       <h2 style="margin-">The Squad</h2>
     <div style="display: flex; margin: 3px;">
     <% @event_participants.each do |participant| %>
       <%if participant.user.avatar.nil?%>
-    <%= image_tag "blank_avatar.jpg", style: "margin: 0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;"%> 
+    <%= image_tag "blank_avatar.jpg", style: "margin: 0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;"%>
         <%else%>
     <%= image_tag participant.user.avatar, style: "margin:0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;" %>
       </p>
     <% end %>
   <% end %>
-    </div> 
+    </div>
       </div>
 
 <div style="display: flex; flex-direction: column; margin-left: 15px">
@@ -44,5 +43,7 @@
 </div>
 </div>
 
-</div>
+
+<%= render partial: 'chatrooms/show', locals: { event: @event } %>
+<%# <%= render partial: 'event_participants/join', locals: { participants: @participants } %>
 
