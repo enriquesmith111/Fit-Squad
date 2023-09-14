@@ -7,8 +7,11 @@ Rails.application.routes.draw do
     resources :group_participants
     resources :events
   end
-  resources :events, only: [:index]
-
+  resources :events, only: [:index] do
+    resources :chatrooms, only: :show do
+      resources :messages, only: :create
+    end
+  end
   resources :users, only: [] do
     resources :workout_preferences
     post 'generate_workout_plan', to: 'workout_preferences#generate_workout_plan'
