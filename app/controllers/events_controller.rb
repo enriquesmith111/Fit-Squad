@@ -30,6 +30,10 @@ def show
     @event_participants = EventParticipant.where(event_id: @event.id)
     @existing_participant = @event_participants.find_by(user_id: current_user.id)
     @event_participant_count = @event_participants.count
+    @chatroom = @event.chatroom
+    # @chatroom.name = @event.name
+    @message = Message.new
+    @message.chatroom = @chatroom
     @markers = [
         {
         lat: @event.latitude,
@@ -50,7 +54,9 @@ end
         # Upload images to Cloudinary and associate their URLs with the yacht
         @event.event_image = Cloudinary::Uploader.upload(params[:event][:event_image].tempfile)
 
-        if @event.save!
+        @chatroom = Chatroom.new(name: @event.name) # Create a chatroom with the event's name
+        @event.chatroom = @chatroom # Associate the chatroom with the event
+        if @event.save && @chatroom.save
         redirect_to events_path
         else
         render :new
