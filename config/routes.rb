@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :group_participants
     resources :events
   end
-  resources :events, only: [:index]
+  resources :events, only: [:index] do
+    resources :event_participants, as: 'participants' # You can use 'participants' or a name that makes sense
+  end
 
   resources :users, only: [] do
     resources :workout_preferences
