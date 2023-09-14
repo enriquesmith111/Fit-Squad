@@ -22,7 +22,7 @@ class GroupParticipantsController < ApplicationController
 
     # Find the group based on group_id
     @group = Group.find(group_id)
-    @group_participant = GroupParticipant.new(user_id: current_user.id, group_id: group_id)
+    @group_participant = GroupParticipant.new(user_id: current_user.id, group_id:)
 
     if @group_participant.save
       redirect_to group_path(@group), notice: "Successfully joined the group!"
@@ -41,5 +41,4 @@ class GroupParticipantsController < ApplicationController
       render 'groups/show' # Render the show page with errors if the update fails
     end
   end
-
 end

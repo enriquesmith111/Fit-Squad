@@ -12,7 +12,7 @@ class Event < ApplicationRecord
   private
 
   def create_associated_chatroom
-    chatroom = Chatroom.create(name: name)
-    update(chatroom: chatroom)
+    chatroom = Chatroom.create(name:)
+    update(chatroom:)
   end
 end
