@@ -16,7 +16,24 @@
     <%= image_tag eval(@event.event_image)["url"], width: 300, height: 200 %>
     <%#= image_path group.group_image, width: 300, height: 200 %>
     <hr>
-  <% end %>
+
+      <%# <div style="display: flex; margin: 3px;"> %>
+
+    <h2 style="margin-">The Squad</h2>
+
+  <%= render partial: 'event_participants/join', locals: { event: @event } %>
+
+</div>
+  <%= render partial: 'event_participants/form', locals: { event: @event } %>
+
+    <%# <% @event_participants.each do |participant| %>
+      <%# <%if participant.user.avatar.nil?%>
+    <%# <%= image_tag "blank_avatar.jpg", style: "margin: 0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;"%>
+        <%# <%else%>
+    <%# <%= image_tag participant.user.avatar, style: "margin:0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;" %>
+      </p>
+    <%# <% end %>
+  <%# <% end %>
 
       <h2 style="margin-">The Squad</h2>
     <div style="display: flex; margin: 3px;">
@@ -27,7 +44,7 @@
     <%= image_tag participant.user.avatar, style: "margin:0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;" %>
       </p>
     <% end %>
-  <% end %>
+
     </div>
       </div>
 

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :events
   end
   resources :events, only: [:index] do
+    resources :event_participants, as: 'participants' 
+  end
+
     resources :chatrooms, only: :show do
       resources :messages, only: :create
     end

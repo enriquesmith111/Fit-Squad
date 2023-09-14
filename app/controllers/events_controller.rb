@@ -53,6 +53,7 @@ end
         @event.user = current_user
         # Upload images to Cloudinary and associate their URLs with the yacht
         @event.event_image = Cloudinary::Uploader.upload(params[:event][:event_image].tempfile)
+
         @chatroom = Chatroom.new(name: @event.name) # Create a chatroom with the event's name
         @event.chatroom = @chatroom # Associate the chatroom with the event
         if @event.save && @chatroom.save
