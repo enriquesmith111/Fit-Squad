@@ -17,7 +17,7 @@
   <% end %>
 
       <h2 style="margin-">The Squad</h2>
-    <div style="display: flex; margin: 3px;">
+    <div style="display: flex; margin: 3px; height: 50px;">
     <% @event_participants.each do |participant| %>
       <%if participant.user.avatar.nil?%>
     <%= image_tag "blank_avatar.jpg", style: "margin: 0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;"%>
@@ -45,5 +45,7 @@
 
 
 <%= render partial: 'chatrooms/show', locals: { event: @event } %>
+<%= render partial: 'event_participants/form' %>
 <%# <%= render partial: 'event_participants/join', locals: { participants: @participants } %>
+
 
