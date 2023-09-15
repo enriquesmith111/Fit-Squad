@@ -2,7 +2,11 @@
 <div style="margin: 25px">
 
 <div style="display: flex;">
-<%= image_tag @event.group.user.avatar %>
+<%if @event.group.user.avatar.nil?%>
+    <%=image_tag "blank_avatar.jpg", class: "avatar-bordered"%>
+<%else%>
+    <%= image_tag @event.group.user.avatar, class: "avatar" %>
+<%end%>
 <h2>Hosted by <%= @event.group.user.name %> </h2>
 </div>
 <hr>
@@ -20,13 +24,15 @@
     <div style="display: flex; margin: 3px; height: 50px;">
     <% @event_participants.each do |participant| %>
       <%if participant.user.avatar.nil?%>
-    <%= image_tag "blank_avatar.jpg", style: "margin: 0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;"%>
+    <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered"%>
+    <p class="hide"><%=participant.user.name%></p>
         <%else%>
-    <%= image_tag participant.user.avatar, style: "margin:0px 2px 0px 2px; border-radius: 50px; border: 2px solid grey;" %>
-      </p>
+    <%= image_tag participant.user.avatar,style: "margin: 4px;", class: "avatar-bordered" %>
+    <p class="hide"><%=participant.user.name%></p>
     <% end %>
   <% end %>
     </div>
+      <%= render partial: 'event_participants/form' %>
       </div>
 
 <div style="display: flex; flex-direction: column; margin-left: 15px">
@@ -44,8 +50,8 @@
 </div>
 
 
+
 <%= render partial: 'chatrooms/show', locals: { event: @event } %>
-<%= render partial: 'event_participants/form' %>
 <%# <%= render partial: 'event_participants/join', locals: { participants: @participants } %>
 
 

@@ -22,7 +22,11 @@
       <div class="card-back">
 
         <p class="event-card-host">
+        <%if event.group.user.avatar.nil?%>
+        <%=image_tag "blank_avatar.jpg", class: "avatar-bordered"%>
+        <%else%>
           <%= image_tag event.group.user.avatar, class: "avatar" %>
+          <%end%>
           Hosted by <strong> <%= event.group.user.name%> </strong>
         </p>
       <br>
