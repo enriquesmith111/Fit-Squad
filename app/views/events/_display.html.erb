@@ -20,15 +20,15 @@
         <h2 class="card-time-date">
           <% date = event.date %>
           <% time = event.time %>
-          <%= Time.parse(date.strftime("%Y-%m-%d")).strftime("%d/%m/%y") %>, 
-          <%= Time.parse(time.strftime("%I:%M%P")).strftime("%I:%M%P") %>     
+          <%= Time.parse(date.strftime("%Y-%m-%d")).strftime("%d/%m/%y") %>,
+          <%= Time.parse(time.strftime("%I:%M%P")).strftime("%I:%M%P") %>
         </h2>
-        
+
         <%# back of the card %>
         <div class="card-back">
-          
+
             <p class="event-card-host">
-              <%= image_tag event.group.user.avatar, class: "avatar" %> 
+              <%= image_tag event.group.user.avatar, class: "avatar" %>
               Hosted by <strong> <%= event.group.user.name%> </strong>
             </p>
           <br>
@@ -49,6 +49,3 @@
       </div>
   </div>
 <% end %>
-
-
-<%console%>
