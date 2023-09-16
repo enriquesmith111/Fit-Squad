@@ -33,7 +33,7 @@ $transition-time: 1.3s;
 			// }
 		}
 	}
-	
+
 	.cover{
 		position: absolute;
 		height: 100%;
@@ -48,7 +48,7 @@ $transition-time: 1.3s;
 			content: '';
 			position: absolute;
 			border: 5px solid rgba(255, 255, 255, 1);
-			box-shadow: 0 0 12px rgba(0,0,0,.3); 
+			box-shadow: 0 0 12px rgba(0,0,0,.3);
 			top:20px;
 			left:20px;
 			right:20px;
@@ -82,7 +82,7 @@ $transition-time: 1.3s;
 			font-size: 32px;
 			transform: translateZ(17px);
 			padding: 10px 40px 10px 10px;
-			box-shadow: 0 0 12px rgba(0,0,0,.3); 
+			box-shadow: 0 0 12px rgba(0,0,0,.3);
 
 		}
 		.card-time-date{
@@ -152,7 +152,7 @@ $transition-time: 1.3s;
 		.card-join-button{
 			position: sticky;
 			transform-style: preserve-3d;
-			transition: ease transform 1.3s, ease background 0.5s; 
+			transition: ease transform 1.3s, ease background 0.5s;
 			transform: translateZ(-30px) rotateY(-180deg);
 			background: transparent;
 			border: 1px solid black;
@@ -175,7 +175,7 @@ $transition-time: 1.3s;
 			left: 160px;
 		}
 		.event-card-host	.avatar {
-			box-shadow: 0 0 12px rgba(0,0,0,.1); 
+			box-shadow: 0 0 12px rgba(0,0,0,.1);
 		}
 
 
@@ -199,6 +199,7 @@ $transition-time: 1.3s;
 			left: 32px;
 			bottom: 137px;
 		}
+    // comment
 		.event-card-description {
 			transform: rotateY(-180deg);
 			overflow: hidden;
@@ -209,7 +210,7 @@ $transition-time: 1.3s;
 			-webkit-line-clamp: 4;
 			-webkit-box-orient: vertical;
 			overflow: hidden;
-		}		
+		}
 		.event-card-participants {
 			position: fixed;
 			right: 32px;
