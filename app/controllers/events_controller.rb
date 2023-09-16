@@ -44,19 +44,16 @@ class EventsController < ApplicationController
   end
 
   def new
+    @group = Group.find(params[:group_id])
     @event = Event.new
   end
 
   def create
     @event = Event.new(event_params)
-    @event.user = current_user
-    # Upload images to Cloudinary and associate their URLs with the yacht
     @event.event_image = Cloudinary::Uploader.upload(params[:event][:event_image].tempfile)
-
-    @chatroom = Chatroom.new(name: @event.name) # Create a chatroom with the event's name
-    @event.chatroom = @chatroom # Associate the chatroom with the event
-    if @event.save && @chatroom.save
-      redirect_to events_path
+    @event.group = Group.find(params[:group_id])
+    if @event.save
+      redirect_to group_event_path(@event.group, @event)
     else
       render :new
     end
@@ -80,7 +77,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :address, :date, :time, :event_image, :group_id)
+    params.require(:event).permit(:name, :description, :address, :date, :time, :event_image, :group_id, :activity_id)
   end
 
   def find_event

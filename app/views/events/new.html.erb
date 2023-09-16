@@ -1,5 +1,5 @@
 <h1>create event page </h1>
-<%= simple_form_for(@event, html: { :class => "form-inline" }) do |f| %>
+<%= simple_form_for([@group, @event], html: { :class => "form-inline" }) do |f| %>
   <% if @event.errors.any? %>
     <h2><%= pluralize(@event.errors.count, "error") %> prevented this Event from saving:</h2>
     <ul>

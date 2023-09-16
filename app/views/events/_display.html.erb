@@ -2,7 +2,12 @@
 <% @events_random.each do |event| %>
   <div class="event-card">
     <%# front of the card %>
-    <div class="cover" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.9)80%), url(<%= image_url(event.event_image) %>)">
+    <% if event.event_image.end_with?("jpg") %>
+      <% image = event.event_image %>
+    <%else%>
+      <% image = eval(event.event_image)["url"] %>
+    <% end %>
+    <div class="cover" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.9)80%), url(<%= image %>)">
 
       <h1 class="card-address"><i class="fa">&#xf041;</i>
         <%# <% first_line_of_address = event.address.split(',').first.strip %>
