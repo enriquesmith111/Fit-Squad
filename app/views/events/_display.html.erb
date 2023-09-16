@@ -2,6 +2,11 @@
   <div class="event-card">
     <%# front of the card %>
     <% if event.event_image.end_with?("jpg") %>
+      <% image = event.event_image %>
+    <%else%>
+      <% image = eval(event.event_image)["url"] %>
+    <% end %>
+    <div class="cover" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.9)80%), url(<%= image %>)">
       <div class="cover" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.9)80%), url(<%= image_url(event.event_image) %>)">
       <% else %>
       <div class="cover" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.9)80%), url(<%= image_tag eval(event.event_image)["url"] %>)">
