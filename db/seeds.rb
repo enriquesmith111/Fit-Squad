@@ -85,12 +85,6 @@ rowing = Activity.create!(
 )
 p "Created #{rowing.name}"
 
-weelchair_basketball = Activity.create!(
-    name: "Wheelchair basketball"
-)
-p "Created #{weelchair_basketball.name}"
-puts "-----------------------------------------------"
-
 
 
 
@@ -122,7 +116,7 @@ puts "-----------------------------------------------"
     @num = (rand(5..10))
     user = User.find(i)
     user_id = User.find(i).id
-    @activity = Activity.find(rand(1..12))
+    @activity = Activity.find(rand(1..11))
     @group = Group.create!(
         user_id: user_id,
         name: "#{user.name}'s" + " " +  "#{@activity.name} Group",
