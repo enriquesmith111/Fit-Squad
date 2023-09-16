@@ -1,4 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
+
 
 // Connects to data-controller="map"
 export default class extends Controller {
@@ -16,6 +18,10 @@ export default class extends Controller {
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    this.map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+    }))
   }
 
   #fitMapToMarkers() {
@@ -24,10 +30,6 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 55, maxZoom: 15, duration: 3 })
 
     // Add this line
-    this.map.addControl(new mapboxgl.FullscreenControl({
-      width: '100vh',
-      height: '100vw'
-    }));
   }
 
 
