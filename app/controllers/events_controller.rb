@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.includes(:event_participants).all
+    @event_participant = EventParticipant.new
     date = params[:date]
 
     # Check if the date is present
