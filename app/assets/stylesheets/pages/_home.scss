@@ -1,20 +1,19 @@
-// Specific CSS for your home-page
-// body {
-//     background-color: green;
-// }
+Specific CSS for your home-page
 
-// .events-container {
-//     display: flex;
-//     justify-content: space-evenly;
-// }
-// .events-map {
-//     height: 100vh;
-//     width: 400px;
-// }
-// .event-cards {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     background-color: red;
-//     grid-gap: 16px;
-//     flex-grow: 1;
-// }
+.events-container {
+    display: flex;
+    flex-direction: row; /* Make it a row to place map on the left and cards on the right */
+}
+
+.events-map {
+    width: 50%; /* Set the width of the map to 50% of the container */
+    height: 80vh;
+    flex-grow: 1;
+}
+
+.event-cards-grid {
+    width: 50%; /* Set the width of the cards to 50% of the container */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+}

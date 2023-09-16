@@ -5,8 +5,8 @@ $transition-time: 1.3s;
 
 .event-card{
 	position: relative;
-    width: 23vw;
-    height: 37vh;
+    width: 350px;
+    height: 350px;
 	margin: 10px 0;
 	transition: ease all $transition-time;
 	perspective: 1200px;
@@ -14,7 +14,7 @@ $transition-time: 1.3s;
 		.cover{
 			transform: rotateX(0deg) rotateY(-180deg);
 			&:before{
-				transform: translateZ(30px);
+				transform: translateZ(40px);
 			}
 			&:after{
 				background-color: black;
@@ -73,39 +73,42 @@ $transition-time: 1.3s;
 		.event-card-title{
 			font-weight: 600;
 			position: absolute;
-			bottom: 17%;
-			left: 11%;
+			bottom: 52px;
+			left: 31px;
 			color: white;
 			transform-style: preserve-3d;
 		transition: ease all $transition-time;
 			z-index:3;
-			font-size: 2em;
-			transform: translateZ(0px);
+			font-size: 32px;
+			transform: translateZ(17px);
+			padding: 10px 40px 10px 10px;
+			box-shadow: 0 0 12px rgba(0,0,0,.3); 
+
 		}
 		.card-time-date{
 			font-weight: 200;
 			position: absolute;
-			bottom: 6%;
-			left: 12%;
+			bottom: 28px;
+			left: 43px;
 			color: rgba(255,255,255,.5);
 			transform-style: preserve-3d;
 		transition: ease all $transition-time;
 			z-index:4;
-			font-size: 1.5em;
+			font-size: 23px;
 			transform: translateZ(0px);
 		}
 
 		.card-address{
 			position: fixed;
 			background-color: rgba(255,255,255,1);
-			bottom: 78%;
-			left: 7%;
+			bottom: 280px;
+			left: 23px;
 			transform-style: preserve-3d;
 		transition: ease all $transition-time;
 			font-weight: 600;
-			font-size: 1.4rem;
+			font-size: 20px;
 			color: rgb(0, 0, 0);
-			transform: translateZ(0px);
+			transform: translateZ(15px);
 			padding: 1.8% 7% 2% 2%;
 			&:before{
 				content: '';
@@ -120,7 +123,6 @@ $transition-time: 1.3s;
 				position: fixed;
 				z-index: 2;
 				transition: ease all 1.3s;
-				// background: rgba(0,0,0,.4);
 			}
 		}
 
@@ -137,57 +139,85 @@ $transition-time: 1.3s;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		&:before{
+			content: '';
+			position: absolute;
+			border: 3px solid rgba(0, 0, 0,.5);
+			top:10px;
+			left:10px;
+			right:10px;
+			bottom:10px;
+			z-index: 2;
+		}
 		.card-join-button{
-			position: fixed;
-			top: 70%;
+			position: sticky;
 			transform-style: preserve-3d;
-			transition: ease transform $transition-time, ease background .5s;
-			transform: translateZ(-1px) rotateY(-180deg);
+			transition: ease transform 1.3s, ease background 0.5s; 
+			transform: translateZ(-30px) rotateY(-180deg);
 			background: transparent;
-			border: 1px solid white;
+			border: 1px solid black;
 			font-weight: 200;
-			font-size: 1.3em;
-			color: white;
-			padding: 14px 32px;
-			outline: none;
+			font-size: 18px;
+			color: black;
+			padding: 4px 32px;
+			margin: 240px 5px 5px 5px;
 			text-decoration: none;
 			&:hover{
-				background-color: white;
-				color: #0b0f08;
+				background-color: rgb(0, 0, 0);
+				color: #ffffff;
 			}
 		}
 
 		.event-card-host {
-			transform: translateZ(-60px) rotateY(-180deg);
-			position: absolute;
-    		bottom: 75%;
-    		left: 40%;
-
+			transform: translateZ(0px) rotateY(-180deg);
+			position: fixed;
+			bottom: 270px;
+			left: 160px;
 		}
+		.event-card-host	.avatar {
+			box-shadow: 0 0 12px rgba(0,0,0,.1); 
+		}
+
+
 		.event-card-title-back {
 			color: #0b0f08;
-			transform: translateZ(-60px) rotateY(-180deg);
-			position: absolute;
-			bottom: 65%;
-			left: 35%;
-			font-size: 1.2em;
-			font-weight: 550;		
+			transform: translateZ(0px) rotateY(-180deg);
+		    position: fixed;
+			bottom: 196px;
+			left: 3px;
+			font-size: 20px;
+			font-weight: 550;
+			padding: 32px 30px;
+			width: -moz-max-content;
+			width: inherit;
 		}
 		.event-card-description-box{
-			width: 80%;
+			width: 290px;
 			height: 90px;
-			background-color: aqua;
+			// background-color: aqua;
+			position: fixed;
+			left: 32px;
+			bottom: 137px;
 		}
 		.event-card-description {
-			transform: translateZ(-60px) rotateY(-180deg);
+			transform: rotateY(-180deg);
 			overflow: hidden;
-			white-space: nowrap;
+			white-space: inherit;
 			text-overflow: ellipsis;
+			height: inherit;
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
 		}		
-
-		
-		.event-more-detials {
-			transform: translateZ(-60px) rotatey(-180deg);		
+		.event-card-participants {
+			position: fixed;
+			right: 32px;
+			bottom: 76px;
+			transform: rotateY(-180deg);
+			font-size: 15px;
+			font-weight: 500;
+			color: grey;
 		}
 	}
 }

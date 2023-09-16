@@ -3,76 +3,28 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+
+
 <h1>Events index</h1>
 
-<div class="container m-1">
-  <div class="events-calendar">
-    <form action="/events" method="get">
-      <input type="date" name="date">
-      <input type="submit" value="Filter">
-      <%= link_to "Reset Filter", events_path %>
-    </form>
+<form class="events-calendar" action="/events" method="get">
+  <input type="date" name="date">
+  <input type="submit" value="Filter">
+  <%= link_to "Reset Filter", events_path %>
+</form>
+
+<div class="events-container">
+  <div class="events-map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-
-  <div class="row"style="background-color:blue">
-      <div class="col-6 p-2 position-absolute start-0">
-        <div class="events-map" style="width: 50vw; height: 80vh;"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
+  <div class="event-cards-grid">
+    <% if @events.empty? %>
+      <h1><%= "No events found for this date :(" %></h1>
+    <% else %>
+      <div>
+        <%= render partial: 'events/display' %>
       </div>
-
-      <div class="col-6 mx-1 position-absolute end-0">
-        <% if @events.empty? %>
-          <h1><%= "No events found for this date :(" %></h1>
-        <% else %>
-            <%# CARD LIMITED TO 10 FOR FUNCTIONALITY %>
-            <% @events_random = @events.order('RANDOM()').limit(10)%>
-            <div class="row p-0 m-1">
-              <% @events_random.each do |event| %>
-                <div class="col-6">
-                  <%= render partial: 'events/display', locals: { event: event } %>
-                </div>
-              <% end %>
-            </div>
-        <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
-
-<hr>
-
-<h2>Top Events</h2>
-<% if @events.empty? %>
-<h1><%= "No events found for this date :(" %></h1>
-<% else %>
-<% @events_random = @events.order('RANDOM()').limit(@events.count)%>
-<% @events_random.each do |event| %>
-<h1><%= event.name %></h1>
-<p> <%= event.description  %></p>
-<p> <%= event.date  %></p>
-<p> <%= event.time  %></p>
-<p> <%= event.address  %></p>
-<%= link_to 'More Details', group_event_url(event.group_id, event.id) %>
-  <% if event.event_image.end_with?("jpg") %>
-  <%=image_tag event.event_image, width: 300, height: 200 %> <hr>
-  <%else%>
-    <%= image_tag eval(event.event_image)["url"], width: 300, height: 200 %> 
-    <hr>
-  <% end %>
-<% end %>
-<% end %>
-</div>
-
-
-
-
-
-
-
-
-
-
-
