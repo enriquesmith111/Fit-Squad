@@ -1,16 +1,24 @@
-<% @groups.each do |group| %>
-<h1><%= group.name %></h1>
-<p> <%= group.description  %></p>
-<p> <%= group.city  %></p>
-<p> <%= group.id  %></p>
-  <% if group.group_image.end_with?("jpg") %>
-  <%=image_tag group.group_image, width: 300, height: 200 %>
-  <%else%>
-    <%= image_tag eval(group.group_image)["url"], width: 300, height: 200 %>
-    <%#= image_path group.group_image, width: 300, height: 200 %>
-    <p> </p>
-  <% end %>
-<a href="<%= group_path(group) %>">View Details</a>
 
-<% end %>
 
+<div class="container">
+  <div class="row">
+    <% @groups.each do |group| %>
+      <div class="col-md-3">
+        <div class="card mb-3">
+          <% if group.group_image.end_with?("jpg") %>
+            <%= image_tag group.group_image, class: "card-img-top", width: 300, height: 200 %>
+          <% else %>
+            <%= image_tag eval(group.group_image)["url"], class: "card-img-top", width: 300, height: 200 %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= group.name %></h5>
+            <p class="card-text"><%= group.description %></p>
+            <p class="card-text"><%= group.city %></p>
+            <p class="card-text"><%= group.id %></p>
+            <a href="<%= group_path(group) %>" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

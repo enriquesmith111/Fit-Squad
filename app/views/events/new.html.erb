@@ -1,0 +1,54 @@
+<h1>create event page </h1>
+<%= simple_form_for([@group, @event], html: { :class => "form-inline" }) do |f| %>
+  <% if @event.errors.any? %>
+    <h2><%= pluralize(@event.errors.count, "error") %> prevented this Event from saving:</h2>
+    <ul>
+      <% @event.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date %>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :time %>
+    <%= f.time_field :time, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :activity %>
+    <%= f.select :activity_id, Activity.all.collect { |a| [a.name, a.id] }, { include_blank: true }, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :event_image, as: :file, class: "form-control" %>
+  </div>
+
+<%= f.hidden_field :group_id, value: params[:group_id] %>
+<%= f.hidden_field :user_id, value: params[current_user.id] %>
+
+
+  <div class="form-group">
+    <%= f.submit "Create Event", class: "btn btn-primary"%>
+  </div>
+<% end %>

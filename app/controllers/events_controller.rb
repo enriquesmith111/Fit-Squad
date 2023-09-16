@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.includes(:event_participants).all
+    @event_participant = EventParticipant.new
     date = params[:date]
 
     # Check if the date is present
@@ -44,27 +45,43 @@ class EventsController < ApplicationController
   end
 
   def new
+    @group = Group.find(params[:group_id])
     @event = Event.new
   end
 
   def create
     @event = Event.new(event_params)
-    @event.user = current_user
-    # Upload images to Cloudinary and associate their URLs with the yacht
     @event.event_image = Cloudinary::Uploader.upload(params[:event][:event_image].tempfile)
-
-    @chatroom = Chatroom.new(name: @event.name) # Create a chatroom with the event's name
-    @event.chatroom = @chatroom # Associate the chatroom with the event
-    if @event.save && @chatroom.save
-      redirect_to events_path
+    @event.group = Group.find(params[:group_id])
+    if @event.save
+      redirect_to group_event_path(@event.group, @event)
     else
       render :new
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to events_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_path
+  end
+
   private
 
-  def group_params
-    params.require(:event).permit(:name, :description, :address, :date, :time, :event_image)
+  def event_params
+    params.require(:event).permit(:name, :description, :address, :date, :time, :event_image, :group_id, :activity_id)
+  end
+
+  def find_event
+    @event = Event.find(params[:id])
   end
 end
