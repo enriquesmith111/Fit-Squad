@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  resources :events, only: [:index] do
+  resources :events, only: [:index, :show] do
     resources :event_participants, as: 'participants'
     post 'events/:event_id/event_participants', to: 'event_participants#create', as: 'event_event_participants'
+    delete '/events/:event_id/event_participants/:id', to: 'event_participants#destroy'
     resources :chatrooms, only: :show do
       resources :messages, only: :create
     end
