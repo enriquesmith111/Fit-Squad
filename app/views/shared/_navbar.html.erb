@@ -1,53 +1,22 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to events_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-    <div class="navbar-search">
-        <input class="search-bar" type="text" id="searchInput" placeholder="Search for an activity">
-        <button class="search-button" role="button"><span class="text">Search</span></button>
-    </div>
-<div style="font-size:10px"><%= link_to 'ALL GROUPS', groups_path %></div>
-<div style="font-size:10px"><%= link_to 'NEW GROUP', new_group_path %></div>
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav id="section-navbar">
+      <div class="logo">
+         <a href="#"><img src="https://bootstrap-themes.github.io/application/assets/img/brand-white.png"></a>
+      </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-         <div style="font-size:10px"> <%= link_to 'View Workout Preference', user_workout_preferences_path(current_user) %></div>
-
-          <li class="nav-item active">
-            <%= link_to "Squads", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Chatroom", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Notifications", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-          <%# <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> %>
-            <%# <%if current_user.avatar.nil?%>
-            <%# <%= image_tag "blank_avatar.jpg", class: "avatar", alt: "dropdown menu" %>
-            <%# <%else%>
-            <%# <%= image_tag current_user.avatar, class: "avatar", alt: "dropdown menu" %>
-            <%# <%end%>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
+      <ul>
+        <li> <a href="https://codepen.io/naeem-khan/pen/EebeQe" class="active">Home</a></li>
+        <li> <a href="#">Profile</a></li>
+        <li> <a href="#">Messages</a></li>
+        <li> <a href="#">Docs</a></li>
       </ul>
-    </div>
-  </div>
-</div>
+
+      <div class="search">
+        <input type="search" placeholder="Search">
+        <i class="ion-android-notifications icon-big mx-10px"></i>
+        <img src="https://bootstrap-themes.github.io/application/assets/img/avatar-dhg.png" alt="user">
+      </div>
+    </nav>
+
+ 
