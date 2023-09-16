@@ -5,11 +5,7 @@ Specific CSS for your home-page
     flex-direction: row; /* Make it a row to place map on the left and cards on the right */
 }
 
-.events-map {
-    width: 50%; /* Set the width of the map to 50% of the container */
-    height: 80vh;
-    flex-grow: 1;
-}
+
 
 .event-cards-grid {
     width: 50%; /* Set the width of the cards to 50% of the container */
