@@ -14,21 +14,18 @@
 </form>
 
 <div class="events-container">
+<div>
   <div class="events-map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-      <div class="col-6 mx-1 position-absolute end-0">
         <% if @events.empty? %>
           <h1><%= "No events found for this date :(" %></h1>
         <% else %>
             <%# CARD LIMITED TO 10 FOR FUNCTIONALITY %>
-            <div class="row p-0 m-1">
-                <div class="col-6">
+            <div class="event-cards-grid">
                   <%= render partial: 'events/display' %>
-                </div>
             </div>
         <% end %>
-    </div>
   </div>
 </div>
 
