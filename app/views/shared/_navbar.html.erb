@@ -9,13 +9,16 @@
     <div class="d-flex flex-grow-1 justify-content-start">
       <!-- Search Bar -->
       <div class="col-sm-8 my-3">
-        <%= form_with url: events_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :event_query,
-                params[:event_query],
-                class: "form-control custom-search-input",
-                placeholder: "Search for events..."
-            %>
-          <%= submit_tag "Search", name: "", class: "btn btn-primary custom-search-button" %>
+        <%= form_with url: search_events_path, method: :get, class: "d-flex" do |form| %>
+          <div class="input-group">
+            <%= form.text_field :query,
+                  class: "form-control custom-search-input",
+                  placeholder: "Search for events..."
+              %>
+            <div class="input-group-append">
+              <%= form.submit "Search", class: "btn btn-primary custom-search-button" %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
