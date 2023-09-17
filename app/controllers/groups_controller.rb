@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   end
 
   def my_groups
-    @my_groups = current_user.groups
+    @my_groups = GroupParticipant.where(user_id: current_user.id).map(&:group) + Group.where(user_id: current_user.id)
   end
 
   def show
