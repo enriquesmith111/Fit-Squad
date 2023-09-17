@@ -27,6 +27,11 @@
         <% @my_groups.each_with_index do |my_group, index| %>
           <div id="group-index-group-section-group-image-and-name">
             <h2> <%=my_group.name%> </h2>
+            <%if my_group && my_group.user_id == current_user.id %>
+            <h3>You are the admin of this group</h3>
+            <%else%>
+            <p></p>
+            <% end %>
             <% if my_group.group_image.end_with?("jpg") %>
               <%= image_tag my_group.group_image %>
             <% else %>
@@ -44,7 +49,7 @@
             <%= image_tag eval(my_group.event_image)["url"]%>
           <% end %>
         <%end%>
-        <%= button_to 'More Events', group_path(my_group) %>
+        <%= link_to 'More Events', group_path(my_group) %>
         </div>
       <hr >
     <% end %>
