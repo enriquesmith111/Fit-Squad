@@ -1,48 +1,150 @@
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <%= link_to "My App", root_path, class: "navbar-brand" %>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <%= link_to "Home", root_path, class: 'navbar-button' %>
-            <%= link_to 'ALL GROUPS', groups_path, class: 'navbar-button' %>
-            <%= link_to 'NEW GROUP', new_group_path, class: 'navbar-button' %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand logo" href="<%=root_path%>">
+      <img src="https://via.placeholder.com/100x50" alt="Logo">
+    </a>
 
-          <% if user_signed_in? %>
-                    <%= link_to 'View Workout Preference', user_workout_preferences_path(current_user), class: 'navbar-button'  %>
-                    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete }, class: 'navbar-button' %>
-        <% else %>
-            <%= link_to "Login", new_user_session_path, class: "nav-link navbar-button"  %>
+    <!-- Search Bar -->
+    <div class="d-flex flex-grow-1 justify-content-start">
+      <!-- Search Bar -->
+      <div class="col-sm-8 my-3">
+        <%= form_with url: events_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :event_query,
+                params[:event_query],
+                class: "form-control custom-search-input",
+                placeholder: "Search for events..."
+            %>
+          <%= submit_tag "Search", name: "", class: "btn btn-primary custom-search-button" %>
         <% end %>
-          </li>
-        </ul>
       </div>
     </div>
-  </nav>
+
+    <!-- Navigation Options -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto d-flex flex-row">
+        <li class="nav-item custom-dropdown"> <!-- Added 'custom-dropdown' class for custom dropdown -->
+          <a class="nav-link" href="#">Squads</a>
+          <div class="custom-dropdown-content"> <!-- Custom dropdown content -->
+            <a class="nav-link" href="<%= groups_path%>">All Squads</a>
+            <a class="nav-link" href="<%= groups_path%>">My Squads</a>
+            <%# need to add link to page showing all squads user is a member of %>
+            <a class="nav-link" href="<%= new_group_path%>">Create Squads</a>
+          </div>
+        </li>
+                <% if user_signed_in? %>
+
+          <li class="nav-item custom-dropdown"> <!-- Added 'custom-dropdown' class for custom dropdown -->
+          <a class="nav-link" href="#">Workouts</a>
+          <div class="custom-dropdown-content"> <!-- Custom dropdown content -->
+            <a class="nav-link" href="<%= new_user_workout_preference_path(current_user) %>">New Workouts</a>
+            <a class="nav-link" href="<%= user_workout_preferences_path(current_user) %>">View Saved Workouts</a>
+          </div>
+        </li>
+
+          <li class="nav-item custom-dropdown"> <!-- Added 'custom-dropdown' class for custom dropdown -->
+          <div class="user-avatar">
+          <%if current_user.avatar.nil?%>
+        <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered"%>
+            <%else%>
+        <%= image_tag current_user.avatar,style: "margin: 4px;", class: "avatar-bordered" %>
+        <% end %>          </div>
+      <div class="custom-dropdown-content"> <!-- Custom dropdown content -->
+            <a class="nav-link" href="<%= user_workout_preferences_path(current_user) %>">My Workouts</a>
+            <a class="nav-link" href="<%= user_workout_preferences_path(current_user) %>">My Squads</a>
+            <a class="nav-link" href="<%= user_workout_preferences_path(current_user) %>">My Events</a>
+            <a class="nav-link" href="<%= edit_user_registration_path %>">Edit Account Details</a>
+            <a class="nav-link" href="<%= destroy_user_session_path %>" data-turbo-method="delete">Log out</a>
+
+
+          </div>
+        </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= new_user_session_path %>">Login</a>
+          </li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
 
 <style>
-  nav{
-    border: solid 2px red;
+/* Navbar container */
+.navbar {
+  padding: 15px 0; /* Adjust the top and bottom padding as needed */
+}
+
+/* Logo */
+.logo img {
+  max-width: 100px; /* Adjust the maximum width of the logo */
+}
+
+/* Custom styles for the search bar */
+.custom-search-input {
+  width: 100%; /* Fill the available width */
+  max-width: 600px; /* Set a maximum width if necessary */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+/* Custom styles for the search button */
+.custom-search-button {
+  background-color: #007bff; /* Change the background color to your desired color */
+  border: none; /* Remove the border */
+  color: #fff; /* Change the text color */
+  border-radius: 5px; /* Add rounded corners */
+  padding: 10px 20px; /* Adjust the padding as needed */
+}
+
+/* Hover and active states for the button */
+.custom-search-button:hover {
+  background-color: #0056b3; /* Change the background color on hover */
+}
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar-toggler {
+    margin-right: 10px; /* Add some spacing to the right of the toggler */
   }
-
-  .navbar-button {
+}
+/* Custom CSS for the dropdown */
+.custom-dropdown {
+  position: relative;
   display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #000;
+}
+
+.custom-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.custom-dropdown-content a {
+  padding: 12px 16px;
+  display: block;
+  color: #333;
   text-decoration: none;
-  cursor: pointer;
 }
 
-.navbar-button:hover {
-  background-color: #eee;
-}
-
-.navbar-button:active {
+.custom-dropdown-content a:hover {
   background-color: #ddd;
+}
+
+.custom-dropdown:hover .custom-dropdown-content {
+  display: block;
+}
+
+.navbar-nav.ml-auto.d-flex.flex-row {
+  flex-grow: 1;
+  justify-content: space-between;
+  margin-right: 20%
 }
 </style>
