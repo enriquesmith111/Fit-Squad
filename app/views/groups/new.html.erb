@@ -1,7 +1,11 @@
-<%= simple_form_for [@group] do |f| %>
-  <%= f.input :name, label: 'Name of your new group. e.g. Hackney Basketball'%>
-  <%= f.input :description %>
-  <%= f.input :city %>
-  <%= f.input :group_image, as: :file %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+
+  <%= simple_form_for [@group] do |f| %>
+    <%= f.input :name, label: 'Name of your new group. e.g. Hackney Basketball'%>
+    <%= f.input :description %>
+    <%= f.input :city %>
+    <%= f.input :group_image, as: :file %>
+    <%= f.button :submit %>
+  <% end %>
+
+</div>
