@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "events#index"
+  get 'my_groups', to: 'groups#my_groups', as: :my_groups
 
   resources :groups do
     resources :group_participants
