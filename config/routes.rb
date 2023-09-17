@@ -21,6 +21,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'about', to: 'pages#about'
+  get 'terms-and-conditions', to: 'pages#tandc'
+  get 'privacy-policy', to: 'pages#private'
+  get 'contact-us', to: 'pages#contact'
+  get 'cookies-policy', to: 'pages#cookies'
+
 
 
   resources :users, only: [] do
