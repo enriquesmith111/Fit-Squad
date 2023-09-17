@@ -3,15 +3,15 @@
     min-height: 100%;
     overflow: scroll;
     border: 5px;
-    border-style: dotted;
-    border-color: red;
+    // border-style: dotted;
+    // border-color: red;
 }
 
 #group-index-above-group-section {
     margin: 10px;
     border: 5px;
-    border-style: dotted;
-    border-color: blue;
+    // border-style: dotted;
+    // border-color: blue;
 }
 
 #group-index-above-group-section-buttons {
@@ -24,13 +24,13 @@
 #group-index-above-group-left-section-buttons {
     display: flex;
     flex-direction: row;
-    border-style: dotted;
-    border-color: green;
+    // border-style: dotted;
+    // border-color: green;
 }
 
 #group-index-above-group-right-section-buttons {
-    border-style: dotted;
-    border-color: rgb(109, 0, 128);
+    // border-style: dotted;
+    // border-color: rgb(109, 0, 128);
     text-decoration: none;
 }
 
@@ -40,8 +40,8 @@
 
 #group-index-group-section {
     margin: 10px;
-    border-style: dotted;
-    border-color: rgb(109, 128, 0);
+    // border-style: dotted;
+    // border-color: rgb(109, 128, 0);
     padding: 5px;
 }
 
@@ -57,8 +57,8 @@
     display: flex;
     height: 160px;
     width: 240px;
-    border-style: dotted;
-    border-color: rgb(26, 177, 211);
+    // border-style: dotted;
+    // border-color: rgb(26, 177, 211);
     padding: 5px;
 }
 
@@ -78,8 +78,8 @@
     overflow: scroll;
     display: flex;
     flex-direction: row;
-    border-style: dotted;
-    border-color: rgb(233, 6, 237);
+    // border-style: dotted;
+    // border-color: rgb(233, 6, 237);
     padding: 5px;
     align-items: center;
 }

@@ -6,8 +6,8 @@
     </div>      
     <div id="group-index-above-group-section-buttons">     
       <div id="group-index-above-group-left-section-buttons">      
-        <%= link_to "All Squads" , groups_path %>
-          <%= link_to 'My Squads', my_groups_path %>     
+        <button><%= link_to "All Squads" , groups_path %></button>
+        <button><%= link_to 'My Squads', my_groups_path %></button>     
       </div>         
       <div id="group-index-above-group-right-section-buttons">
         <button><%= link_to "Create Squad" , new_group_path %></button>
@@ -39,7 +39,7 @@
             <%= image_tag eval(group.event_image)["url"]%>
           <% end %>
         <%end%>
-        <%= link_to 'More Events', group_path(group) %>
+        <button><%= link_to 'More Events', group_path(group) %></button>
         </div>
       <hr >
     <% end %>
