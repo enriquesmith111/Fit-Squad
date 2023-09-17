@@ -6,9 +6,9 @@
     </div>      
     <div id="group-index-above-group-section-buttons">     
       <div id="group-index-above-group-left-section-buttons">      
-        <%= link_to "All Squads" , groups_path %>
+        <button><%= link_to "All Squads" , groups_path %></button>
         <% if @my_groups.present? %>
-          <%= link_to 'My Squads', my_groups_path %>
+          <button><%= link_to 'My Squads', my_groups_path %></button>
         <% else %>
           <p>You are not a member of any squads.</p>
         <% end %>     
@@ -49,7 +49,11 @@
             <%= image_tag eval(my_group.event_image)["url"]%>
           <% end %>
         <%end%>
-        <%= link_to 'More Events', group_path(my_group) %>
+        <%if my_group.events.empty?%>
+        <p> No Events :(</p>
+        <% else %>
+        <button><%= link_to 'More Events', group_path(my_group) %></button>
+        <% end %>
         </div>
       <hr >
     <% end %>
