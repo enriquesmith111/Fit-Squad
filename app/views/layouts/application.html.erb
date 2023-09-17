@@ -11,18 +11,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-
   <body style ="height: 100vh;">
-
-      <%= render "shared/navbar" %>
+    <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-  <%#if user_signed_in?%>
-    <%#= link_to new_user_workout_preference_path(current_user) do %>
-    <%# <i class="fas fa-dumbbell "></i>New Workout %>
-<%# end %>
-  <%#end%>
-  <%= yield %>
+      <%= yield %>
+    <%= render "shared/footer" %>
   </body>
-
-  <%= render "shared/footer" %>
+  
 </html>
