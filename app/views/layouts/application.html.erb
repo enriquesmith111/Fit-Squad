@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="min-height: 100vh;" >
   <head>
     <title>FitSquad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -11,11 +11,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-
-  <%= render "shared/navbar" %>
-  <%= render "shared/flashes" %>
-  <%= yield %>
+  <body style ="height: 100vh;">
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+      <%= yield %>
+    <%= render "shared/footer" %>
   </body>
-  <%= render "shared/footer" %>
+  
 </html>
