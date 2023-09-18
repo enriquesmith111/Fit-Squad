@@ -172,6 +172,8 @@ $transition-time: 1.3s;
             position: fixed;
             bottom: 270px;
             left: 160px;
+            font-size: 16px;
+            display: -webkit-inline-box;
         }
         .event-card-host    .avatar {
             box-shadow: 0 0 12px rgba(0,0,0,.1);
