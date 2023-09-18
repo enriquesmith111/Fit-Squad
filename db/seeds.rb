@@ -85,6 +85,15 @@ rowing = Activity.create!(
 )
 p "Created #{rowing.name}"
 
+basketball = Activity.create!(
+    name: "Basketball"
+)
+p "Created #{basketball.name}"
+
+pilates = Activity.create!(
+    name: "Pilates"
+)
+p "Created #{pilates.name}"
 
 
 
@@ -116,11 +125,11 @@ puts "-----------------------------------------------"
     @num = (rand(5..10))
     user = User.find(i)
     user_id = User.find(i).id
-    @activity = Activity.find(rand(1..11))
+    @activity = Activity.find(i)
     @group = Group.create!(
         user_id: user_id,
-        name: "#{user.name}'s" + " " +  "#{@activity.name} Group",
-        description: "Hi Everyone and welcome to my #{@activity.name} Group",
+        name: "#{user.name}'s" + " " +  "#{@activity.name} Squad",
+        description: "Are you a #{@activity.name} fan? Join our group and meet other fans in your area! We organize regular events, such as parties, tournaments, and training sessions. It's a great way to make new friends and have fun playing the sport you love. Plus, you'll get the latest news and updates on the #{@activity.name} world.",
         city: "London",
         group_image: "#{@activity.name}_group.jpg",
     )
