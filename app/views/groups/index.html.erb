@@ -7,7 +7,11 @@
     <div id="group-index-above-group-section-buttons">     
       <div id="group-index-above-group-left-section-buttons">      
         <button><%= link_to "All Squads" , groups_path %></button>
-        <button><%= link_to 'My Squads', my_groups_path %></button>     
+        <% if @groups.present? %>
+          <button><%= link_to 'My Squads', my_groups_path %></button>
+        <% else %>
+          <p>You are not a member of any squads.</p>
+        <% end %>     
       </div>         
       <div id="group-index-above-group-right-section-buttons">
         <button><%= link_to "Create Squad" , new_group_path %></button>
@@ -18,10 +22,20 @@
     <hr id="group-index-above-group-section-buttons-line-break" > 
   
   
-    <div id="group-index-group-section">        
+    <div id="group-index-group-section"> 
+       
         <% @groups.each_with_index do |group, index| %>
-          <div id="group-index-group-section-group-image-and-name">
+          <div id="group-index-group-section-group-image-and-name"> 
+            
+            <div id="test">
             <h2> <%=group.name%> </h2>
+            <%if group &&  group.user_id == current_user.id %>
+                <%= link_to 'You are the Squad leader', group_path(group) %>
+              <%else%>
+                <%= link_to 'More info', group_path(group) %>
+              <% end %>
+            </div>
+            
             <% if group.group_image.end_with?("jpg") %>
               <%= image_tag group.group_image %>
             <% else %>
@@ -39,7 +53,11 @@
             <%= image_tag eval(group.event_image)["url"]%>
           <% end %>
         <%end%>
+        <%if group.events.empty?%>
+        <h2> No Events... :(</h2>
+        <% else %>
         <button><%= link_to 'More Events', group_path(group) %></button>
+        <% end %>
         </div>
       <hr >
     <% end %>
@@ -47,13 +65,3 @@
     
 
 </div>
-
-
-
-
-
-
-
-
-
-
