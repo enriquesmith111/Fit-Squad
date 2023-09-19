@@ -1,6 +1,5 @@
+
 $transition-time: 0.7s;
-
-
 
 .event-card{
     position: relative;
@@ -81,7 +80,7 @@ $transition-time: 0.7s;
             font-size: 32px;
             transform: translateZ(17px);
             padding: 10px 40px 10px 10px;
-            box-shadow: 0 0 12px rgba(0,0,0,.3);
+            text-shadow: 0 0 12px rgba(0,0,0,.3);
 
         }
         .card-time-date{
@@ -103,7 +102,7 @@ $transition-time: 0.7s;
             bottom: 280px;
             left: 23px;
             transform-style: preserve-3d;
-        transition: ease all $transition-time;
+        // transition: ease all $transition-time;
             font-weight: 600;
             font-size: 20px;
             color: rgb(0, 0, 0);
@@ -176,7 +175,7 @@ $transition-time: 0.7s;
             display: -webkit-inline-box;
         }
         .event-card-host    .avatar {
-            box-shadow: 0 0 12px rgba(0,0,0,.1);
+            text-shadow: 0 0 12px rgba(0,0,0,.1);
         }
 
 
