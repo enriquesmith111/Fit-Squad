@@ -1,7 +1,75 @@
-<%= simple_form_for [@group] do |f| %>
-  <%= f.input :name, label: 'Name of your new group. e.g. Hackney Basketball'%>
-  <%= f.input :description %>
-  <%= f.input :city %>
-  <%= f.input :group_image, as: :file %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container my-4 my-md-5">
+<h1>Squad Creation form</h1>
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <%= simple_form_for [@group], html: { class: 'form' } do |form| %>
+            <% if @group.errors.any? %>
+              <div id="error_explanation" class="alert alert-danger">
+                <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+                <ul>
+                  <% @group.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+                <%= form.input :name, placeholder: 'e.g. Tom and friends Basketball Group ', class: 'form-control'%>
+            </div>
+
+            <div class="form-group">
+              <%= form.input :city, placeholder: 'e.g. London', class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= form.input :group_image, as: :file, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :Description %>
+              <%= form.text_area :description, rows: 8, placeholder: 'e.g. Welcome to my Basketball group for all expierence levels...', class: 'form-control' %>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Second container -->
+    <div class="col-md-6">
+
+          <div class="form-actions text-center">
+            <%= form.submit "Create Squad", class: 'btn btn-primary' %>
+          </div>
+          <br>
+            <div class="col-md-6 mx-auto">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-text"> Tips </h4>
+          <p class="card-text"> - Make the squad name short and memorable </p>
+          <p class="card-text"> - Have a good description about the squad and it's events  </p>
+          <p class="card-text"> - Make sure the image is a good resolution  </p>
+        </div>
+      </div>
+    </div>
+      <br>
+    <!-- Box 2 -->
+    <div class="col-md-6 mx-auto">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-text"> Description example </h4>
+          <p class="card-text"> " Hello this a basketball group where i will set events for basketball around east london for anyone to come and join in on the fun... "    </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <% end %>
+
+
+      <!-- Your content for the second container goes here -->
+    </div>
+  </div>
+</div>

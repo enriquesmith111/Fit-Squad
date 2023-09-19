@@ -1,34 +1,40 @@
 <div class="container">
-<% workout_preferences = WorkoutPreference.where(user_id: current_user.id) %>
+  <% workout_preferences = WorkoutPreference.where(user_id: current_user.id) %>
 
-<% if workout_preferences.any? %>
-  <strong>Hello, <%= current_user.name %>!</strong><br>
-  <p>We're excited to be part of your fitness journey. Below, you'll find a list of your workout plans:</p>
-  <hr>
+  <% if workout_preferences.any? %>
+    <strong>Hello, <%= current_user.name %>!</strong><br>
+    <p>We're excited to be part of your fitness journey. Below, you'll find a list of your workout plans:</p>
+    <hr>
+      <% workout_preferences.reverse_each.with_index do |workout_preference, index| %>
+      <div class="row">
+      <div class="col-12 col-md-4 order-md-2 bg-secondary">
+      <ul>
+        <li><strong>Fitness Goal:</strong> <%= workout_preference.fitness_goal %></li>
+        <li><strong>Days per Week:</strong> <%= workout_preference.days_per_week %></li>
+        <li><strong>Time per Session:</strong> <%= workout_preference.time_per_session %> minutes</li>
+        <li><strong>Fitness Level:</strong> <%= workout_preference.fitness_level %></li>
+        <li><strong>Additional Comments:</strong> <%= workout_preference.additional_comments %></li>
+      </ul>
+      </div>
+      <div class="col-6 col-md-8 order-md-1 bg-info">
+      <pre>
+      <p>Week <%= workout_preferences.length - index %></p>
+        <%=workout_preference.workout_plan%>
+      </pre>
+      </div>
+      </div>
+      <br>
+    <% end %>
+  <% else %>
+       <p>It looks like you haven't generated any workout plans yet. Don't worry; we're here to help you get started on your fitness journey.</p>
+    <p>Benefits of having a personalized workout plan:</p>
+    <ul>
+      <li>Customized workouts tailored to your fitness goals.</li>
+      <li>Efficient use of your time with the right exercises and sessions.</li>
+      <li>Progress tracking to help you stay motivated and see results.</li>
+      <li>Expert guidance based on your fitness level and preferences.</li>
+    </ul>
+    <p>Click <a href="<%= new_user_workout_preference_path(current_user) %>">here</a> to generate your first workout plan and unlock these benefits.</p>
 
-  <% workout_preferences.reverse_each.with_index do |workout_preference, index| %>
-    <div class="row">
-  <div class="col-12 col-md-4 order-md-2 bg-secondary">
-  <ul>
-    <li><strong>Fitness Goal:</strong> <%= workout_preference.fitness_goal %></li>
-    <li><strong>Days per Week:</strong> <%= workout_preference.days_per_week %></li>
-    <li><strong>Time per Session:</strong> <%= workout_preference.time_per_session %> minutes</li>
-    <li><strong>Fitness Level:</strong> <%= workout_preference.fitness_level %></li>
-    <li><strong>Additional Comments:</strong> <%= workout_preference.additional_comments %></li>
-  </ul>
-  </div>
-  <div class="col-6 col-md-8 order-md-1 bg-info">
-
-
-  <pre>
-  <p>Week <%= workout_preferences.length - index %></p>
-    <%=workout_preference.workout_plan%>
-  </pre>
-
-
-    </div>
-</div>
-<br>
-<% end %>
-<% end %>
+  <% end %>
 </div>

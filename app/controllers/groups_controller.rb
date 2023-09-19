@@ -1,6 +1,11 @@
 class GroupsController < ApplicationController
-  def index
+  
+  def index 
     @groups = Group.all
+  end
+
+  def my_groups
+    @my_groups = GroupParticipant.where(user_id: current_user.id).map(&:group) + Group.where(user_id: current_user.id)
   end
 
   def show

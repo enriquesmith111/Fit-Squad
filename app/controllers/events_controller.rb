@@ -75,6 +75,13 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def search
+    @query = params[:query]
+    @name_and_address_results = Event.search_by_name_and_address(@query) if @query.present?
+    @activity_results = Event.search_by_activity_name(@query) if @query.present?
+    @events = (@name_and_address_results || []) + (@activity_results || [])
+  end
+
   private
 
   def event_params

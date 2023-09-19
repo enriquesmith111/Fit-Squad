@@ -1,6 +1,6 @@
-<!-- app/views/workout_preferences/new.html.erb -->
-<div class="container">
-  <div class="row justify-content-center">
+<div class="container my-4 my-md-5">
+<h1>Workout Creation form</h1>
+  <div class="row align-items-center">
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
@@ -38,15 +38,46 @@
 
             <div class="form-group">
               <%= form.label :additional_comments %>
-              <%= form.text_area :additional_comments, class: 'form-control' %>
+              <%= form.text_area :additional_comments, rows: 8, class: 'form-control' %>
             </div>
 
-            <div class="form-actions text-center">
-              <%= form.submit "Generate Workout Plan", class: 'btn btn-primary' %>
-            </div>
-          <% end %>
         </div>
       </div>
+    </div>
+
+    <!-- Second container -->
+    <div class="col-md-6">
+
+          <div class="form-actions text-center">
+            <%= form.submit "Generate Workout Plan", class: 'btn btn-primary' %>
+          </div>
+          <br>
+            <div class="col-md-6 mx-auto">
+      <div class="card mb-4">
+        <div class="card-body">
+          <p class="card-text">
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus provident illum ut dolor sed? Veniam repellendus minima sed, unde laborum autem vel ullam id possimus ducimus, inventore a animi reiciendis.
+        </p>
+        </div>
+      </div>
+    </div>
+      <br>
+    <!-- Box 2 -->
+    <div class="col-md-6 mx-auto">
+      <div class="card mb-4">
+        <div class="card-body">
+          <p class="card-text">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla a pariatur dolorum ex quaerat! Molestiae accusamus, eveniet esse nisi, temporibus voluptates, vitae distinctio fugiat a ea consectetur. Nulla, eos dolorem?
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <% end %>
+
+
+      <!-- Your content for the second container goes here -->
     </div>
   </div>
 </div>

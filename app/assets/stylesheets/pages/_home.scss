@@ -1,15 +1,42 @@
-Specific CSS for your home-page
 
 .events-container {
     display: flex;
-    flex-direction: row; /* Make it a row to place map on the left and cards on the right */
+    // flex-direction: row; /* Make it a row to place map on the left and cards on the right */
+    // background-color: red;
+    margin: 0 1.8vw 0 1.8vw;
+    justify-content: center;
+
 }
 
+.events-calendar-container {
+    display: flex;
+}
 
+.events-calendar {
+    width: 100%;
+    margin-left: 1.8vw;
+
+}
+
+.events-index {
+    width: 100%;
+}
+
+.events-map {
+    height: 90vh;
+    width: 100%;
+}
 
 .event-cards-grid {
-    width: 50%; /* Set the width of the cards to 50% of the container */
+    width: 100%;
+    height: 90vh; 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 16px;
+    // background-color: black;
+    justify-content: end;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0 0 0 0.5vw;
+    padding: 0 0vw 0 0.3vw;
+    grid-gap: 10px;
 }
