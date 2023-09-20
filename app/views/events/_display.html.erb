@@ -27,14 +27,14 @@
         <%# back of the card %>
         <div class="card-back">
 
-            <h3 class="event-card-host">
+            <div class="event-card-host">
             <%if event.group.user.avatar.nil? %>
-              <%= image_tag "blank_avatar.jpg", class: "avatar"%>
+              <%= image_tag "blank_avatar.jpg", class: "avatar" %>
             <%else%>
               <%= image_tag event.group.user.avatar, class: "avatar" %>
             <%end%>
               Hosted by <strong> <%= event.group.user.name%> </strong>
-            </h3>
+            </div>
           <br>
             <h3 class="event-card-title-back"><%= event.name %></h3>
           <br>
