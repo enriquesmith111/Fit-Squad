@@ -1,12 +1,12 @@
 class EventParticipantsController < ApplicationController
-  
+
   def event_path(event)
     # event_id is the ID of the event
     event_id = event.id
-  
+
     # Generate the path to the event page
     path = "/events/#{event_id}"
-  
+
     # Return the path
     return path
   end
@@ -41,9 +41,15 @@ class EventParticipantsController < ApplicationController
     @event_participant = EventParticipant.new(user_id: current_user.id, event_id: event_id)
 
     if @event_participant.save
-      redirect_to event_path(@event), notice: "Successfully joined the event!"
+      if request.referer == root_url # Check if the referer is the root page
+        redirect_to root_path, notice: "Successfully joined the event!"
+      elsif Rails.application.routes.recognize_path(request.fullpath)[:controller] == 'your_controller_name' && Rails.application.routes.recognize_path(request.fullpath)[:action] == 'your_action_name'
+        redirect_to search_event_path(@event_participant.event), notice: "Successfully joined the event!"
+      else
+        redirect_to event_path(@event_participant.event), notice: "Successfully joined the event!"
+      end
     else
-      redirect_to event_path(@event)
+      flash[:alert] = "You did not join."
     end
   end
 
@@ -60,7 +66,7 @@ class EventParticipantsController < ApplicationController
 
   def destroy
     @event_participant = EventParticipant.find(params[:id])
-  
+
     if current_user == @event_participant.user
       @event_participant.destroy
       redirect_to event_path(@event), notice: "Successfully left the event!"
