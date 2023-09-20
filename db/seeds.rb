@@ -101,14 +101,14 @@ p "Created #{pilates.name}"
 puts "-----------------------------------------------"
 puts "Creating Users"
 101.times do |i|
-    user_name = Faker::Name.first_name
+    user_name = Faker::Name.neutral_first_name
     user_email = "#{user_name + i.to_s}@gmail.com"
     user = "user" + (i).to_s
     User.create!(
         name: user_name,
         email: user_email,
         password: "123456",
-        avatar: Faker::Avatar.image(size: "50x50")
+        avatar: "Avatar#{(rand(1..25))}-2.jpg"
     )
     p "#{i + 1} Created User #{user_name}"
 end
