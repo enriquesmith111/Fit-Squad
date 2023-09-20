@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
-  
-  def index 
+
+  def index
     @groups = Group.all
   end
 
@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
     @group_participants = GroupParticipant.where(group_id: @group.id)
     @existing_participant = @group_participants.find_by(user_id: current_user.id)
     @group_participant_count = @group_participants.count
+    @event_participant = EventParticipant.new
   end
 
   def new

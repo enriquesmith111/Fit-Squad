@@ -1,7 +1,6 @@
 <% @events.each do |event| %>
   <div class="event-card">
 <% if EventParticipant.exists?(user_id: current_user.id, event_id: event.id) %>
-
     <%# front of the card %>
 <% if event.event_image.end_with?("jpg") %>
       <div class="cover" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.9)80%), url(<%= image_url(event.event_image) %>)">
@@ -107,8 +106,7 @@
 <button type="submit" class="card-join-button" >
                 <i class="fas fa-user-plus"></i>
             </button>
-
-      </div>
+            </div>
           </div>
         </div>
       <% end %>
