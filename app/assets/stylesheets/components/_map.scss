@@ -1,8 +1,10 @@
 .mapboxgl-popup {
-  width: 50%;
+  width: 25%;
 }
 
 .mapboxgl-popup-content {
+  display: contents;
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
+
