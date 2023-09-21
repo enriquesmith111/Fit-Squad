@@ -81,7 +81,6 @@ class EventsController < ApplicationController
     @activity_results = Event.search_by_activity_name(@query) if @query.present?
     @events = (@name_and_address_results || []) + (@activity_results || [])
     @event_participant = EventParticipant.new
-
     # @events = Event.includes(:event_participants).all
     # @event_participant = EventParticipant.new
     # date = params[:date]
