@@ -1,5 +1,8 @@
 class Event < ApplicationRecord
-
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :time, presence: true
+  validates :activity, presence: true
   include PgSearch::Model
 
   pg_search_scope :search_by_name_and_address,

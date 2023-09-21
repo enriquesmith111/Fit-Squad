@@ -18,7 +18,9 @@
     <div>
       <%# Squad memvers and join button %>
       <div id="group-show-left-side-members-and-button">
-        <h2>Squad Members</h2>
+        <% if @group.user_id != current_user.id %>
+          <h2>Squad Members</h2>
+        <% end %>
         <%= render partial: 'group_participants/form', locals: { group: @group } %>
       </div>
       <%# participant avatars %>
@@ -41,7 +43,11 @@
   <%# squad info %>
     <div id="group-show-rigth-side-squad-info">
     <h1><%= @group.name %></h1>
-    <h2><%=image_tag  @group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %> Hosted by <%= @group.user.name %>  </h2>
+      <%if @group.user.avatar.nil?%>
+        <h2><%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered" %> Hosted by <%= @group.user.name %>  </h2> 
+      <%else%>
+        <h2><%=image_tag  @group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %> Hosted by <%= @group.user.name %>  </h2>
+      <% end %>
     <h4><%= @group_participant_count %> Squad Members</h4>
     <h4> <%= @group.city  %></h4>
     </div>
