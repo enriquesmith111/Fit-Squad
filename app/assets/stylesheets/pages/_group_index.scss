@@ -53,13 +53,17 @@
     align-items: center;
 }
 
+#group-index-group-section-group-name {
+    margin-left: 10px;
+}
+
 #group-index-group-section-group-image-and-name img {
+    position: relative;
+    left: 6px;
     margin: 5px;
     display: flex;
-    height: 160px;
-    width: 240px;
-    // border-style: dotted;
-    // border-color: rgb(26, 177, 211);
+    height: 180px;
+    width: 270px;
     padding: 5px;
 }
 

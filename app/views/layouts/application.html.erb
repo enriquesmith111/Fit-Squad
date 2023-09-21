@@ -17,11 +17,10 @@
     </style> %>
   </head>
 
-  <body style ="height: 100vh;">
+  <body>
     <%= render "shared/navbar" %>
+    <%= yield %>
     <%= render "shared/flashes" %>
-      <%= yield %>
-    <%= render "shared/footer" %>
   </body>
 
 </html>
