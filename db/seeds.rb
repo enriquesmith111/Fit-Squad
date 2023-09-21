@@ -8,7 +8,7 @@ require 'faker'
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-#heroku DATABASE reset 
+#heroku DATABASE reset commands
 #heroku pg:reset DATABASE 
 #heroku run rails db:migrate
 #heroku run rails db:seed
