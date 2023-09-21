@@ -80,19 +80,27 @@ class EventsController < ApplicationController
     @name_and_address_results = Event.search_by_name_and_address(@query) if @query.present?
     @activity_results = Event.search_by_activity_name(@query) if @query.present?
     @events = (@name_and_address_results || []) + (@activity_results || [])
+    @event_participant = EventParticipant.new
     # @events = Event.includes(:event_participants).all
     # @event_participant = EventParticipant.new
     # date = params[:date]
-
-    # # Check if the date is present
+    # Check if the date is present
     # if date.present?
-    #   # The date is present, so filter the events by date
+      # The date is present, so filter the events by date
     #   @events = @events.where(date:)
     # else
-    #   # The date is not present, so do not filter the events
-    #   @events = Event.all
+      # The date is not present, so do not filter the events
+      # @events = Event.all
     # end
-    # # The `geocoded` scope filters only flats with coordinates
+
+    # The `geocoded` scope filters only flats with coordinates
+    # @markers = @events.geocoded.map do |event|
+    #   {
+    #     lat: event.latitude,
+    #     lng: event.longitude,
+    #     info_window_html: render_to_string(partial: "info_window", locals: { event: })
+    #   }
+    # end
   end
 
   private
