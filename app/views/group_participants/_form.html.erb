@@ -1,5 +1,5 @@
 <% if @group.user_id == current_user.id %>
-  <h2>YOU ARE The Squad Leader!</h2>
+  <h2>You are the Squad Leader!</h2>
   <%= button_to "Delete Group", group_path(@group), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
     <% if flash[:notice].present? %>
       <div class="alert alert-success">

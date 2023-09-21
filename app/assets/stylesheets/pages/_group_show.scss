@@ -27,13 +27,20 @@
 }
 
 #group-show-left-side-members-and-button {
+    width: max-content;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
 }
 
 #group-show-left-side-members-and-button a {
-    margin-left: 5px;
+    margin-left: 20px;
+}
+
+#group-show-left-side-members-and-button button {
+    margin-left: 20px;
 }
 
 #group-show-rigth-side {
