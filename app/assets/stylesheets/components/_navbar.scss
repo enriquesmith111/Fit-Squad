@@ -3,10 +3,9 @@
 // $transition-time: 3.3;
 
 .navbar {
-    padding: 15px 0; /* Adjust the top and bottom padding as needed */
+    padding: 0px 0; /* Adjust the top and bottom padding as needed */
   }
-  
-  
+
   /* Custom styles for the search bar */
   .custom-search-input {
     width: 100%; /* Fill the available width */
@@ -29,9 +28,15 @@
   }
   
   .nav-link {
+    margin-top: 13px;
     color: white;
+    font-size: 23px;
   }
-  
+
+  .nav-link:hover {
+    color: grey;
+  }
+
   /* Responsive styles */
   @media (max-width: 768px) {
     .navbar-toggler {
@@ -61,7 +66,7 @@
   }
   
   .custom-dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #443e3e;
   }
   
   .custom-dropdown:hover .custom-dropdown-content {
@@ -70,6 +75,7 @@
   
   .navbar-nav.ml-auto.d-flex.flex-row {
     flex-grow: 1;
-    justify-content: space-between;
-    margin-right: 20%
+    justify-content: space-around;
+    margin-left: 17%;
+    margin-right: 0%;
   }
