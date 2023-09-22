@@ -2,6 +2,8 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    @group_participants = GroupParticipant.all
+    # GroupParticipant.all.where(group_id: @group.id) 
   end
 
   def my_groups

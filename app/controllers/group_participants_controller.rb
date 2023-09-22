@@ -41,4 +41,9 @@ class GroupParticipantsController < ApplicationController
       render 'groups/show' # Render the show page with errors if the update fails
     end
   end
+
+  private
+  def group_participant_params
+    params.require(:group_participant).permit(:user_id, :group_id)
+  end
 end
