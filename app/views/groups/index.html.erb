@@ -120,11 +120,13 @@
       </div>
   </div>
 <% end %>
+        <div id="events-scroll-button">
         <%if group.events.empty?%>
         <h2> No Events... Please search again!</h2>
         <% else %>
-        <button><%= link_to 'More Events', group_path(group) %></button>
+        <button style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.5)80%)"><%= link_to 'More Events', group_path(group) %></button>
         <% end %>
+        </div>
         </div>
       <hr >
     <% end %>       
