@@ -1,0 +1,90 @@
+#container {
+margin: 25px 50px 0px 50px;
+
+}
+
+#event-show-host-and-participants {
+    margin: 20px 15px 0px 15px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+#event-show-host {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#event-show-host h2 {
+    margin-left: 10px;
+}
+
+#event-show-participants {
+    min-width: 13%;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+}
+
+#event-show-left-and-rigth-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+#event-show-left-section {
+    width: 37%;
+}
+
+#event-show-left-section-image {
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+#event-show-left-section-image img {
+    width: 100%;
+    height: 600px;
+}
+
+#event-show-left-section-name-timedate-and-button {
+    display: flex;
+    flex-direction: row;
+}
+
+#event-show-left-section-name-timedate {
+    margin-top: 1%;
+}
+
+#event-show-left-section-name {
+
+}
+
+#event-show-left-section-button {
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+}
+
+#event-show-description {
+    margin-top: 3%;
+}
+
+#event-show-rigth-section {
+    width: 60%;
+}
+
+#event-show-map-right-section {
+    margin-bottom: 2%;
+}
+
+#event-show-chatroom-right-section {
+    border: 1px solid grey;
+    height: 350px;
+    overflow-y: auto;  
+}
+
+#event-show-chatroom-right-section h1 {
+    margin-top: 1%;
+}
