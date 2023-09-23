@@ -117,6 +117,45 @@ puts "-----------------------------------------------"
 
 
 
+puts "-----------------------------------------------"
+puts "Creating our personal accounts"
+    enrique = User.create!(
+        name: "Enrique",
+        email: "enrique@gmail.com",
+        password: "123456",
+        avatar: "Enrique.jpg"
+)
+p " Created personal User #{User.last.name}"
+
+puts "Creating our personal accounts"
+    ahmed = User.create!(
+        name: "Ahmed",
+        email: "ahmed@gmail.com",
+        password: "123456",
+        avatar: "Ahmed.jpg"
+)
+p " Created personal User #{User.last.name}"
+
+puts "Creating our personal accounts"
+    anam = User.create!(
+        name: "Anam",
+        email: "anam@gmail.com",
+        password: "123456",
+        avatar: "Anam.jpg"
+)
+p " Created personal User #{User.last.name}"
+
+puts "Creating our personal accounts"
+    daniel = User.create!(
+        name: "Daniel",
+        email: "daniel@gmail.com",
+        password: "123456",
+        avatar: "Daniel.jpg"
+)
+p " Created personal User #{User.last.name}"
+
+
+
 
 puts "-----------------------------------------------"
 (1..13).each do |i|
@@ -139,7 +178,7 @@ puts "-----------------------------------------------"
             group_id: @group_id,
             user_id: rand(1..100)
         )
-        puts "#{i + 1} Created G Participant with id #{@participant.user_id} for Group #{i + 1} "
+        puts "#{i + 1} Created personal G Participant with id #{@participant.user_id} for Group #{i + 1} "
     end
 
 
