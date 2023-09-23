@@ -6,20 +6,30 @@
     </div>
     <div id="group-index-above-group-section-buttons">
       <div id="group-index-above-group-left-section-buttons">
-        <button><%= link_to "All Squads" , groups_path %></button>
+          <div class="button-container">
+                <a href="/groups" class="main-squads-button">ALL SQUADS</a>
+          </div>
         <% if @my_groups.present? %>
-          <button><%= link_to 'My Squads', my_groups_path %></button>
+            <div class="button-container">
+              <a href="/my_groups" class="secondary-squads-button">MY SQUADS</a>
+                <div class="black-border-effect"></div>
+            </div>
         <% end %>
       </div>
-      <div id="group-index-above-group-right-section-buttons">
-        <button><%= link_to "Create Squad" , new_group_path %></button>
+      <div class="action-button">
+        <div id="group-index-above-group-right-section-buttons">
+          <div class="button-container">
+          <a href="/groups/new" class="action-button">CREATE SQUAD</a>
+            <div class="white-border-effect"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
     <hr id="group-index-above-group-section-buttons-line-break" >
 
-<%# groups %>
+
     <div id="group-index-group-section">
         <% @my_groups.each_with_index do |group, index| %>
         <%@group_participants = GroupParticipant.where(group_id: group.id)%>
@@ -38,9 +48,6 @@
                 <% end %>
               <% end %>   
               </div>     
-                <%# if @existing_participant %>
-                  <%# <h4>You are part of the Squad!</h4> %>
-                <%# end %>     
           </div>         
 
           <div style="display: flex; flex-direction: row-reverse;"> 
@@ -120,11 +127,13 @@
       </div>
   </div>
 <% end %>
+        <div id="events-scroll-button">
         <%if group.events.empty?%>
         <h2> No Events... Please search again!</h2>
         <% else %>
-        <button><%= link_to 'More Events', group_path(group) %></button>
+        <button style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.5)80%)"><%= link_to 'More Events', group_path(group) %></button>
         <% end %>
+        </div>
         </div>
       <hr >
     <% end %>       
