@@ -10,17 +10,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<%#     
-    <style>
+    
+    <%# <style>
     * {
       border: 2px solid red
     } 
     
     </style> %>
+
   </head>
 
   <body>
-  <h1 style="font-family: Noto Sans Nabataean;"></h1>
     <%= render "shared/navbar" %>
     <%= yield %>
     <%= render "shared/flashes" %>

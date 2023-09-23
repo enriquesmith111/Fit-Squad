@@ -89,14 +89,14 @@
 }
 
 #group-index-group-section-group-avatars {
-    width: 80%;
+    width: 38%;
     overflow: scroll;
     display: flex;
 }
 
 #group-index-group-section-group-avatars img {
-    height: 65px;
-    width: 65px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
 }
 
@@ -107,9 +107,7 @@
 }
 
 #group-index-avatars-and-join-button {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    display: contents;
 }
 
 #group-index-group-section-event-image img {
@@ -127,7 +125,7 @@
   }
 
 #group-index-group-section-event-image button {
-    background-color: rgb(35, 35, 35);
+    background-color: rgb(68, 68, 68);
     margin: 10px;
     height: 350px;
     width: 350px;
@@ -143,6 +141,7 @@
     color: white;
     text-decoration: none;
 }
+
 
 #events-scroll-button a {
     transition: ease transform 1.3s, ease background 0.5s;
