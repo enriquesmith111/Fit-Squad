@@ -2,20 +2,18 @@
 
   <div id="group-index-above-group-section">
     <div id="group-index-above-group-section-hi-username">
-    <h1 id= "group-index-group-section-group-image-h2">Hi <%= current_user.name %> ! </h1>
+    <h1 id= "group-index-group-section-group-image-h2">Hi <%= current_user.name %> ! <i class="fa-sharp fa-solid fa-heart-pulse fa-beat fa-sm"></i>
     </div>
     <div id="group-index-above-group-section-buttons">
       <div id="group-index-above-group-left-section-buttons">
           <div class="button-container">
                 <a href="/groups" class="main-squads-button">ALL SQUADS</a>
           </div>
-        <% if @groups.present? %>
+        <% if @my_groups.present? %>
             <div class="button-container">
               <a href="/my_groups" class="secondary-squads-button">MY SQUADS</a>
                 <div class="black-border-effect"></div>
             </div>
-        <% else %>
-          <p>You are not a member of any squads.</p>
         <% end %>
       </div>
       <div class="action-button">
@@ -33,27 +31,46 @@
 
 
     <div id="group-index-group-section">
-
         <% @groups.each_with_index do |group, index| %>
-          <div id="group-index-group-section-group-image-and-name">           
-            <div id="group-index-group-section-group-name">
-            <h2> <%=group.name%> </h2>
-            <%if group &&  group.user_id == current_user.id %>
-                <%= link_to 'You are the Squad leader', group_path(group) %>
-              <%else%>
-                <%= link_to 'More info', group_path(group) %>
-              <% end %>
-            </div>
+        <%@group_participants = GroupParticipant.where(group_id: group.id)%>
+        <%@existing_participant = @group_participants.find_by(user_id: current_user.id)%>
+        <div style="display: flex;">
+          <div id="group-index-group-section-group-image-and-name">
+          <div id="group-index-avatars-and-join-button">
+            <div id="group-index-group-section-group-avatars">
+              <%@group_participants.each do |participant| %>
+                <%if participant.user.avatar.nil?%>
+                  <%= image_tag "blank_avatar.jpg" %>
+                  <p class="hide"><%=participant.user.name%></p>
+                <%else%>
+                  <%= image_tag participant.user.avatar %>
+                  <p class="hide"><%=participant.user.name %></p>
+                <% end %>
+              <% end %>   
+              </div>     
+          </div>         
 
+          <div style="display: flex; flex-direction: row-reverse;"> 
+          <div id="group-index-group-section-group-name">
+          <h2> <%=group.name%> </h2>
+          <h4> <%=group.city%> </h4>
+            <%if group &&  group.user_id == current_user.id %>
+              <%= link_to 'You are the Squad leader', group_path(group) %>
+            <%else%>
+              <%= link_to 'More Details', group_path(group) %>
+            <% end %>
+          </div>
             <% if group.group_image.end_with?("jpg") %>
               <%= image_tag group.group_image %>
             <% else %>
               <%= image_tag eval(group.group_image)["url"]%>
           </div>
         <% end %>
-
+        </div>
+      </div>
     </div>
 
+      
       <div id="group-index-group-section-event-image">
         <% group.events.take(5).each do |event| %>
 <div class="group-index-event-card">
@@ -110,15 +127,16 @@
       </div>
   </div>
 <% end %>
+        <div id="events-scroll-button">
         <%if group.events.empty?%>
         <h2> No Events... Please search again!</h2>
         <% else %>
-        <button><%= link_to 'More Events', group_path(group) %></button>
+        <button style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.5)80%)"><%= link_to 'More Events', group_path(group) %></button>
         <% end %>
         </div>
+        </div>
       <hr >
-    <% end %>
-
+    <% end %>       
 
 </div>
 </div>

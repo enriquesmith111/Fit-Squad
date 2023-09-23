@@ -41,6 +41,9 @@
               <%= form.text_area :additional_comments, rows: 8, class: 'form-control' %>
             </div>
 
+                      <div class="form-actions text-center">
+            <%= form.submit "Generate Workout Plan", class: 'btn btn-primary', style: " margin-top: 10px; width: -webkit-fill-available; " %>
+          </div>
         </div>
       </div>
     </div>
@@ -48,9 +51,7 @@
     <!-- Second container -->
     <div class="col-md-6">
 
-          <div class="form-actions text-center">
-            <%= form.submit "Generate Workout Plan", class: 'btn btn-primary' %>
-          </div>
+
           <br>
             <div class="col-md-6 mx-auto">
       <div class="card mb-4">

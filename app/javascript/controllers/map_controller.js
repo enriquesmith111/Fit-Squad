@@ -11,7 +11,6 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/navigation-night-v1"
@@ -20,16 +19,16 @@ export default class extends Controller {
     this.#fitMapToMarkers()
     this.map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
+      mapboxgl: mapboxgl,
     }))
+    this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
+
   }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
     this.map.fitBounds(bounds, { padding: 55, maxZoom: 15, duration: 3 })
-
-    // Add this line
   }
 
 
@@ -43,5 +42,4 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
-
 }
