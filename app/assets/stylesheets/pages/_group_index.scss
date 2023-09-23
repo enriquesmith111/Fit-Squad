@@ -89,6 +89,8 @@
 }
 
 #group-index-group-section-group-avatars {
+    width: 80%;
+    overflow: scroll;
     display: flex;
 }
 
@@ -125,10 +127,15 @@
   }
 
 #group-index-group-section-event-image button {
-    background-color: rgb(126, 126, 126);
+    background-color: rgb(35, 35, 35);
     margin: 10px;
     height: 350px;
     width: 350px;
+    &:hover{
+        background-color: rgb(125, 125, 125);
+        color: #ffffff;
+    }
+
 }
 
 #events-scroll-button a {
@@ -139,15 +146,15 @@
 
 #events-scroll-button a {
     transition: ease transform 1.3s, ease background 0.5s;
-    border: 1px solid black;
+    border: 1px solid rgb(253, 253, 253);
     font-weight: 200;
     font-size: 25px;
-    color: black;
+    color: rgb(255, 255, 255);
     padding: 4px 32px;
     margin: 0px 0px 5px 0px;;
     text-decoration: none;
     &:hover{
-                background-color: rgb(0, 0, 0);
+                background-color: rgb(125, 125, 125);
                 color: #ffffff;
             }
 }
