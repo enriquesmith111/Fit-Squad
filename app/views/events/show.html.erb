@@ -44,6 +44,9 @@
             <% time = @event.time %>
             <h2><%= Time.parse(date.strftime("%Y-%m-%d")).strftime("%d/%m/%y") %>   <%= Time.parse(time.strftime("%I:%M%P")).strftime("%I:%M%P") %></h2>  
         </div>
+        <div id="event-show-event-participant-count"> 
+          <h3> <%= @event_participants.count  %> Squad members participating</h3>
+        </div>
       </div>
         <div id="event-show-left-section-button">
           <%= render partial: 'event_participants/form' %>
