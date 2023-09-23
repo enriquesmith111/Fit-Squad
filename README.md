@@ -60,11 +60,11 @@ Technologies
 
 FitSquad is primarily built using the following technologies:
 
-Ruby (53.7%)
-HTML (33.7%)
-SCSS (9.9%)
-JavaScript (2.6%)
-Shell (0.1%)
+- Ruby 
+- HTML 
+- SCSS 
+- JavaScript 
+- Shell 
 In addition to these core technologies, the project utilizes various libraries and frameworks for frontend and backend development.
 
 Contributing
