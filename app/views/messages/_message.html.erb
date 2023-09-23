@@ -4,7 +4,7 @@
     <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered"%>
         <%else%>
     <%= image_tag message.user.avatar,style: "margin: 4px;", class: "avatar-bordered" %>
-    <p class="hide"><%=participant.user.name%></p>
+    <p class="hide"><%=message.user.name%></p>
     <% end %>
     <strong><%= message.user.name %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
