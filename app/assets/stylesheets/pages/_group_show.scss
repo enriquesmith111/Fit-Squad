@@ -13,7 +13,7 @@
 #group-show-left-side {
     margin-left: 2%;
     margin-top: 30px;
-    width: 50%;
+    width: 45%;
 }
 
 #group-show-left-side-image-and-description img {
@@ -55,14 +55,17 @@
 }
 
 #group-show-rigth-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-left: 4%;
     margin-top: 30px;
-    width: 50%;
+    width: 55%;
 }
 
 #group-show-rigth-side-squad-info {
-    margin-left: 6%;
-    max-width: 76%;
+    max-width: 100%;
+    border: 1px solid grey;
 }
 
 #group-right-side-avatars {
@@ -76,17 +79,16 @@
     display: grid;
 }
 
+
 #group-show-event-cards-grid {
     width: 100%;
     height: 63vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-content: end;
     overflow-x: hidden;
     overflow-y: auto;
-    margin: 30px 0 0 0.5vw;
-    padding: 10px 5vw 0 3vw;
+    margin: 30px 0 0 0;
+    padding: 0vw 0vw 0vw 0vw;
     grid-gap: 10px;
     justify-items: center;
-
 }

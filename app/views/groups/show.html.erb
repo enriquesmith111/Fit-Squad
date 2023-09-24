@@ -32,9 +32,9 @@
   <%# squad info %>
     <div id="group-show-rigth-side-squad-info">
       <%if @group.user.avatar.nil?%>
-        <h2><%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered" %> Hosted by <%= @group.user.name %>  </h2> 
+        <h2><%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered" %> Squad Admin <%= @group.user.name %>  </h2> 
       <%else%>
-        <h2><%=image_tag  @group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %> Hosted by <%= @group.user.name %>  </h2>
+        <h2><%=image_tag  @group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %> Squad Admin <%= @group.user.name %>  </h2>
       <% end %>
       <%# Squad memvers and join button %>
       <div id="group-show-left-side-members-and-button">
@@ -46,9 +46,9 @@
       <%# participant avatars %>
       <% @group_participants.each do |participant| %>
         <%if participant.user.avatar.nil?%>
-          <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered"%>
+          <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar"%>
         <%else%>
-          <%= image_tag participant.user.avatar,style: "margin: 4px;", class: "avatar-bordered" %>
+          <%= image_tag participant.user.avatar,style: "margin: 4px;", class: "avatar" %>
         <% end %>
       <% end %>
       </div>
