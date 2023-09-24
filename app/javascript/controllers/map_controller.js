@@ -21,7 +21,7 @@ export default class extends Controller {
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl,
     }))
-    this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
+    this.map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 
   }
 
