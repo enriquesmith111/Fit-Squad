@@ -1,7 +1,7 @@
 #group-show-container {
     display:flex ;
     justify-content: space-between;
-    margin: 10px 8vh 10px 8vh;
+    margin: 30px 6vh 10px 8vh;
     max-height: 100%;
     max-width: 100%;
     overflow: scroll;
@@ -11,13 +11,28 @@
 }
 
 #group-show-left-side {
-    margin-top: 20px;
-    width: 47.5%;
+    margin-left: 2%;
+    margin-top: 30px;
+    width: 45%;
 }
 
 #group-show-left-side-image-and-description img {
+    position: relative;
+    z-index: -1;
     width: 100%;
     height: 60%;
+}
+
+#group-show-left-side-image-and-description {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 50%);
+    position: relative;
+}
+
+#group-show-left-image-and-title {
+    color: white;
+    position: absolute;
+    top: 8px;
+    left: 16px;
 }
 
 #group-show-left-side-image-and-description h4 {
@@ -35,21 +50,28 @@
     flex-direction: row;
 }
 
-#group-show-left-side-members-and-button a {
-    margin-left: 20px;
-}
-
-#group-show-left-side-members-and-button button {
-    margin-left: 20px;
+#group-show-left-side-button {
+    margin: 20px 20px 30px 20px;
 }
 
 #group-show-rigth-side {
-    margin-top: 20px;
-    width: 47.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 4%;
+    margin-top: 30px;
+    width: 55%;
 }
 
 #group-show-rigth-side-squad-info {
-    margin-left: 75px;
+    max-width: 100%;
+    border: 1px solid grey;
+}
+
+#group-right-side-avatars {
+    display: flex;
+    overflow: scroll;
+    flex-direction: row;
 }
 
 #group-show-rigth-side-event-cards {
@@ -57,18 +79,16 @@
     display: grid;
 }
 
+
 #group-show-event-cards-grid {
     width: 100%;
-    height: 63vh; 
+    height: 63vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    // background-color: black;
-    justify-content: end;
     overflow-x: hidden;
     overflow-y: auto;
-    margin: 0 0 0 0.5vw;
-    padding: 0 0vw 0 0.3vw;
+    margin: 30px 0 0 0;
+    padding: 0vw 0vw 0vw 0vw;
     grid-gap: 10px;
     justify-items: center;
-
 }

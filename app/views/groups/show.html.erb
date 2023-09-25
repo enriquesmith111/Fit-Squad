@@ -7,32 +7,21 @@
     <div>
       <div id="group-show-left-side-image-and-description">
         <% if @group.group_image.end_with?("jpg") %>
-          <%= image_tag @group.group_image %>
+          <%= image_tag @group.group_image  %>
         <%else%>
           <%= image_tag eval(@group.group_image)["url"] %>
           <p> </p>
         <% end %>
-        <h4> <%= @group.description  %></h4>
+        <div id="group-show-left-image-and-title">
+      <h1><%= @group.name %></h1>
       </div>
+      </div>
+      <div id="group-show-left-side-button">
+      <%= render partial: 'group_participants/form', locals: { group: @group } %>
+      </div>
+        <h4> <%= @group.description  %></h4>
     <%# bottom left side, squad members %>
     <div>
-      <%# Squad memvers and join button %>
-      <div id="group-show-left-side-members-and-button">
-        <% if @group.user_id != current_user.id %>
-          <h2>Squad Members</h2>
-        <% end %>
-        <%= render partial: 'group_participants/form', locals: { group: @group } %>
-      </div>
-      <%# participant avatars %>
-      <% @group_participants.each do |participant| %>
-        <%if participant.user.avatar.nil?%>
-          <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered"%>
-          <p class="hide"><%=participant.user.name%></p>
-        <%else%>
-          <%= image_tag participant.user.avatar,style: "margin: 4px;", class: "avatar-bordered" %>
-          <p class="hide"><%=participant.user.name%></p>
-        <% end %>
-      <% end %>
     </div>
   </div>
   
@@ -42,14 +31,27 @@
   <div id="group-show-rigth-side">
   <%# squad info %>
     <div id="group-show-rigth-side-squad-info">
-    <h1><%= @group.name %></h1>
       <%if @group.user.avatar.nil?%>
-        <h2><%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered" %> Hosted by <%= @group.user.name %>  </h2> 
+        <h2><%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered" %> Squad Admin <%= @group.user.name %>  </h2> 
       <%else%>
-        <h2><%=image_tag  @group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %> Hosted by <%= @group.user.name %>  </h2>
+        <h2><%=image_tag  @group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %> Squad Admin <%= @group.user.name %>  </h2>
       <% end %>
-    <h4><%= @group_participant_count %> Squad Members</h4>
-    <h4> <%= @group.city  %></h4>
+      <%# Squad memvers and join button %>
+      <div id="group-show-left-side-members-and-button">
+        <% if @group.user_id != current_user.id %>
+          <h2>Squad Members</h2>
+        <% end %>
+      </div>
+      <div id="group-right-side-avatars">
+      <%# participant avatars %>
+      <% @group_participants.each do |participant| %>
+        <%if participant.user.avatar.nil?%>
+          <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar"%>
+        <%else%>
+          <%= image_tag participant.user.avatar,style: "margin: 4px;", class: "avatar" %>
+        <% end %>
+      <% end %>
+      </div>
     </div>
   
   <%# event cards %>

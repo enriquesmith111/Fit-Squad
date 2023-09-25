@@ -1,57 +1,91 @@
+<div id="container">
+<%# Host and participants sections %>
+  <div id="event-show-host-and-participants">
+    <div id="event-show-host">
+      <%if @event.group.user.avatar.nil?%>
+        <%=image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered"%>
+      <%else%>
+        <%= image_tag @event.group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %>
+      <%end%>
+      <h2>Hosted by <%= @event.group.user.name %> </h2>
+    </div>
+    <div id="event-show-participants">
+      <% @event_participants.each do |participant| %>
+        <% if participant.user.avatar.nil?%>
+          <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar"%>
+          <p class="hide"><%=participant.user.name%></p>
+        <% else %>
+          <%= image_tag participant.user.avatar,style: "margin: 4px;", class: "avatar" %>
+          <p class="hide"><%=participant.user.name%></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+<%# below host and participant line break %>
 
-<div style="margin: 25px">
+  <div id="event-show-left-and-rigth-section">
+<%# left section with event image, event info and join button %>
+    <div id="event-show-left-section">
+      <div id="event-show-left-section-image">
+        <% if @event.event_image.end_with?("jpg") %>
+          <%=image_tag @event.event_image, width: 500, height: 350 %>
+        <% else %>
+          <%= image_tag eval(@event.event_image)["url"], width: 300, height: 200 %>
+        <% end %>      
+      </div>      
+      <div id="event-show-left-section-name-timedate-and-button">    
+      <div id="event-show-left-section-name-timedate">  
+        <div id="event-show-left-section-name">
+          <h2><%= @event.name %></h2>
+        </div>      
+        <div id="event-show-left-section-time-date">
+            <% date = @event.date %>
+            <% time = @event.time %>
+            <h4><%= Time.parse(date.strftime("%Y-%m-%d")).strftime("%d/%m/%y") %>   <%= Time.parse(time.strftime("%I:%M%P")).strftime("%I:%M%P") %></h4>  
+        </div>
+        <div id="event-show-event-participant-count"> 
+          <h5> <%= @event_participants.count  %> Squad members participating</h5>
+        </div>
+      </div>
+        <div id="event-show-left-section-button">
+          <%= render partial: 'event_participants/form' %>
+        </div>
+      </div>
+      <div id="event-show-description">
+      <p> <%= @event.description  %></p>
+      </div>
+    </div>
+  <%# event show right section ,map and chat %>
+    <div id="event-show-rigth-section">
 
-<div style="display: flex;">
-<%if @event.group.user.avatar.nil?%>
-    <%=image_tag "blank_avatar.jpg", class: "avatar-bordered"%>
-<%else%>
-    <%= image_tag @event.group.user.avatar, class: "avatar" %>
-<%end%>
-<h2>Hosted by <%= @event.group.user.name %> </h2>
-</div>
-<hr>
-<div style="display: flex; ">
-<div id= "image+squad-info">
-<% if @event.event_image.end_with?("jpg") %>
-  <%=image_tag @event.event_image, width: 500, height: 350 %>
-  <%else%>
-    <%= image_tag eval(@event.event_image)["url"], width: 300, height: 200 %>
-    <%#= image_path group.group_image, width: 300, height: 200 %>
-    <hr>
-  <% end %>
+    <div id="event-show-map-right-section">
+      <div style="width: 100%; height: 40vh;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    </div>
+    
 
-      <h2 style="margin-">The Squad</h2>
-    <div style="display: flex; margin: 3px; height: 50px;">
-    <% @event_participants.each do |participant| %>
-      <%if participant.user.avatar.nil?%>
-    <%= image_tag "blank_avatar.jpg", style: "margin: 4px;", class: "avatar-bordered"%>
-    <p class="hide"><%=participant.user.name%></p>
-        <%else%>
-    <%= image_tag participant.user.avatar,style: "margin: 4px;", class: "avatar-bordered" %>
-    <p class="hide"><%=participant.user.name%></p>
-    <% end %>
+    <div id="event-show-chatroom-input-right-section-">
+      <h2>Event Chatroom for <%= @chatroom.name %></h2>
+  <hr>
+      <%= simple_form_for [@group, @event, @chatroom, @message], url: event_chatroom_messages_path(@event, @chatroom),
+    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+  %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message ##{@chatroom.name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
     </div>
-      <%= render partial: 'event_participants/form' %>
-      </div>
-
-<div style="display: flex; flex-direction: column; margin-left: 15px">
-<div style="width: 100%; height: 350px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div id="event-show-chatroom-right-section">
+      <%= render partial: 'chatrooms/show', locals: { event: @event } %>
+    </div>
+        
+    </div>
+  </div>
 </div>
-<h1><%= @event.name %></h1>
-<p> <%= @event.description  %></p>
-<p> <%= @event.address  %></p>
-<p> <%= @event.date  %></p>
-<p> <%= @event.time  %></p>
-</div>
-</div>
-
-
-
-<%= render partial: 'chatrooms/show', locals: { event: @event } %>
-<%# <%= render partial: 'event_participants/join', locals: { participants: @participants } %>
-<%console%>
-

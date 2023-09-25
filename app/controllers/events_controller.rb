@@ -24,8 +24,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:group_id])
     @event = Event.find(params[:id])
+    @group = @event.group
     # @admin = User.where(@event)
     @event_participant = EventParticipant.new
     @event_participants = EventParticipant.where(event_id: @event.id)

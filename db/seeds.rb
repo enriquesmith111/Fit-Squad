@@ -9,7 +9,7 @@ require 'faker'
 
 
 #heroku DATABASE reset commands
-#heroku pg:reset DATABASE 
+#heroku pg:reset DATABASE
 #heroku run rails db:migrate
 #heroku run rails db:seed
 
@@ -117,6 +117,45 @@ puts "-----------------------------------------------"
 
 
 
+puts "-----------------------------------------------"
+puts "Creating our personal accounts"
+    enrique = User.create!(
+        name: "Enrique",
+        email: "enrique@gmail.com",
+        password: "123456",
+        avatar: "Enrique.jpg"
+)
+p " Created personal User #{User.last.name}"
+
+puts "Creating our personal accounts"
+    ahmed = User.create!(
+        name: "Ahmed",
+        email: "ahmed@gmail.com",
+        password: "123456",
+        avatar: "Ahmed.jpg"
+)
+p " Created personal User #{User.last.name}"
+
+puts "Creating our personal accounts"
+    anam = User.create!(
+        name: "Anam",
+        email: "anam@gmail.com",
+        password: "123456",
+        avatar: "Anam.jpg"
+)
+p " Created personal User #{User.last.name}"
+
+puts "Creating our personal accounts"
+    daniel = User.create!(
+        name: "Daniel",
+        email: "daniel@gmail.com",
+        password: "123456",
+        avatar: "Daniel.jpg"
+)
+p " Created personal User #{User.last.name}"
+
+
+
 
 puts "-----------------------------------------------"
 (1..13).each do |i|
@@ -139,7 +178,7 @@ puts "-----------------------------------------------"
             group_id: @group_id,
             user_id: rand(1..100)
         )
-        puts "#{i + 1} Created G Participant with id #{@participant.user_id} for Group #{i + 1} "
+        puts "#{i + 1} Created personal G Participant with id #{@participant.user_id} for Group #{i + 1} "
     end
 
 
@@ -184,122 +223,3 @@ puts "-----------------------------------------------"
     puts "-----------------------------------------------"
 
 end
-
-
-
-
-
-
-
-#     13.times do |i|
-#         i + 1
-#         (rand(6..12)).times do |g|
-#         @participant = GroupParticipant.create!(
-#             group_id: i + 1,
-#             user_id: rand(1..100)
-#         )
-#         puts "#{i + 1} Created G Participant with id #{@participant.user_id} for Group #{i + 1} "
-#     end
-#         p "Group #{i + 1} creating event participant"
-#         (rand(4..8)).times do |e|
-#         e + 1
-#         EventParticipant.create!(
-#             event_id: @event.id,
-#             user_id: GroupParticipant.where(group_id: i + 1)[rand(0..6)].id
-#         )
-#         p "number #{@event.id} Created E Participant with id #{@participant.user_id} for Event #{i + 1}"
-#         puts "-----------------------------------------------"
-#     end
-# end
-
-
-
-# event1 = Event.create!(
-# name: "Basketball in Waterloo!",
-# description: "first event test",
-# date: Date.today + 2,
-# time: Time.now,
-# address: "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom",
-# activity_id: Activity.first.id,
-# group_id: kevin_basketball.id,
-# event_image: "kevin_basketball_event.jpg"
-# )
-
-# puts "creating events"
-
-
-# activity1 = Activity.create!(
-# name: "basketball"
-# )
-
-# activity2 = Activity.create!(
-# name: "football"
-# )
-
-# activity3 = Activity.create!(
-# name: "swimming"
-# )
-
-# activity4 = Activity.create!(
-#     name: "swimming"
-# )
-
-# activity5 = Activity.create!(
-#     name: "swimming"
-# )
-
-
-
-# kevin = User.create!(
-# email: "user1@gmail.com",
-# password: "123456",
-# name: "Kevin",
-# avatar: "kevin_avatar.jpg"
-# )
-
-# linda = User.create!(
-# email: "user2@gmail.com",
-# password: "123456",
-# name: "Linda",
-# avatar: "linda_avatar.jpg",
-# )
-
-
-# kevin_basketball = Group.create!(
-# name: "Kevin's Basketball Squad",
-# description: "first group test",
-# city: "London",
-# user_id: kevin.id,
-# group_image: "kevin_basketball.jpg"
-# )
-
-# linda_pilates = Group.create!(
-# name: "Linda Pilates",
-# description: "second group test",
-# city: "London",
-# user_id: linda.id,
-# group_image: "linda_pilates.jpg"
-# )
-
-
-# event1 = Event.create!(
-# name: "Basketball in Waterloo!",
-# description: "first event test",
-# date: Date.today + 2,
-# time: Time.now,
-# address: "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom",
-# activity_id: Activity.first.id,
-# group_id: kevin_basketball.id,
-# event_image: "kevin_basketball_event.jpg"
-# )
-
-# event2 = Event.create!(
-# name: "Pilate day with Linda",
-# description: "second event test",
-# date: Date.today + 3,
-# time: Time.now,
-# address: "Westminster Abbey, 20 Dean's Yard, London, England SW1A 0AA, United Kingdom",
-# activity_id: Activity.second.id,
-# group_id: linda_pilates.id,
-# event_image: "linda_pilates_event.jpg"
-# )
