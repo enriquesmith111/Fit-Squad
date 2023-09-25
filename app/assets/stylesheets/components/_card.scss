@@ -1,13 +1,10 @@
-
-$transition-time: 0.7s;
+$transition-time: 0.8s;
 
 .event-card{
     flex-shrink: 0;
     position: relative;
     width: 350px;
     height: 350px;
-    margin: 10px 0 ;
-    transition: ease all $transition-time;
     perspective: 1200px;
     &:hover{
         .cover{
@@ -18,27 +15,17 @@ $transition-time: 0.7s;
             &:after{
                 background-color: black;
             }
-            // h1{
-            //  transform: translateZ(100px);
-            // }
-            // .price{
-            //  transform: translateZ(60px);
-            // }
-            // a{
-            //  transform: translateZ(-60px) rotatey(-180deg);
-            // }
-            // p{
-            //  transform: translateZ(-60px) rotatey(-180deg);
-            // }
         }
     }
 
     .cover{
-        position: absolute;
+        display: grid;
+        grid-template-rows: auto auto 30px 30px;
+        position: relative;
         height: 100%;
         width: 100%;
         transform-style: preserve-3d;
-    transition: ease all $transition-time;
+        transition: ease all $transition-time;
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -46,133 +33,126 @@ $transition-time: 0.7s;
         &:before{
             content: '';
             position: absolute;
-            border: 5px solid rgba(255, 255, 255, 1);
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            border: 5px solid white;
+            // margin: 6%;
+            top: 6%;
+            bottom: 6%;
+            right: 6%;
+            left: 6%;
+            height: 88%;
+            width: 88%;
             box-shadow: 0 0 12px rgba(0,0,0,.3);
-            top:20px;
-            left:20px;
-            right:20px;
-            bottom:20px;
             z-index: 2;
             transition: ease all $transition-time;
             transform-style: preserve-3d;
             transform: translateZ(0px);
         }
-        &:after{
-            content: '';
-            position: absolute;
-            top:0px;
-            left:0px;
-            right:0px;
-            bottom:0px;
-            z-index: 2;
-            transition: ease all 1.3s;
-            // background: rgba(0,0,0,.1);
-        }
 
-        .event-card-title{
-            font-weight: 600;
-            position: absolute;
-            bottom: 52px;
-            left: 31px;
-            color: white;
+        .card-address-wrapper{
+            display: flex;
+            grid-row: 1;
+            margin-top: 7.5%;
+            margin-left: 7.5%;
+            margin-right: 25%;
+            width: -moz-fit-content;
+            width: fit-content;
+            height: fit-content;
+            background-color: white;
             transform-style: preserve-3d;
-        transition: ease all $transition-time;
-            z-index:3;
-            font-size: 32px;
-            transform: translateZ(17px);
-            padding: 10px 40px 10px 10px;
-            text-shadow: 0 0 12px rgba(0,0,0,.3);
-
-        }
-        .card-time-date{
-            font-weight: 200;
-            position: absolute;
-            bottom: 28px;
-            left: 43px;
-            color: rgba(255,255,255,.5);
-            transform-style: preserve-3d;
-        transition: ease all $transition-time;
-            z-index:4;
-            font-size: 23px;
-            transform: translateZ(0px);
-        }
-
-        .card-address{
-            position: fixed;
-            background-color: rgba(255,255,255,1);
-            bottom: 280px;
-            left: 23px;
-            transform-style: preserve-3d;
-        // transition: ease all $transition-time;
-            font-weight: 600;
-            font-size: 20px;
-            color: rgb(0, 0, 0);
+            transition: transform $transition-time;
             transform: translateZ(15px);
-            padding: 1.8% 7% 2% 2%;
+            z-index: 2;
             &:before{
                 content: '';
-                position: fixed;
                 z-index: 2;
-                transition: ease all $transition-time;
+                transition: transform $transition-time;
                 transform-style: preserve-3d;
                 transform: translateZ(0px);
             }
-            &:after{
-                content: '';
-                position: fixed;
-                z-index: 2;
-                transition: ease all 1.3s;
-            }
+            // &:after{
+            //     content: '';
+            //     // position: fixed;
+            //     z-index: 2;
+            //     transition: ease all 1.3s;
+            // }
         }
 
+        .card-address {
+            overflow-wrap: inherit;
+            font-weight: 600;
+            font-size: 20px;
+            padding: 7px 23px 0px 8px;
+
+        }
+
+        .event-card-title{
+            grid-row: 2;
+            height: auto;
+            font-weight: 600;
+            display: flex;
+            align-items: flex-end; // this provides automatic margin-bottom
+            margin: 0; // this pushes it down ignoring that margin
+            color: white;
+            transform-style: preserve-3d;
+        // transition: ease all $transition-time;
+            z-index:3;
+            font-size: 32px;
+            transform: translateZ(17px);
+            padding: 0px 40px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 12px rgba(0,0,0,.7);
+
+        }
+        .card-time-date{
+            grid-row: 3;
+            font-weight: 200;
+            padding: 0px 42px;
+            color: rgba(255, 255, 255, 0.6);
+            transform-style: preserve-3d;
+            transform: translateZ(17px);
+        transition: transform $transition-time;
+            z-index:4;
+            font-size: 22px;
+            text-shadow: 0 0 12px rgba(0,0,0,.7);
+        }
 
     }
     .card-back{
         position: absolute;
+        display: grid;
+        grid-template-rows: 23% 10% 37% 8% auto;
+        grid-template-columns: 100% 0;
         height: 100%;
         width: 100%;
         background: #ffffff;
         transform-style: preserve-3d;
-    transition: ease all $transition-time;
+    transition: transform $transition-time;
         transform: translateZ(-1px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
         &:before{
             content: '';
+            display: grid;
             position: absolute;
             border: 3px solid rgba(0, 0, 0,.5);
-            top:10px;
-            left:10px;
-            right:10px;
-            bottom:10px;
+            top: 3%;
+            left: 3%;
+            right: 3%;
+            bottom: 3%;
             z-index: 2;
-        }
-        .card-join-button{
-            position: sticky;
-            transform-style: preserve-3d;
-            transition: ease transform 1.3s, ease background 0.5s;
-            transform: translateZ(-30px) rotateY(-180deg);
-            background: transparent;
-            border: 1px solid black;
-            font-weight: 200;
-            font-size: 18px;
-            color: black;
-            padding: 4px 32px;
-            margin: 240px 5px 5px 5px;
-            text-decoration: none;
-            &:hover{
-                background-color: rgb(0, 0, 0);
-                color: #ffffff;
-            }
         }
 
         .event-card-host {
-            width: 300px;
+            grid-row: 1;
+            padding: 6% 6% 0px 8%;
             transform: translateZ(0px) rotateY(-180deg);
-            position: fixed;
-            bottom: 270px;
-            left: 26px;
+            // position: fixed;
+            // bottom: 270px;
+            // left: 160px;
             font-size: 16px;
             display: -webkit-inline-box;
         }
@@ -182,24 +162,28 @@ $transition-time: 0.7s;
 
 
         .event-card-title-back {
+            // background-color: red;
+            grid-row: 2;
             color: #0b0f08;
             transform: translateZ(0px) rotateY(-180deg);
-            position: fixed;
-            bottom: 196px;
-            left: 3px;
+            height: fit-content;
             font-size: 20px;
             font-weight: 550;
-            padding: 32px 30px;
+            padding: 2% 9%;            
             width: -moz-max-content;
             width: inherit;
         }
         .event-card-description-box{
-            width: 290px;
-            height: 90px;
+            // background-color: blue;
+            grid-row: 3;
+            width: 100%;
+            height: 89%;
+            padding: 1% 9%;
+            // padding-left: 39px;
             // background-color: aqua;
-            position: fixed;
-            left: 32px;
-            bottom: 137px;
+            // position: fixed;
+            // left: 32px;
+            // bottom: 137px;
         }
         .event-card-description {
             transform: rotateY(-180deg);
@@ -213,13 +197,43 @@ $transition-time: 0.7s;
             overflow: hidden;
         }
         .event-card-participants {
-            position: fixed;
-            right: 32px;
-            bottom: 76px;
+            grid-row: 4;
+            // position: fixed;
+            // right: 32px;
+            // bottom: 76px;
             transform: rotateY(-180deg);
             font-size: 15px;
             font-weight: 500;
             color: grey;
+            padding-left: 30px;
+            height: fit-content;
+        }
+
+        .event-card-buttons {
+            grid-row: 5;
+            transform: translateZ(-30px) rotateY(-180deg);
+            transform-style: preserve-3d;
+            display: flex;
+            justify-content: flex-start;
+            padding: 0px 36px 0px 36px;
+        }
+
+        .card-join-button{
+            // position: absolute;
+            // transition: ease transform 1.3s, ease background 0.5s;
+            height: fit-content;
+            background: transparent;
+            border: 1px solid black;
+            font-weight: 200;
+            font-size: 18px;
+            color: black;
+            // padding: 4px 23px;
+            // margin: 5px 5px 5px 5px;
+            text-decoration: none;
+            &:hover{
+                background-color: rgb(0, 0, 0);
+                color: #ffffff;
+            }
         }
     }
 }
