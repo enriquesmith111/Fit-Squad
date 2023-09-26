@@ -7,7 +7,15 @@
       <%else%>
         <%= image_tag @event.group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %>
       <%end%>
-      <h2>Hosted by <%= @event.group.user.name %> </h2>
+      <div class="action-button">
+        <div id="group-index-above-group-right-section-buttons">
+          <div class="button-container">
+          <a href="<%= group_path(@group) %>" class="action-button">Hosted by  <%= @event.group.user.name %> </a>
+          <%link_to group_path(@group) %>
+            <div class="white-border-effect"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="event-show-participants">
       <% @event_participants.each do |participant| %>
@@ -32,19 +40,19 @@
           <%=image_tag @event.event_image, width: 500, height: 350 %>
         <% else %>
           <%= image_tag eval(@event.event_image)["url"], width: 300, height: 200 %>
-        <% end %>      
-      </div>      
-      <div id="event-show-left-section-name-timedate-and-button">    
-      <div id="event-show-left-section-name-timedate">  
+        <% end %>
+      </div>
+      <div id="event-show-left-section-name-timedate-and-button">
+      <div id="event-show-left-section-name-timedate">
         <div id="event-show-left-section-name">
           <h2><%= @event.name %></h2>
-        </div>      
+        </div>
         <div id="event-show-left-section-time-date">
             <% date = @event.date %>
             <% time = @event.time %>
-            <h4><%= Time.parse(date.strftime("%Y-%m-%d")).strftime("%d/%m/%y") %>   <%= Time.parse(time.strftime("%I:%M%P")).strftime("%I:%M%P") %></h4>  
+            <h4><%= Time.parse(date.strftime("%Y-%m-%d")).strftime("%d/%m/%y") %>   <%= Time.parse(time.strftime("%I:%M%P")).strftime("%I:%M%P") %></h4>
         </div>
-        <div id="event-show-event-participant-count"> 
+        <div id="event-show-event-participant-count">
           <h5> <%= @event_participants.count  %> Squad members participating</h5>
         </div>
       </div>
@@ -66,7 +74,7 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
     </div>
-    
+
 
     <div id="event-show-chatroom-input-right-section-">
       <h2>Event Chatroom for <%= @chatroom.name %></h2>
@@ -85,7 +93,7 @@
     <div id="event-show-chatroom-right-section">
       <%= render partial: 'chatrooms/show', locals: { event: @event } %>
     </div>
-        
+
     </div>
   </div>
 </div>
