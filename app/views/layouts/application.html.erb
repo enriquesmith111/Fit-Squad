@@ -15,16 +15,17 @@
   * {
     border: 1px solid red
   }
-  
+
   </style> %>
 
 
   </head>
-  <body style="max-height: 100vh;">
+  <body>
     <%= render "shared/navbar" %>
+    <%# <div style="min-height: 100vh;"></div> %>
     <%= yield %>
+    <%= render "shared/footer" %>
     <%= render "shared/flashes" %>
   </body>
-    <%= render "shared/footer" %>
 
 </html>
