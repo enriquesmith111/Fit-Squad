@@ -27,10 +27,11 @@
 
         <div class="right-side-container">
             <div class="quote-container">
-      <h2>Upcoming Events</h2></div>
+      <h2>Upcoming Events for <%= @query %></h2>
+      </div>
             <br class="block-space">
             <% if @events.empty? %>
-                <p class="no-events-msg">No events found for this date :(</p>
+                <p class="no-events-msg">No events found for your search query :(</p>
             <% else %>
                 <div class="event-cards-grid">
                     <%= render partial: 'events/display' %>
