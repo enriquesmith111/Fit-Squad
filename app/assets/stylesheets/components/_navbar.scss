@@ -6,6 +6,64 @@
     padding: 0px 0; /* Adjust the top and bottom padding as needed */
   }
 
+.container-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 18% 40% 31% 11%;
+}
+
+//home button
+
+.fit-squad-home {
+  grid-column: 1;
+  margin: 10px 10px 0 30px;  
+  height: 102px;
+}
+
+.logo-image {
+  width: 200px;
+  transition: width 0.3s ease-in-out;
+  &:hover {
+      width: 198px;
+  }
+}
+
+.logo-container {
+  width: 200px;
+  height: 100%;
+  position: relative;
+  perspective: 1200px;
+}
+
+.logo-container .border-effect {
+  position: absolute;
+  top: 15%;
+  left: 2.5%;
+  right: 0.5%;
+  bottom: 15%;
+  border: 3px solid transparent;
+  transform: translateZ(60px);
+  transition: top 0.6s ease-in-out, left 0.6s ease-in-out, right 0.6s ease-in-out, bottom 0.6s ease-in-out, border-width 0.6s ease-in-out, border-color 0.6s ease-in-out;
+  pointer-events: none; /* Prevents the border from blocking interactions with the image */
+}
+
+.logo-container:hover .border-effect {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+  border-width: 4px; /* Expanded border width on hover */
+  border-color: white; /* Border color on hover */
+  transform: translateZ(60px); /* 3D effect */
+}
+
+.nav-search-bar {
+  grid-column: 2;
+  justify-content: center;
+  margin: 40px;
+}
+
   /* Custom styles for the search bar */
   .custom-search-input {
     width: 100%; /* Fill the available width */
@@ -15,7 +73,7 @@
   
   /* Custom styles for the search button */
   .custom-search-button {
-    background-color: #007bff; /* Change the background color to your desired color */
+    background-color: #2DBCD3; /* Change the background color to your desired color */
     border: none; /* Remove the border */
     color: #fff; /* Change the text color */
     border-radius: 5px; /* Add rounded corners */
@@ -24,18 +82,18 @@
   
   /* Hover and active states for the button */
   .custom-search-button:hover {
-    background-color: #0056b3; /* Change the background color on hover */
+    background-color: #baedf5; /* Change the background color on hover */
   }
   
-  .nav-link {
-    margin-top: 13px;
-    color: white;
-    font-size: 23px;
-  }
+  // .nav-link {
+  //   margin-top: 13px;
+  //   color: white;
+  //   font-size: 23px;
+  // }
 
-  .nav-link:hover {
-    color: grey;
-  }
+  // .nav-link:hover {
+  //   color: grey;
+  // }
 
   /* Responsive styles */
   @media (max-width: 768px) {
@@ -43,11 +101,150 @@
       margin-right: 10px; /* Add some spacing to the right of the toggler */
     }
   }
+//this is the li
+
+.menu {
+  grid-column: 3;
+  // display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.dropdown-container {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+//Navbar buttons
+
+.bb_button__text {
+  font-size: 17px;
+  line-height: fit-content;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  padding: 0 1em;
+  z-index: 2;
+  opacity: .8;
+  transition: opacity .3s ease;
+}
+
+.bb_button:hover .bb_button__text {
+opacity: 1;
+}
+
+.bb_button {
+  border: 2.5px solid #ffffffe7;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  margin: 7%;
+  padding: 3%;
+}
+
+.bb_button:before, .bb_button:after {
+  content: '';
+  background: #000000;
+  position: absolute;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+.bb_button--side-ver:before {
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+}
+.bb_button--side-ver:hover:before {
+  top: 60px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+}  
+
+//dropdown menus
+
+  .dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: #000000;
+  position: relative;
+  font-size: 18px;
+  perspective: 1000px;
+  z-index: 100;
+    &:hover {
+      // background: #2980b9;
+      cursor: pointer;
+    } 
+    &:hover .dropdown_menu li {
+      display: block;
+    }
+}
+.dropdown_menu {
+  position: absolute;
+  top: 104%;
+  left: -3px;
+  width: 104.5%;
+  perspective: 1000px;
+  z-index: -1;
+  padding: 0;
+  li {
+    display: none;
+    color: black;
+    background-color: #ffffffe7;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    opacity: 0;
+      &:hover {
+        background-color: #9ddee8;
+      }
+    }
+}
+
+
+.dropdown_menu-2 { 
+
+  @for $num from 1 through 3 { 
+    .dropdown_item-#{$num} { 
+    transform-origin: top center; 
+    animation: rotateX 300ms #{$num * 120ms} ease-in-out forwards; 
+    } 
+  } 
+} 
+    
+@keyframes rotateX { 
+  0% { 
+  opacity: 0; transform: rotateX(-90deg); 
+  } 
+
+  50% { 
+  transform: rotateX(-20deg); 
+  } 
+  
+  100% { 
+  opacity: 1; 
+  transform: rotateX(0deg); 
+  } 
+}
+
+.navbar-avatar {
+  grid-column: 4;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;}
+
   /* Custom CSS for the dropdown */
   .custom-dropdown {
     z-index: 2;
     position: relative;
     display: inline-block;
+    // visibility: hidden;
+    // transition: visibility 1s;
   }
   
   .custom-dropdown-content {
@@ -55,10 +252,12 @@
     right: -60%;
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9ce;
     min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    // visibility: hidden;
+    // transition: visibility 1s;
   }
   
   .custom-dropdown-content a {
@@ -67,16 +266,22 @@
     display: block;
     color: #333;
     text-decoration: none;
+    // visibility: hidden;
+    // transition: all 0s;
   }
   
   .custom-dropdown-content a:hover {
     z-index: 2;
-    background-color: #443e3e;
+    background-color: #2DBCD3;
+    // visibility: visible;
+    // transition-delay: 0.5s;
   }
   
   .custom-dropdown:hover .custom-dropdown-content {
     z-index: 2;
     display: block;
+    // visibility: visible;
+    // transition-delay: 1s;
   }
   
   .navbar-nav.ml-auto.d-flex.flex-row {
