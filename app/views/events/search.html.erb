@@ -1,26 +1,102 @@
+<div class="">
+    <div class="events-container">
+        <div class="left-side-container">
+    <div class="quote-container">
 
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<div class="events-calendar-container">
-  <form class="events-calendar" action="/events" method="get">
-    <input type="date" name="date">
-    <input type="submit" value="Filter">
-    <%= link_to "Reset Filter", events_path %>
-  </form>
-  <h1 class="events-index">Events</h1>
-</div>
-
-<div class="events-container">
-    <div class="events-map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        <p>"Coming together is a beginning; keeping together is progress; working together is success."</p>
+        <p class="quote-attribution">- Henry Ford</p>
     </div>
-          <% if @events.empty? %>
-            <h1><%= "No events found for this date :(" %></h1>
-          <% else %>
-              <div class="event-cards-grid">
-                    <%= render partial: 'events/display' %>
-              </div>
-          <% end %>
+        <div class="block-space"></div>
+        <div class="events-map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+        <div class="block-space"></div>
+        <div class="quote-container">
+            <p>"Your body is your most priceless possession; you've got to take care of it!"</p>
+        <p class="quote-attribution">- Arnold Schwarzenegger</p>
+        </div>
+        <br class="block-space">
+        <div class="quote-container">
+    <p>"I can accept failure, everyone fails at something. But I can't accept not trying."</p>
+    <p class="quote-attribution">- Michael Jordan</p>
 </div>
+        </div>
+
+        <div class="right-side-container">
+            <div class="quote-container">
+      <h2>Upcoming Events</h2></div>
+            <br class="block-space">
+            <% if @events.empty? %>
+                <p class="no-events-msg">No events found for this date :(</p>
+            <% else %>
+                <div class="event-cards-grid">
+                    <%= render partial: 'events/display' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</div>
+<style>
+
+
+.events-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+.left-side-container {
+    flex: 1;
+}
+
+.right-side-container {
+    flex: 1;
+    text-align: center;
+    margin-left: 2%;
+    margin-bottom: 1%;
+}
+
+
+.events-index {
+    font-size: 24px;
+}
+
+.no-events-msg {
+    font-style: italic;
+    color: #999;
+}
+
+.events-map {
+    width: 100%;
+    max-width: 800px;
+    max-height: 400px;
+    /* Add any additional map styles here */
+}
+
+.quote-container {
+    background-color: rgba(45, 188, 211, 0.2); /* Background color with 70% opacity */
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quote-container p {
+    margin: 0; /* Remove default margin */
+}
+
+.quote-attribution {
+    text-align: right; /* Align the attribution text to the right */
+    font-style: italic; /* Optionally, you can style the attribution text */
+    color: #888; /* Optionally, set the color */
+}
+
+.block-space{
+  height: 20px;
+  width: 30px;
+  /* background-color: blue; */
+}
+</style>
