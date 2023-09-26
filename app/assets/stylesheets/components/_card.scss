@@ -5,6 +5,7 @@ $transition-time: 0.8s;
     position: relative;
     width: 350px;
     height: 350px;
+    font-size: 35px;
     perspective: 1200px;
     &:hover{
         .cover{
@@ -83,7 +84,7 @@ $transition-time: 0.8s;
         .card-address {
             overflow-wrap: inherit;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 0.55em;;
             padding: 7px 23px 0px 8px;
 
         }
@@ -99,7 +100,7 @@ $transition-time: 0.8s;
             transform-style: preserve-3d;
         // transition: ease all $transition-time;
             z-index:3;
-            font-size: 32px;
+            font-size: 0.95em;
             transform: translateZ(17px);
             padding: 0px 40px;
             margin-bottom: 5px;
@@ -115,7 +116,7 @@ $transition-time: 0.8s;
             transform: translateZ(17px);
         transition: transform $transition-time;
             z-index:4;
-            font-size: 22px;
+            font-size: 0.65em;
             text-shadow: 0 0 12px rgba(0,0,0,.7);
         }
 
@@ -153,7 +154,7 @@ $transition-time: 0.8s;
             // position: fixed;
             // bottom: 270px;
             // left: 160px;
-            font-size: 16px;
+            font-size: 0.5em;
             display: -webkit-inline-box;
         }
         .event-card-host    .avatar {
@@ -167,7 +168,7 @@ $transition-time: 0.8s;
             color: #0b0f08;
             transform: translateZ(0px) rotateY(-180deg);
             height: fit-content;
-            font-size: 20px;
+            font-size: 0.6em;
             font-weight: 550;
             padding: 2% 9%;            
             width: -moz-max-content;
@@ -186,6 +187,7 @@ $transition-time: 0.8s;
             // bottom: 137px;
         }
         .event-card-description {
+            font-size: 0.45em;
             transform: rotateY(-180deg);
             overflow: hidden;
             white-space: inherit;
