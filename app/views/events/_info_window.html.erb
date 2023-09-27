@@ -1,6 +1,6 @@
 <% if EventParticipant.exists?(user_id: current_user.id, event_id: event.id) %>
 
-  <div class="event-card">
+  <div class="event-card" style= "height: 280px; width: 280px; font-size: 28px;">
   <%# front of the card %>
     <% if event.event_image.end_with?("jpg") %>
       <div class="cover" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.9)80%), url(<%= image_url(event.event_image) %>)">
@@ -72,7 +72,7 @@
     <%= f.hidden_field :event_id, value: event.id, class: 'card-join-hidden' %>
 
 
-  <div class="event-card">
+  <div class="event-card" style= "height: 280px; width: 280px; font-size: 28px;">
   <%# front of the card %>
     <% if event.event_image.end_with?("jpg") %>
       <div class="cover" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0)40%, rgba(0, 0, 0, 0.9)80%), url(<%= image_url(event.event_image) %>)">
