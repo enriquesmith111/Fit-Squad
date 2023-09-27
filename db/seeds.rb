@@ -188,7 +188,7 @@ puts "-----------------------------------------------"
         (1..@num).each do |i|
             @event_id = i
             date = Date.today + rand(1..30)
-            time = Time.now
+            time = Time.now.round + rand(3600..(3600*9))
             hour = time.hour
             minute = time.min
             second = time.sec
@@ -203,7 +203,7 @@ puts "-----------------------------------------------"
                 address: location,
                 name: name,
                 date: date,
-                time: Time.now,
+                time: time,
                 activity_id: @activity.id,
                 event_image: "#{@activity.name}_event#{(rand(1..3))}.jpg",
                 description: "Join us for a day of fun and excitement at the #{name}! This event is for all ages and skill levels, so whether you're a seasoned athlete or just starting out, we're sure you'll have a great time. We'll have a variety of activities to choose from. There will also be food, drinks, and music, so you can relax and refuel after a day of fun. The event will take place on #{date} at #{time_string} at #{location}. Registration is required, so please sign up today! We hope to see you there!"
