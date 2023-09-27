@@ -45,7 +45,7 @@
 <style>
 .events-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     padding: 20px;
     gap: 20px;
@@ -61,7 +61,7 @@
     text-align: center;
     margin-left: 2%;
     margin-bottom: 1%;
-}
+} */
 
 
 .events-index {
@@ -96,6 +96,13 @@
     text-align: right; /* Align the attribution text to the right */
     font-style: italic; /* Optionally, you can style the attribution text */
     color: #888; /* Optionally, set the color */
+}
+
+.events-calendar-position {
+  position: relative; /* Makes the element fixed */
+  left: 3%; /* Sets the left position */
+  top: 3%; /* Sets the top position */
+  z-index: 10; /* Adjust the stacking order as needed */
 }
 
 .block-space{
