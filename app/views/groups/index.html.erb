@@ -58,7 +58,9 @@
             <%if group &&  group.user_id == current_user.id %>
               <%= link_to 'You are the Squad leader', group_path(group) %>
             <%else%>
-              <%= link_to 'More Details', group_path(group) %>
+              <div class="more-details" id="groups-details">
+                <%= link_to 'More Details', group_path(group) %>
+              </div>                 
             <% end %>
           </div>
             <% if group.group_image.end_with?("jpg") %>
