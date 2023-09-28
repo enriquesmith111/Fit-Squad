@@ -95,6 +95,27 @@ pilates = Activity.create!(
 )
 p "Created #{pilates.name}"
 
+climbing = Activity.create!(
+    name: "Climbing"
+)
+p "Created #{climbing.name}"
+
+cricket = Activity.create!(
+    name: "Cricket"
+)
+p "Created #{cricket.name}"
+
+yoga = Activity.create!(
+    name: "Yoga"
+)
+p "Created #{yoga.name}"
+
+hiit = Activity.create!(
+    name: "Hiit"
+)
+p "Created #{hiit.name}"
+
+
 
 
 
@@ -158,10 +179,10 @@ p " Created personal User #{User.last.name}"
 
 
 puts "-----------------------------------------------"
-(1..13).each do |i|
+(1..17).each do |i|
     puts "Creating Group with Events"
     @group_id = i
-    @num = (rand(5..10))
+    @num = (rand(7..12))
     user = User.find(i)
     user_id = User.find(i).id
     @activity = Activity.find(i)
@@ -188,13 +209,13 @@ puts "-----------------------------------------------"
         (1..@num).each do |i|
             @event_id = i
             date = Date.today + rand(1..30)
-            time = Time.now
+            time = Time.now.round + rand(3600..(3600*9))
             hour = time.hour
             minute = time.min
             second = time.sec
             time_string = " at #{hour}:#{minute}:#{second}"
-            locations = ["Belgrave Square, Belgrave Sq, London, England SW1X 8PZ, United Kingdom", "Battersea Power Station, 188 Kirtling St, London, England SW11 8BZ, United Kingdom", "Westminster Bridge, Westminster Bridge Rd., London, England SW1A 2LW, United Kingdom", "Battersea Park, Albert Bridge Rd, London, England SW11 4NJ, United Kingdom", "Clapham Common West Side, London, England SW4 9BB, United Kingdom", "Richmond Park, Sawyer's Hill, Richmond, England TW10 5HZ, United Kingdom", "Primrose Hill, NW3 3AU, Camden, London, Greater London, England, United Kingdom", "Hoxton, N1 6TJ, Hackney, London, Greater London, England, United Kingdom", "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom", "Kensington Gardens, Kensington Rd, London, England W2 3XA, United Kingdom", "Hammersmith, W6 9YA, Hammersmith and Fulham, London, Greater London, England, United Kingdom", "Westfield, Ariel Way, London, England W12 7FL, United Kingdom", "Hampstead, NW3 1TR, Camden, London, Greater London, England, United Kingdom", "Stratford, E15 4PG, Newham, London, Greater London, England, United Kingdom", "Pimlico Academy, Lupus St., London, England SW1V 3AP, United Kingdom", "Croydon Rd, Beckenham, England BR3 3FD, United Kingdom", "Wapping Old Stairs, London, England E1W 2PN, United Kingdom", "Brixton, SW2 1SS, Lambeth, London, Greater London, England, United Kingdom", "Canary Wharf College, London, England E14 3BA, United Kingdom", "Shoreditch House, Ebor Street, London, England E1 6AW, United Kingdom", "Paddington St, London, England W1U 4EG, United Kingdom", "Wimbledon, SW19 7NL, Merton, London, Greater London, England, United Kingdom", "Putney Hill, Putney Hill, London, England SW15 6RU, United Kingdom", "Chelsea Harbour, Chelsea Harbour, London, England SW10 0XB, United Kingdom", "Lewisham Town Hall, Catford Rd, London, England SE6 9SF, United Kingdom", "Camden Town, NW1 9PJ, Camden, London, Greater London, England, United Kingdom", "Chiswick Mall, London, England W4 2PR, United Kingdom", "Kingston upon Thames, Greater London, England, United Kingdom"]
-            location = locations[rand(0..27)]
+            locations = ["Belgrave Square, Belgrave Sq, London, England SW1X 8PZ, United Kingdom", "Battersea Power Station, 188 Kirtling St, London, England SW11 8BZ, United Kingdom", "Westminster Bridge, Westminster Bridge Rd., London, England SW1A 2LW, United Kingdom", "Battersea Park, Albert Bridge Rd, London, England SW11 4NJ, United Kingdom", "Clapham Common West Side, London, England SW4 9BB, United Kingdom", "Richmond Park, Sawyer's Hill, Richmond, England TW10 5HZ, United Kingdom", "Primrose Hill, NW3 3AU, Camden, London, Greater London, England, United Kingdom", "Hoxton, N1 6TJ, Hackney, London, Greater London, England, United Kingdom", "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom", "Kensington Gardens, Kensington Rd, London, England W2 3XA, United Kingdom", "Hammersmith, W6 9YA, Hammersmith and Fulham, London, Greater London, England, United Kingdom", "Westfield, Ariel Way, London, England W12 7FL, United Kingdom", "Hampstead, NW3 1TR, Camden, London, Greater London, England, United Kingdom", "Stratford, E15 4PG, Newham, London, Greater London, England, United Kingdom", "Pimlico Academy, Lupus St., London, England SW1V 3AP, United Kingdom", "Croydon Rd, Beckenham, England BR3 3FD, United Kingdom", "Wapping Old Stairs, London, England E1W 2PN, United Kingdom", "Brixton, SW2 1SS, Lambeth, London, Greater London, England, United Kingdom", "Canary Wharf College, London, England E14 3BA, United Kingdom", "Shoreditch House, Ebor Street, London, England E1 6AW, United Kingdom", "Paddington St, London, England W1U 4EG, United Kingdom", "Wimbledon, SW19 7NL, Merton, London, Greater London, England, United Kingdom", "Putney Hill, Putney Hill, London, England SW15 6RU, United Kingdom", "Chelsea Harbour, Chelsea Harbour, London, England SW10 0XB, United Kingdom", "Lewisham Town Hall, Catford Rd, London, England SE6 9SF, United Kingdom", "Camden Town, NW1 9PJ, Camden, London, Greater London, England, United Kingdom", "Chiswick Mall, London, England W4 2PR, United Kingdom", "Kingston upon Thames, Greater London, England, United Kingdom", "Hackney, Greater London, England, United Kingdom", "Fulham Road/Chelsea & Westminster Hospital Bus Stop HK, Redcliffe Gardens, London, England SW10 9EU, United Kingdom", "Greenwich Meridian, Blackheath Ave, London, England SE10 8XJ, United Kingdom", "Lewisham Clock Tower, Lewisham High St, London, England SE13 6BB, United Kingdom", ""]
+            location = locations[rand(0..31)]
             name = "#{@activity.name} in #{location.to_s.gsub(",", "").split(" ")[0]}!"
             event = "event" + (i).to_s
             @event =
@@ -203,7 +224,7 @@ puts "-----------------------------------------------"
                 address: location,
                 name: name,
                 date: date,
-                time: Time.now,
+                time: time,
                 activity_id: @activity.id,
                 event_image: "#{@activity.name}_event#{(rand(1..3))}.jpg",
                 description: "Join us for a day of fun and excitement at the #{name}! This event is for all ages and skill levels, so whether you're a seasoned athlete or just starting out, we're sure you'll have a great time. We'll have a variety of activities to choose from. There will also be food, drinks, and music, so you can relax and refuel after a day of fun. The event will take place on #{date} at #{time_string} at #{location}. Registration is required, so please sign up today! We hope to see you there!"
