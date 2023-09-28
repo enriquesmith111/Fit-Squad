@@ -18,19 +18,17 @@
 .button-container .black-border-effect {
     display: flex;
     position: absolute;
-    top: 8px;
-    bottom: 8px;
-    left: 38px;
-    right: 38px;
-    // height: 75%;
-    // width: 100%;
+    top: 7px;
+    bottom: 7px;
+    left: 16px;
+    right: 16px;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    border: 1px solid transparent;
+    border: 1px solid grey;
     transform: translateZ(60px);
     transition: box-shadow 0.2s ease-in-out, top 0.2s ease-in-out, left 0.2s ease-in-out, right 0.2s ease-in-out, bottom 0.2s ease-in-out, border-width 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    pointer-events: none; /* Prevents the border from blocking interactions with the image */
+    pointer-events: none;
     z-index: 4;
 }
 
@@ -40,16 +38,17 @@
     align-content: center;
     justify-content: center;
     position: absolute;
-    top: 5px;
-    bottom: 5px;
-    left: 16px;
-    right: 16px;
-    border-width: 2px; /* Expanded border width on hover */
+    top: -5px;
+    bottom: -5px;
+    left: 5px;
+    right: 5px;
+    border-width: 2.5px;
     background-color: transparent;
-    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.1);
-    border-color: #000000;/* Border color on hover */
-    transform: translateZ(60px); /* 3D effect */
+    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px 1px rgba(0, 0, 0, 0.1);
+    border-color: #0000009e;
+    transform: translateZ(60px);
     z-index: 4;
+    border-radius: 2px;
 }
 
 //WHITE BORDER
@@ -57,17 +56,17 @@
 .button-container .white-border-effect {
     display: flex;
     position: absolute;
-    top: 8px;
-    bottom: 8px;
-    left: 38px;
-    right: 38px;
+    top: 7px;
+    bottom: 7px;
+    left: 16px;
+    right: 16px;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    border: 1px solid transparent;
+    border: 1px solid #ffffffad;
     transform: translateZ(60px);
     transition: box-shadow 0.2s ease-in-out, top 0.2s ease-in-out, left 0.2s ease-in-out, right 0.2s ease-in-out, bottom 0.2s ease-in-out, border-width 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    pointer-events: none; /* Prevents the border from blocking interactions with the image */
+    pointer-events: none;
     z-index: 4;
 }
 
@@ -77,17 +76,27 @@
     align-content: center;
     justify-content: center;
     position: absolute;
-    top: 6px;
-    bottom: 6px;
-    left: 16px;
-    right: 16px;
-    border-width: 2px; /* Expanded border width on hover */
-    border-color: #ffffff;/* Border color on hover */
-    transform: translateZ(60px); /* 3D effect */
+    top: -5px;
+    bottom: -4px;
+    left: 4px;
+    right: 4px;
+    border-width: 3px;
+    background-color: transparent;
+    box-shadow: inset 0px 0px 2px 1.5px rgba(95, 95, 95, 0.8), 0px 0.2px 8px 3px #35353547;
+    border-color: #ffffff;
+    transform: translateZ(60px);
     z-index: 4;
+    border-radius: 2px;
 }
 
+.button-container:hover #create-squad-border {
+    top: -7px;
+    bottom: -7px;
+    left: 2px;
+    right: 2px;
+    box-shadow: inset 0px 0px 2px 1.5px rgba(95, 95, 95, 0.5), 0px 0.2px 1px 1px #35353547;
 
+}
 //GROUPS INDEX BUTTONS
 
 
@@ -106,15 +115,16 @@
     flex-wrap: wrap;
     align-content: center;
     z-index: 2;
+    border: 1px solid rgb(179, 179, 179);
     border-radius: 3px;
-    transition: box-shadow 0.2s ease-in-out, font-size 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    &:hover {
-        font-size: 13.8px;
-        text-shadow: inset solid rgba(22, 22, 22, 0.5);
+    transition: all 0.2s ease-in-out;
+}
+.button-container:hover .main-squads-button{
+        font-size: 14.7px;
+        text-shadow: 0px -0.5px rgba(95, 95, 95, 0.5), 1px 1.5px rgba(95, 95, 95, 0.5);
         background-color: rgb(0, 0, 0);
         // box-shadow: 1px 1px 5px black;
     }
-}
     
 .secondary-squads-button {
     font-size: 14px;
@@ -132,12 +142,14 @@
     z-index: 2;
     border: 1px solid rgb(179, 179, 179);
     border-radius: 3px;
-    transition: box-shadow 0.2s ease-in-out, font-size 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    &:hover {
-        font-size: 13.8px;
-        text-shadow: inset solid rgba(22, 22, 22, 0.5);
+    transition: all 0.2s ease-in-out;
+}
+
+.button-container:hover .secondary-squads-button {
+        font-size: 14.7px;
+        // font-weight: 550;
+        text-shadow: 0px -0.5px rgba(22, 22, 22, 0.1), 1px 1.5px rgba(22, 22, 22, 0.1);
         background-color: #ffffff;
-    }
 }
 
 .action-button {
@@ -145,23 +157,24 @@
     background-color: #2DBCD3;
     color: #ffffff;
     text-decoration: none;
+    // font-family: tahoma;
     width: 131px;
-    text-shadow: 0px 1px 1px #002d5238;
-    height: 47px;
+    height: 45px;
     text-align: center;
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     z-index: 2;
-    border: 1px solid #b3b3b3;
+    border: 1px solid rgb(179, 179, 179);
     border-radius: 3px;
-    transition: box-shadow 0.2s ease-in-out, font-size 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    &:hover {
-        font-size: 13.8px;
-        text-shadow: inset solid rgba(22, 22, 22, 0.5);
-        background-color: #3cb7ca;
-    }
+    transition: all 0.2s ease-in-out;
+}
+
+.button-container:hover .action-button {
+    font-size: 14.7px;
+    text-shadow: 0px 0.5px rgba(95, 95, 95, 0.4), 1px 1.5px rgba(95, 95, 95, 0.4);
+    // background-color: rgb(56, 169, 186);
 }
 
 
