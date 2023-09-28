@@ -13,7 +13,7 @@
       </div>
     <% end %>
 <% elsif @existing_participant %>
-<%= link_to "Leave Group", group_group_participant_path(@group, @existing_participant), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
+<%= link_to "Leave Squad", group_group_participant_path(@group, @existing_participant), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
     <% if flash[:notice].present? %>
       <div class="alert alert-success">
       <%= flash[:notice] %>
