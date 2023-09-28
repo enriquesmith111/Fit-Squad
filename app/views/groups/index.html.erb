@@ -7,20 +7,21 @@
     <div id="group-index-above-group-section-buttons">
       <div id="group-index-above-group-left-section-buttons">
           <div class="button-container">
-                <a href="/groups" class="main-squads-button">ALL SQUADS</a>
+                <a href="/groups" class="secondary-squads-button">ALL SQUADS</a>
+                  <div class="black-border-effect"></div>
           </div>
         <% if @my_groups.present? %>
             <div class="button-container">
-              <a href="/my_groups" class="secondary-squads-button">MY SQUADS</a>
-                <div class="black-border-effect"></div>
+              <a href="/my_groups" class="main-squads-button">MY SQUADS</a>
+                  <div class="black-border-effect"></div>
             </div>
         <% end %>
       </div>
       <div class="action-button">
         <div id="group-index-above-group-right-section-buttons">
           <div class="button-container">
-          <a style="z-index: 1;" href="/groups/new" class="action-button">CREATE SQUAD</a>
-            <div class="white-border-effect"></div>
+          <a href="/groups/new" class="action-button">CREATE SQUAD</a>
+            <div id="create-squad-border" class="white-border-effect"></div>
           </div>
         </div>
       </div>
