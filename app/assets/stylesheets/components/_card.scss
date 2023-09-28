@@ -217,8 +217,9 @@ $transition-time: 0.8s;
             transform: translateZ(-30px) rotateY(-180deg);
             transform-style: preserve-3d;
             display: flex;
-            padding: 0px 36px 0px 36px;
-            justify-content: space-around;
+            padding: 2px 24px;
+            justify-content: flex-start;
+            align-items: flex-start;
 
         }
 

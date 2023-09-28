@@ -82,7 +82,7 @@
   
   /* Hover and active states for the button */
   .custom-search-button:hover {
-    background-color: #baedf5; /* Change the background color on hover */
+    background-color: #2f97a8; /* Change the background color on hover */
   }
   
   // .nav-link {
@@ -240,7 +240,7 @@ opacity: 1;
 
   /* Custom CSS for the dropdown */
   .custom-dropdown {
-    z-index: 2;
+    z-index: 10;
     position: relative;
     display: inline-block;
     // visibility: hidden;
@@ -252,7 +252,7 @@ opacity: 1;
     right: -60%;
     display: none;
     position: absolute;
-    background-color: #f9f9f9ce;
+    background-color: #f9f9f9e3;
     min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;

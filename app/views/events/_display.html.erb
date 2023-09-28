@@ -56,8 +56,11 @@
               </div>
 
               <div class="event-card-buttons">
-                <a class="card-join-button" href="<%= group_event_path(event.group_id, event.id) %>">Joined</a>
-                <a class="card-join-button" href="<%= group_event_path(event.group_id, event.id) %>">more details</a>
+              <div class="button-container" id="events-joined">
+                <a href="<%= group_event_path(event.group_id, event.id) %>"><i class="fa-sharp fa-solid fa-heart-pulse fa-beat fa-sm" id="events-card-heart"></i>Joined</a>
+                <div class="black-border-effect" id="events-join-border"></div>
+              </div>
+                <a class="more-details" id="event-more-details"  href="<%= group_event_path(event.group_id, event.id) %>">more details</a>
               </div>
 
             </div>
@@ -129,10 +132,13 @@
               </div>
 
               <div class="event-card-buttons">
-                <button type="submit" class="card-join-button" >
-                  <i class="fa-solid fa-dumbbell" style= "hover:fa-bounce "></i>
-                </button>            
-                <a class="card-join-button" href="<%= group_event_path(event.group_id, event.id) %>">more details</a>
+              <div type="submit" class="button-container">
+              <div class="main-squads-button" id="events-join">
+                <i class="fa-sharp fa-solid fa-heart-pulse fa-beat fa-sm" id="events-card-heart"></i>Join
+                <div class="black-border-effect" id="events-join-border"></div>
+              </div>
+              </div>
+                <a class="more-details" id="event-more-details"  href="<%= group_event_path(event.group_id, event.id) %>">more details</a>
               </div>
 
             </div>
