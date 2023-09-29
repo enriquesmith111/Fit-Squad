@@ -2,6 +2,24 @@
 
 //more details button VVVVVV
 
+#create-event a {
+    text-decoration: none;
+    color: white;
+}
+
+
+#leave-group a {
+    text-decoration: none;
+    color: black;
+}
+
+.button-container:hover #leave-group-border {
+    top: -5px;
+    bottom: -5px;
+    left: 3px;
+    right: 3px;
+}
+
 #groups-details a {
     border: 1px solid black;
     background-color: #efefef;
