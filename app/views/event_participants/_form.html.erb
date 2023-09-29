@@ -1,6 +1,6 @@
 <% if @event.group.user_id == current_user.id %>
   <%# <h2>YOU ARE The President!</h2> %>
-<%= button_to "Delete Event", group_event_path(@group, @event), method: :delete data: { turbo_confirm: 'Are you sure?' } %>
+<%= button_to "Delete Event", group_event_path(@group, @event), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
     <% if flash[:notice].present? %>
       <div class="alert alert-success">
       <%= flash[:notice] %>
@@ -18,7 +18,7 @@
   <div class="secondary-squads-button" id="leave-group">
     <%= link_to "Leave Event", event_participant_path(@event, @existing_participant), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
   </div>  
-    <div class="black-border-effect" id="leave-group-border"></div>
+    <div class="black-border-effect" id=""></div>
   </div>
     <% if flash[:notice].present? %>
       <div class="alert alert-success">
@@ -35,7 +35,11 @@
 <%= form_for [@event, @event, @event_participant] do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :event_id, value: @event.id %>
-  <%= f.submit "Join event" %>
+<div class="button-container">
+    <input class="main-squads-button" id="events-join" type="submit" name="commit" value="Join" data-disable-with="Join">
+    <div class="black-border-effect" id="events-join-border"></div>
+</div>
+
 <% end %>
 
 <% end %>
