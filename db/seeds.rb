@@ -209,13 +209,14 @@ puts "-----------------------------------------------"
         (1..@num).each do |i|
             @event_id = i
             date = Date.today + rand(1..30)
-            time = Time.now.round + rand(3600..(3600*9))
+            rand_time = 3600
+            time = Time.utc(2023,9,30, 9,00,00) + rand(rand_time..(rand_time*12))
             hour = time.hour
             minute = time.min
             second = time.sec
             time_string = " at #{hour}:#{minute}:#{second}"
             locations = ["Belgrave Square, Belgrave Sq, London, England SW1X 8PZ, United Kingdom", "Battersea Power Station, 188 Kirtling St, London, England SW11 8BZ, United Kingdom", "Westminster Bridge, Westminster Bridge Rd., London, England SW1A 2LW, United Kingdom", "Battersea Park, Albert Bridge Rd, London, England SW11 4NJ, United Kingdom", "Clapham Common West Side, London, England SW4 9BB, United Kingdom", "Richmond Park, Sawyer's Hill, Richmond, England TW10 5HZ, United Kingdom", "Primrose Hill, NW3 3AU, Camden, London, Greater London, England, United Kingdom", "Hoxton, N1 6TJ, Hackney, London, Greater London, England, United Kingdom", "Waterloo, SE1 8DF, Southwark, London, Greater London, England, United Kingdom", "Kensington Gardens, Kensington Rd, London, England W2 3XA, United Kingdom", "Hammersmith, W6 9YA, Hammersmith and Fulham, London, Greater London, England, United Kingdom", "Westfield, Ariel Way, London, England W12 7FL, United Kingdom", "Hampstead, NW3 1TR, Camden, London, Greater London, England, United Kingdom", "Stratford, E15 4PG, Newham, London, Greater London, England, United Kingdom", "Pimlico Academy, Lupus St., London, England SW1V 3AP, United Kingdom", "Croydon Rd, Beckenham, England BR3 3FD, United Kingdom", "Wapping Old Stairs, London, England E1W 2PN, United Kingdom", "Brixton, SW2 1SS, Lambeth, London, Greater London, England, United Kingdom", "Canary Wharf College, London, England E14 3BA, United Kingdom", "Shoreditch House, Ebor Street, London, England E1 6AW, United Kingdom", "Paddington St, London, England W1U 4EG, United Kingdom", "Wimbledon, SW19 7NL, Merton, London, Greater London, England, United Kingdom", "Putney Hill, Putney Hill, London, England SW15 6RU, United Kingdom", "Chelsea Harbour, Chelsea Harbour, London, England SW10 0XB, United Kingdom", "Lewisham Town Hall, Catford Rd, London, England SE6 9SF, United Kingdom", "Camden Town, NW1 9PJ, Camden, London, Greater London, England, United Kingdom", "Chiswick Mall, London, England W4 2PR, United Kingdom", "Kingston upon Thames, Greater London, England, United Kingdom", "Hackney, Greater London, England, United Kingdom", "Greenwich Meridian, Blackheath Ave, London, England SE10 8XJ, United Kingdom", "Lewisham Clock Tower, Lewisham High St, London, England SE13 6BB, United Kingdom", ]
-            location = locations[rand(0..31)]
+            location = locations[rand(0..30)]
             name = "#{@activity.name} in #{location.to_s.gsub(",", "").split(" ")[0]}!"
             event = "event" + (i).to_s
             @event =

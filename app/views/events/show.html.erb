@@ -12,7 +12,7 @@
           <div class="button-container">
           <a href="<%= group_path(@group) %>" class="action-button">Hosted by  <%= @event.group.user.name %> </a>
           <%link_to group_path(@group) %>
-            <div class="white-border-effect" id="create-squad-border"></div>
+            <div class="white-border-effect"></div>
           </div>
         </div>
       </div>
@@ -77,9 +77,9 @@
 
 
     <div id="event-show-chatroom-input-right-section-">
-      <h2>Event Chatroom for <%= @chatroom.name %></h2>
+  <h2>Event Chatroom for <%= @chatroom.name %></h2>
   <hr>
-      <%= simple_form_for [@group, @event, @chatroom, @message], url: event_chatroom_messages_path(@event, @chatroom),
+  <%= simple_form_for [@group, @event, @chatroom, @message], url: event_chatroom_messages_path(@event, @chatroom),
     html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
   %>
     <%= f.input :content,
@@ -89,11 +89,15 @@
     %>
     <%= f.submit "Send",style: "height: 4vh;", class: "custom-search-button" %>
   <% end %>
-    </div>
-    <div id="event-show-chatroom-right-section">
-      <%= render partial: 'chatrooms/show', locals: { event: @event } %>
-    </div>
-
-    </div>
+  <div id="event-show-chatroom-right-section">
+    <%= render partial: 'chatrooms/show', locals: { event: @event } %>
   </div>
+
+  <script>
+    Turbo.addEventListener("turbo:submit-end", (event) => {
+      if (event.detail.target.action.includes("/event_chatroom_messages")) {
+        Turbo.renderStream(Turbo.visit(event.detail.target.action))
+      }
+    })
+  </script>
 </div>
