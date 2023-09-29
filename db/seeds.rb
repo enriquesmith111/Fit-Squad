@@ -189,7 +189,7 @@ puts "-----------------------------------------------"
     @group = Group.create!(
         user_id: user_id,
         name: "#{user.name}'s" + " " +  "#{@activity.name} Squad",
-        description: "Are you a #{@activity.name} fan? Join our group and meet other fans in your area! We organize regular events, such as parties, tournaments, and training sessions. It's a great way to make new friends and have fun playing the sport you love. Plus, you'll get the latest news and updates on the #{@activity.name} world.",
+        description: "Are you a #{@activity.name} fan? Join our group and meet other fans in your area! We organize regular events, such as parties, tournaments, and training sessions. It's a great way to make new friends and have fun playing the sport you love. Plus, you'll get the latest news and updates on the #{@activity.name} world. After our events, we often go for a few drinks afterwards to socialize and get to know each other better. We're a friendly and welcoming community, and we'd love to have you join us!.",
         city: "London",
         group_image: "#{@activity.name}_group.jpg",
     )
@@ -219,7 +219,7 @@ puts "-----------------------------------------------"
             location = locations[rand(0..30)]
             name = "#{@activity.name} in #{location.to_s.gsub(",", "").split(" ")[0]}!"
             event = "event" + (i).to_s
-            @event =
+            description = "Join us for a day of fun and excitement at the #{name}! This event is for all ages and skill levels, so whether you're a seasoned athlete or just starting out, we're sure you'll have a great time. We'll have a variety of activities to choose from. There will also be food, drinks, and music, so you can relax and refuel after a day of fun. The event will take place on #{date} at #{time_string} at #{location}. Registration is required, so please sign up today! We hope to see you there! Plus, it's a great way to get some exercise and have fun at the same time, meet new people and make friends, and support your local community."
             @event = Event.create!(
                 group_id: @group_id,
                 address: location,
@@ -228,7 +228,7 @@ puts "-----------------------------------------------"
                 time: time,
                 activity_id: @activity.id,
                 event_image: "#{@activity.name}_event#{(rand(1..3))}.jpg",
-                description: "Join us for a day of fun and excitement at the #{name}! This event is for all ages and skill levels, so whether you're a seasoned athlete or just starting out, we're sure you'll have a great time. We'll have a variety of activities to choose from. There will also be food, drinks, and music, so you can relax and refuel after a day of fun. The event will take place on #{date} at #{time_string} at #{location}. Registration is required, so please sign up today! We hope to see you there!"
+                description: description
             )
             (rand(4..8)).times do |e|
                 e + 1

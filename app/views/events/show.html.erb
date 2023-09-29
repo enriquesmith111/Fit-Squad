@@ -7,10 +7,11 @@
       <%else%>
         <%= image_tag @event.group.user.avatar, style: "margin: 4px;", class: "avatar-bordered" %>
       <%end%>
+      <h2>Hosted by <%= @event.group.user.name %></h2>
       <div class="action-button">
         <div id="group-index-above-group-right-section-buttons">
           <div class="button-container">
-          <a href="<%= group_path(@group) %>" class="action-button">Hosted by  <%= @event.group.user.name %> </a>
+          <a href="<%= group_path(@group) %>" class="action-button">  View Squad </a>
           <%link_to group_path(@group) %>
             <div class="white-border-effect"></div>
           </div>
@@ -61,7 +62,7 @@
         </div>
       </div>
       <div id="event-show-description">
-      <p> <%= @event.description  %></p>
+      <p> <%= @event.description %></p>
       </div>
     </div>
   <%# event show right section ,map and chat %>
@@ -92,12 +93,7 @@
   <div id="event-show-chatroom-right-section">
     <%= render partial: 'chatrooms/show', locals: { event: @event } %>
   </div>
-
-  <script>
-    Turbo.addEventListener("turbo:submit-end", (event) => {
-      if (event.detail.target.action.includes("/event_chatroom_messages")) {
-        Turbo.renderStream(Turbo.visit(event.detail.target.action))
-      }
-    })
-  </script>
+</div>
+</div>
+</div>
 </div>

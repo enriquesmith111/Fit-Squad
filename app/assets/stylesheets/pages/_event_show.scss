@@ -12,9 +12,11 @@ margin: 25px 50px 0px 50px;
 
 
 #event-show-host {
+    width: 40%;
     display: flex;
     align-items: center;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 #event-show-host h2 {
@@ -62,7 +64,7 @@ margin: 25px 50px 0px 50px;
 }
 
 #event-show-left-section-button {
-    margin-left: 20%;
+    margin-left: 10%;
     display: flex;
     align-items: center;
 }
