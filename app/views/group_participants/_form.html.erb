@@ -1,6 +1,6 @@
 <% if @group.user_id == current_user.id %>
   <h2>You are the Squad Leader!</h2>
-  <%= button_to "Delete Group", group_path(@group), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
+  <%= button_to "Delete Group", group_path(@group), method: :delete, data:{ turbo_confirm: 'Are you sure?' } %>
     <% if flash[:notice].present? %>
       <div class="alert alert-success">
       <%= flash[:notice] %>
@@ -13,7 +13,12 @@
       </div>
     <% end %>
 <% elsif @existing_participant %>
-<%= link_to "Leave Group", group_group_participant_path(@group, @existing_participant), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
+<div class="button-container">
+  <div class="secondary-squads-button" id="leave-group">
+    <%= link_to "Leave Group", group_group_participant_path(@group, @existing_participant), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
+  </div>
+<div class="black-border-effect" id="leave-group-border"></div>
+</div>
     <% if flash[:notice].present? %>
       <div class="alert alert-success">
       <%= flash[:notice] %>
@@ -34,7 +39,12 @@
   <% end %>
 <% end %>
   <% if Group.find(params[:id]).user_id == current_user.id %>
-<%= link_to 'Create Event', new_group_event_path(@group), form: { action: new_group_event_path(@group) } %>
+  <div class="button-container">
+  <div class="action-button" id="create-event">
+    <%= link_to 'Create Event', new_group_event_path(@group), form: { action: new_group_event_path(@group) } %>
+  <div class="white-border-effect" id="create-squad-border"></div>
+  </div>
+  </div>
   <%else%>
   <%=''%>
 <% end %>

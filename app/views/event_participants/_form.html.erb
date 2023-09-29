@@ -1,6 +1,6 @@
 <% if @event.group.user_id == current_user.id %>
   <%# <h2>YOU ARE The President!</h2> %>
-<%= button_to "Delete Event", group_event_path(@group, @event), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
+<%= button_to "Delete Event", group_event_path(@group, @event), method: :delete data: { turbo_confirm: 'Are you sure?' } %>
     <% if flash[:notice].present? %>
       <div class="alert alert-success">
       <%= flash[:notice] %>
@@ -14,7 +14,12 @@
     <% end %>
 <% elsif @existing_participant %>
   <%# <h2>you are part of the event Squad!</h2> %>
-<%= link_to "Leave Event", event_participant_path(@event, @existing_participant), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
+  <div class="button-container">
+  <div class="secondary-squads-button" id="leave-group">
+    <%= link_to "Leave Event", event_participant_path(@event, @existing_participant), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
+  </div>  
+    <div class="black-border-effect" id="leave-group-border"></div>
+  </div>
     <% if flash[:notice].present? %>
       <div class="alert alert-success">
       <%= flash[:notice] %>
